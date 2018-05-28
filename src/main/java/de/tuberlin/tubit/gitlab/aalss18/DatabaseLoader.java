@@ -1,4 +1,4 @@
-package com.greglturnquist.payroll;
+package de.tuberlin.tubit.gitlab.aalss18;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

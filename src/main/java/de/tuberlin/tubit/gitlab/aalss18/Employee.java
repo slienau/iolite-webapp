@@ -1,4 +1,4 @@
-package com.greglturnquist.payroll;
+package de.tuberlin.tubit.gitlab.aalss18;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.greglturnquist.payroll;
+package de.tuberlin.tubit.gitlab.aalss18;
 
 import de.iolite.api.IOLITEAPIProvider;
 import de.iolite.app.AbstractIOLITEApp;
