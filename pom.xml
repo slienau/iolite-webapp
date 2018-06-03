@@ -9,8 +9,11 @@
   <version>0.1.0-SNAPSHOT</version>
 
   <name>data-engine-user-interface</name>
-  <description>TODO</description>
+  <description>Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3</description>
   <url>https://gitlab.tubit.tu-berlin.de/aal-ss-18/data-engine-user-interface</url>
+
+  <packaging>jar</packaging>
+  <inceptionYear>2018</inceptionYear>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,16 +21,22 @@
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
   <build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.java</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+
       <plugins>
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
@@ -43,8 +52,8 @@
 							<goal>install-node-and-npm</goal>
 						</goals>
 						<configuration>
-							<nodeVersion>v4.4.5</nodeVersion>
-							<npmVersion>3.9.2</npmVersion>
+							<nodeVersion>v8.11.2</nodeVersion>
+							<npmVersion>6.1.0</npmVersion>
 						</configuration>
 					</execution>
 					<execution>
@@ -57,13 +66,101 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>webpack build</id>
+						<id>react test</id>
 						<goals>
-							<goal>webpack</goal>
+							<goal>react-scripts</goal>
+						</goals>
+						<configuration>
+							<arguments>test --env=jsdom</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>react build</id>
+						<goals>
+							<goal>react-scripts</goal>
+						</goals>
+						<configuration>
+							<arguments>build</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Build JAR with dependencies -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<finalName>${project.artifactId}</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
       </plugins>
   </build>
+
+  <dependencies>
+<!-- IOLITE App API Common -->
+		<dependency>
+			<groupId>de.iolite.app.api</groupId>
+			<artifactId>app-api-common</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- IOLITE App APIs -->
+		<dependency>
+			<groupId>de.iolite.app.api</groupId>
+			<artifactId>app-apis</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JSON -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
 </project>
