@@ -68,19 +68,19 @@
 					<execution>
 						<id>react test</id>
 						<goals>
-							<goal>react-scripts</goal>
+							<goal>npm</goal>
 						</goals>
 						<configuration>
-							<arguments>test --env=jsdom</arguments>
+							<arguments>run-script test</arguments>
 						</configuration>
 					</execution>
 					<execution>
 						<id>react build</id>
 						<goals>
-							<goal>react-scripts</goal>
+							<goal>npm</goal>
 						</goals>
 						<configuration>
-							<arguments>build</arguments>
+							<arguments>run-script build</arguments>
 						</configuration>
 					</execution>
 				</executions>
