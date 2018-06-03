@@ -1,20 +1,23 @@
 {
   "name": "data-engine-user-interface",
   "version": "0.1.0",
-  "private": true,
   "description": "Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3",
   "author": "TODO",
   "license": "MIT",
-  "dependencies": {
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-scripts": "1.1.4"
+  "main": "src/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.1",
+    "webpack-dev-server": "^3.1.4"
   },
-  "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "CI=true react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"TODO: no test specified by now\" && exit 0",
+    "build": "webpack --progress -p",
+    "watch": "webpack --progress --watch",
+    "server": "webpack-dev-server --open"
   }
 }
