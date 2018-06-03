@@ -1,0 +1,34 @@
+# Node
+node_modules/
+bundle.js
+bundle.js.map
+
+# Maven
+target/
+*.releaseBackup
+
+# Compiled class file
+*.class
+
+# Classpath
+.classpath
+
+# Log file
+*.log
+log/
+logs/
+
+# Archive Files
+*.zip
+*.tar.gz
+*.rar
+
+# Eclipse
+.project
+.settings/
+
+# Intellij IDEA
+.idea/
+*.ipr
+*.iml
+
