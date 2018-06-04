@@ -78,12 +78,12 @@
             </configuration>
           </execution>
           <execution>
-            <id>webpack build</id>
+            <id>webpack bundle</id>
             <goals>
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run build</arguments>
+              <arguments>run bundle</arguments>
             </configuration>
           </execution>
         </executions>
