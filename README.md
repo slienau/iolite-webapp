@@ -19,6 +19,7 @@ Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.
 
 * [React](https://reactjs.org/) - JavaScript library for building user interfaces
 * [react-chartjs-2](https://github.com/jerairrest/react-chartjs-2/) - React wrapper for Chart.js 2
+* [Bootstrap](https://getbootstrap.com/) - Sleek, intuitive, and powerful front-end framework
 * [Babel](https://babeljs.io/) - JavaScript compiler
 * [webpack](https://webpack.js.org/) - JavaScript bundler
 * [npm](https://www.npmjs.com/) - package manager for JavaScript 
