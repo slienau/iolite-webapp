@@ -24,6 +24,6 @@
     "test": "echo \"TODO: no test specified by now\" && exit 0",
     "bundle": "webpack --progress -p",
     "watch": "webpack --progress --watch",
-    "server": "webpack-dev-server --open"
+    "server": "webpack-dev-server --mode development --open"
   }
 }
