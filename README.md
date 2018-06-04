@@ -18,10 +18,11 @@ Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.
 ## Built With
 
 * [React](https://reactjs.org/) - JavaScript library for building user interfaces
+* [react-chartjs-2](https://github.com/jerairrest/react-chartjs-2/) - React wrapper for Chart.js 2
+* [Bootstrap](https://getbootstrap.com/) - Sleek, intuitive, and powerful front-end framework
 * [Babel](https://babeljs.io/) - JavaScript compiler
 * [webpack](https://webpack.js.org/) - JavaScript bundler
 * [npm](https://www.npmjs.com/) - package manager for JavaScript 
-* [Spring](https://spring.io/) - Java application framework
 * [Maven](https://maven.apache.org/) - Build automation tool and dependency management
 * [GitLab](https://about.gitlab.com/) - Git repository manager, wiki, issue tracking and CI/CD
 
@@ -37,3 +38,4 @@ Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
