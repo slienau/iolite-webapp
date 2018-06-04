@@ -30,7 +30,10 @@
         </includes>
       </resource>
       <resource>
-        <directory>dist</directory>
+        <directory>.</directory>
+        <includes>
+          <include>dist/*</include>
+        </includes>
       </resource>
       <resource>
         <directory>src/main/resources</directory>
