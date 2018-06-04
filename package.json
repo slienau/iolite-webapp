@@ -5,7 +5,10 @@
   "author": "Anton Rudacov, Daniel Yermakov, Daniel Sebastian Lienau, Tom Gill",
   "license": "MIT",
   "main": "src/index.js",
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",

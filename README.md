@@ -21,7 +21,6 @@ Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.
 * [Babel](https://babeljs.io/) - JavaScript compiler
 * [webpack](https://webpack.js.org/) - JavaScript bundler
 * [npm](https://www.npmjs.com/) - package manager for JavaScript 
-* [Spring](https://spring.io/) - Java application framework
 * [Maven](https://maven.apache.org/) - Build automation tool and dependency management
 * [GitLab](https://about.gitlab.com/) - Git repository manager, wiki, issue tracking and CI/CD
 
