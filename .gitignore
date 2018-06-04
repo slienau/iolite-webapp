@@ -1,4 +1,5 @@
 # Node
+build/
 node_modules/
 bundle.js
 bundle.js.map
@@ -31,3 +32,4 @@ logs/
 .idea/
 *.ipr
 *.iml
+

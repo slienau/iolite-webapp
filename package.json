@@ -1,38 +1,38 @@
 {
-  "name": "spring-data-rest-and-reactjs",
+  "name": "data-engine-user-interface",
   "version": "0.1.0",
-  "description": "Demo of ReactJS + Spring Data REST",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:spring-guides/tut-react-and-spring-data-rest.git"
-  },
-  "keywords": [
-    "rest",
-    "hateoas",
-    "spring",
-    "data",
-    "react"
-  ],
-  "author": "Greg L. Turnquist",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/spring-guides/tut-react-and-spring-data-rest/issues"
-  },
-  "homepage": "https://github.com/spring-guides/tut-react-and-spring-data-rest",
+  "description": "Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3",
+  "author": "Anton Rudacov, Daniel Yermakov, Daniel Sebastian Lienau, Tom Gill",
+  "license": "MIT",
+  "main": "src/index.js",
   "dependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "rest": "^1.3.1",
-    "webpack": "^1.12.2"
-  },
-  "scripts": {
-    "watch": "webpack --watch -d"
+    "bootstrap": "^4.1.1",
+    "chart.js": "^2.7.2",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "react": "^16.4.0",
+    "react-chartjs-2": "^2.7.2",
+    "react-dom": "^16.4.0"
   },
   "devDependencies": {
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.7",
-    "babel-polyfill": "^6.16.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0"
+    "autoprefixer": "^8.6.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "sass-loader": "^7.0.2",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.1",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "scripts": {
+    "test": "echo \"TODO: no test specified by now\" && exit 0",
+    "bundle": "webpack --progress -p",
+    "watch": "webpack --progress --watch",
+    "server": "webpack-dev-server --mode development --open"
   }
 }
