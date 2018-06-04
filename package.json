@@ -2,7 +2,7 @@
   "name": "data-engine-user-interface",
   "version": "0.1.0",
   "description": "Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3",
-  "author": "TODO",
+  "author": "Anton Rudacov, Daniel Yermakov, Daniel Sebastian Lienau, Tom Gill",
   "license": "MIT",
   "main": "src/index.js",
   "dependencies": {},
