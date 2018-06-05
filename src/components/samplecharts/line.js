@@ -54,7 +54,6 @@ export class LineChart extends React.Component {
         };
         return (
             <div>
-                <h2>Example Line Chart</h2>
                 <Line
                     data={data_line}
                     width={500}

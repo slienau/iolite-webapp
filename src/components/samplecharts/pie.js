@@ -24,11 +24,6 @@ export class PieChart extends React.Component {
             }]
         };
 
-        return (
-            <div>
-                <h2>Example Pie Chart</h2>
-                <Pie data={data_pie} />
-            </div>
-        )
+        return <Pie data={data_pie} />
     }
 }
