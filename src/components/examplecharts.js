@@ -4,17 +4,20 @@ import { PieChart } from './samplecharts/pie'
 
 export class ExampleCharts extends React.Component {
     render() {
+        const divStyle = {
+            maxWidth: '960px'
+        };
         return (
             <div>
                 <h1>Example Charts</h1>
-                <div>
+                <div style={divStyle}>
                     <h2>Line</h2>
-                    <LineChart />
-                    <hr />
-                    <h2>Pie</h2>
-                    <PieChart />
-                </div>
+                <LineChart />
+                <hr />
+                <h2>Pie</h2>
+                <PieChart />
             </div>
+            </div >
         );
     }
 }
