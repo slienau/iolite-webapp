@@ -23,7 +23,7 @@ html {
   -------------------------------------------------- */
   /* Not required for template or sticky footer method. */
   
-  body > #root > div > .container {
+  #main-content {
     padding: 90px 15px 0;
   }
   
