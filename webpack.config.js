@@ -3,7 +3,10 @@ const webpack = require("webpack");
 const bundlePath = path.resolve(__dirname, "dist/");
 
 module.exports = {
-    entry: "./src/index.js",
+    entry: [
+        'react-hot-loader/patch',
+        './src/index.js'
+    ],
     module: {
         rules: [
             {
@@ -50,13 +53,14 @@ module.exports = {
         extensions: ['*', '.js', '.jsx']
     },
     output: {
-        publicPath: bundlePath,
-        filename: "bundle.js"
-    },
+        publicPath: '/',
+        filename: 'bundle.js',
+        path: __dirname + '/dist'
+      },
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
+        contentBase: path.join(__dirname, 'dist'),
+        hot: true,
         port: 3000,
-        publicPath: "http://localhost:3000/dist",
         open: true
     },
     plugins: [new webpack.HotModuleReplacementPlugin()]

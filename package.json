@@ -4,6 +4,12 @@
   "description": "Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3",
   "author": "Anton Rudacov, Daniel Yermakov, Daniel Sebastian Lienau, Tom Gill",
   "license": "MIT",
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
   "main": "src/index.js",
   "dependencies": {
     "bootstrap": "^4.1.1",
@@ -23,6 +29,7 @@
     "css-loader": "^0.28.11",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
+    "react-hot-loader": "^4.2.0",
     "sass-loader": "^7.0.2",
     "style-loader": "^0.21.0",
     "webpack": "^4.10.2",
