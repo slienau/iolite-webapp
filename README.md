@@ -11,9 +11,11 @@ Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.
  
  
 ## How to use
-
-* TODO
- 
+### Development
+`npm install`
+`npm run server`
+### Build
+`mvn package`
  
 ## Built With
 
