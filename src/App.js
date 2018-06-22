@@ -3,7 +3,8 @@ import './css/App.css'
 import './css/custom.css'
 import { HashRouter as Router, Route } from 'react-router-dom'
 import { Navbar } from './components/navbar'
-import { Dashboard } from './components/dashboard'
+import { Chartview } from './components/chartview'
+import { Tableview } from './components/tableview'
 import { Settings } from './components/settings'
 
 
@@ -15,9 +16,16 @@ class App extends Component {
                     <Navbar />
 
                     <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
-                        <Dashboard />
-                    </main>
 
+                        <Router>
+                            <div>
+                                <Route exact path="/" component={Chartview} />
+                                <Route path="/chartview" component={Chartview} />
+                                <Route path="/tableview" component={Tableview} />
+                                <Route path="/settings" component={Settings} />
+                            </div>
+                        </Router>
+                    </main>
                 </div>
             </div>
         );
