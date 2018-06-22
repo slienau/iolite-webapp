@@ -32,7 +32,7 @@ Package:
 Deploy:
     stage: deploy
     script:
-        - cp ./builds/aal-ss-18/data-engine-user-interface/target/data-engine-user-interface.jar /root/.iolite/apps 
+        - cp /builds/aal-ss-18/data-engine-user-interface/target/data-engine-user-interface.jar /root/.iolite/apps 
     only:
         - dev
     tags:
