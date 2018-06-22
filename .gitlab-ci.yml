@@ -1,11 +1,5 @@
 image: maven:3.5.3-jdk-8
 
-cache:
-  paths:
-    - node_modules/
-    - dist/
-    - target/
-
 stages:
     - validate
     - test
@@ -32,6 +26,12 @@ Package:
     stage: package
     script:
         - ./mvnw package -DskipTests
+    cache:
+      untracked: true
+      paths:
+        - node_modules/
+        - dist/
+        - target/
     tags:
         - package
 
