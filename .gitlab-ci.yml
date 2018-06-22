@@ -1,0 +1,39 @@
+image: maven:3.5.3-jdk-8
+
+stages:
+    - validate
+    - test
+    - package
+    - deploy
+    
+Validate:
+    stage: validate
+    script:
+        - mvn validate
+    tags:
+        - validate
+
+Test:
+    stage: test
+    script:
+        - mvn test
+    except:
+        - master
+    tags:
+        - test
+    
+Package:
+    stage: package
+    script:
+        - mvn package -DskipTests
+    tags:
+        - package
+
+Deploy:
+    stage: deploy
+    script:
+        - cp ./build/target/data-engine-user-interface.jar /root/.iolite/apps 
+    only:
+	- dev
+    tags:
+        - deploy
