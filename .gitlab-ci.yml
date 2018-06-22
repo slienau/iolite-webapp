@@ -19,6 +19,7 @@ Test:
         - ./mvnw test
     except:
         - master
+        - dev
     tags:
         - test
     
@@ -26,14 +27,10 @@ Package:
     stage: package
     script:
         - ./mvnw package -DskipTests
-    cache:
-      untracked: true
-      paths:
-        - node_modules/
-        - dist/
-        - target/
     tags:
         - package
+    artifacts:
+        - target/
 
 Deploy:
     stage: deploy
