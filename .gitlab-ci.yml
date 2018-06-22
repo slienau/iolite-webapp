@@ -1,5 +1,11 @@
 image: maven:3.5.3-jdk-8
 
+cache:
+  paths:
+    - node_modules/
+    - dist/
+    - target/
+
 stages:
     - validate
     - test
@@ -32,7 +38,7 @@ Package:
 Deploy:
     stage: deploy
     script:
-        - echo "cp /builds/aal-ss-18/data-engine-user-interface/target/data-engine-user-interface.jar /root/.iolite/apps" 
+        - cp /builds/aal-ss-18/data-engine-user-interface/target/data-engine-user-interface.jar /root/.iolite/apps 
     only:
         - dev
     tags:
