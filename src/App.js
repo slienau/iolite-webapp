@@ -3,28 +3,30 @@ import './css/App.css'
 import './css/custom.css'
 import { HashRouter as Router, Route } from 'react-router-dom'
 import { Navbar } from './components/navbar'
-import { Footer } from './components/footer'
-import { Dashboard } from './components/dashboard'
+import { Chartview } from './components/chartview'
+import { Tableview } from './components/tableview'
 import { Settings } from './components/settings'
-import { ExampleCharts } from './components/examplecharts'
 
 
 class App extends Component {
     render() {
         return (
-            <div>
-                <Navbar />
+            <div className="container-fluid">
+                <div className="row">
+                    <Navbar />
 
-                <main id="main-content" role="main" className="container">
-                    <Router>
-                        <div>
-                            <Route exact path="/" component={Dashboard} />
-                            <Route path="/examplecharts" component={ExampleCharts} />
-                            <Route path="/settings" component={Settings} />
-                        </div>
-                    </Router>
-                </main>
-                <Footer />
+                    <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+                        <Router>
+                            <div>
+                                <Route exact path="/" component={Chartview} />
+                                <Route path="/chartview" component={Chartview} />
+                                <Route path="/tableview" component={Tableview} />
+                                <Route path="/settings" component={Settings} />
+                            </div>
+                        </Router>
+                    </main>
+                </div>
             </div>
         );
     }
