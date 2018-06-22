@@ -1,0 +1,45 @@
+image: maven:3.5.3-jdk-8
+
+stages:
+    - validate
+    - test
+    - package
+    - deploy
+    
+Validate:
+    stage: validate
+    script:
+        - ./mvnw validate
+    tags:
+        - validate
+
+Test:
+    stage: test
+    script:
+        - ./mvnw test
+    except:
+        - master
+        - dev
+    tags:
+        - test
+    
+Package:
+    stage: package
+    script:
+        - ./mvnw package -DskipTests
+    tags:
+        - package
+    artifacts:
+        untracked: true
+        paths:
+            - binaries/
+
+
+Deploy:
+    stage: deploy
+    script:
+        - cp /builds/aal-ss-18/data-engine-user-interface/target/data-engine-user-interface.jar /root/.iolite/apps 
+    only:
+        - dev
+    tags:
+        - deploy

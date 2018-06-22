@@ -11,9 +11,10 @@ Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.
  
  
 ## How to use
-
-* TODO
- 
+### Development
+First run `npm install` to install all needed modules for development, and then run `npm run server` to start the local development webserver. Once the bundle is packed, the Browser will open the URL automatically. Furthermore, it will automatically repack and refresh the webpage as soon any filechanges are detected.
+### Build
+`mvn package`
  
 ## Built With
 
