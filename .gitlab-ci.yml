@@ -30,7 +30,10 @@ Package:
     tags:
         - package
     artifacts:
-        - target/
+        untracked: true
+        paths:
+            - binaries/
+
 
 Deploy:
     stage: deploy
