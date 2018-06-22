@@ -1,3 +1,6 @@
+[![build status](https://gitlab.tubit.tu-berlin.de/aal-ss-18/data-engine-user-interface/badges/dev/build.svg)](https://gitlab.tubit.tu-berlin.de/aal-ss-18/data-engine-user-interface/commits/dev)
+
+
 # IOLite App (Data Engine UI)
 
 Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.

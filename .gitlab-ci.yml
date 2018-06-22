@@ -26,14 +26,16 @@ Test:
 Package:
     stage: package
     script:
-        - ./mvnw package -DskipTests
+        - ./mvnw clean package
     tags:
         - package
+    only:
+        - master
+        - dev
     artifacts:
         untracked: true
         paths:
             - binaries/
-
 
 Deploy:
     stage: deploy
