@@ -34,6 +34,6 @@ Deploy:
     script:
         - cp ./build/target/data-engine-user-interface.jar /root/.iolite/apps 
     only:
-	- dev
+        - dev
     tags:
         - deploy
