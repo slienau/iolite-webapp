@@ -9,14 +9,14 @@ stages:
 Validate:
     stage: validate
     script:
-        - mvn validate
+        - ./mvnw validate
     tags:
         - validate
 
 Test:
     stage: test
     script:
-        - mvn test
+        - ./mvnw test
     except:
         - master
     tags:
@@ -25,14 +25,14 @@ Test:
 Package:
     stage: package
     script:
-        - mvn package -DskipTests
+        - ./mvnw package -DskipTests
     tags:
         - package
 
 Deploy:
     stage: deploy
     script:
-        - cp /builds/aal-ss-18/data-engine-user-interface/target/data-engine-user-interface.jar /root/.iolite/apps 
+        - echo "cp /builds/aal-ss-18/data-engine-user-interface/target/data-engine-user-interface.jar /root/.iolite/apps" 
     only:
         - dev
     tags:
