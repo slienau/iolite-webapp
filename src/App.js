@@ -19,10 +19,36 @@ class App extends Component {
 
                         <Router>
                             <div>
-                                <Route exact path="/" component={Chartview} />
-                                <Route path="/chartview" component={Chartview} />
+
+                                <Route
+                                    exact path="/"
+                                    render={(props) => <Chartview {...props} name="Total" />}
+                                />
+                                <Route
+                                    exact path='/chartview'
+                                    render={(props) => <Chartview {...props} name="Total" />}
+                                />
+                                <Route
+                                    exact path='/chartview/livingroom'
+                                    render={(props) => <Chartview {...props} name="Living Room" />}
+                                />
+                                <Route
+                                    exact path='/chartview/kitchen'
+                                    render={(props) => <Chartview {...props} name="Kitchen" />}
+                                />
+                                <Route
+                                    exact path='/chartview/bedroom'
+                                    render={(props) => <Chartview {...props} name="Bedroom" />}
+                                />
+                                <Route
+                                    exact path='/chartview/bathroom'
+                                    render={(props) => <Chartview {...props} name="Bathroom" />}
+                                />
+
                                 <Route path="/tableview" component={Tableview} />
                                 <Route path="/settings" component={Settings} />
+
+
                             </div>
                         </Router>
                     </main>
