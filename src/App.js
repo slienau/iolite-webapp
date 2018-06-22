@@ -7,6 +7,7 @@ import { Footer } from './components/footer'
 import { Dashboard } from './components/dashboard'
 import { Settings } from './components/settings'
 import { ExampleCharts } from './components/examplecharts'
+import { ChartView } from './components/chartview/chartview'
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
                     <Router>
                         <div>
                             <Route exact path="/" component={Dashboard} />
+                            <Route exact path="/chartview" component={ChartView} />
                             <Route path="/examplecharts" component={ExampleCharts} />
                             <Route path="/settings" component={Settings} />
                         </div>

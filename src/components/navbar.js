@@ -17,6 +17,9 @@ export class Navbar extends React.Component {
                                     <Link to="/" className="nav-link">Dashboard <span className="sr-only">(current)</span></Link>
                                 </li>
                                 <li className="nav-item">
+                                    <Link to="/chartview" className="nav-link">Chart View</Link>
+                                </li>
+                                <li className="nav-item">
                                     <Link to="/examplecharts" className="nav-link">Example Charts</Link>
                                 </li>
                                 <li className="nav-item">
