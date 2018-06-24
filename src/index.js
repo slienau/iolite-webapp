@@ -5,7 +5,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import 'bootstrap';
 import './scss/App.scss';
-import App from "./containers/App/App.js";
+import App from "./components/App/App.js";
 import {BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(

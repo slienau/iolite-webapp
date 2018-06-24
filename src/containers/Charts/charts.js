@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Component } from 'react';
 import {LineChart} from '../../components/Samplecharts/line'
 
-export class Charts extends React.Component {
+class Charts extends Component {
+
   render() {
     return (
+
         <div>
           <div
               className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -19,8 +21,11 @@ export class Charts extends React.Component {
               </button>
             </div>
           </div>
+
           <LineChart/>
         </div>
     );
   }
 }
+
+export default Charts;

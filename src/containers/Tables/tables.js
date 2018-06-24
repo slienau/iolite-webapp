@@ -1,11 +1,15 @@
-import React from "react";
+import React, { Component } from 'react';
 
-export class Tables extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>Table View</h1>
-            </div>
-        );
-    }
+class Tables extends Component {
+
+  render() {
+    return (
+
+        <div>
+          <h1>Table View</h1>
+        </div>
+    );
+  }
 }
+
+export default Tables;

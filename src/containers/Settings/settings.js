@@ -1,11 +1,15 @@
-import React from "react";
+import React, { Component } from 'react';
 
-export class Settings extends React.Component {
-    render() {
-        return(
-            <div>
-                <h1>Settings</h1>
-            </div>
-        );
-    }
+class Settings extends Component {
+
+  render() {
+    return (
+
+        <div>
+          <h1>Settings</h1>
+        </div>
+    );
+  }
 }
+
+export default Settings;
