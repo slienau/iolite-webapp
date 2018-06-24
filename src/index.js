@@ -4,7 +4,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import 'bootstrap';
-import './scss/App.scss';
+import './scss/Main.scss';
 import App from "./components/App/App";
 import {BrowserRouter} from 'react-router-dom';
 
