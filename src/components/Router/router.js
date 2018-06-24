@@ -9,10 +9,10 @@ const Router = props => (
 
     <Switch>
 
-      <Route exact path="/" component={Charts}/>
-      <Route exact path="/charts" component={Charts}/>
-      <Route exact path="/tables" component={Tables}/>
-      <Route exact path="/settings" component={Settings}/>
+      <Route path="/" component={Charts}/>
+      <Route path="/charts" component={Charts}/>
+      <Route path="/tables" component={Tables}/>
+      <Route path="/settings" component={Settings}/>
 
     </Switch>
 );
