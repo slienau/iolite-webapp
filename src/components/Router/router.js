@@ -6,6 +6,7 @@ import Tables from '../../containers/Tables/tables';
 import Settings from '../../containers/Settings/settings';
 
 const Router = props => (
+
     <Switch>
       <Route exact path="/charts" component={Charts}/>
       <Route exact path="/tables" component={Tables}/>

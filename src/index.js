@@ -5,7 +5,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import 'bootstrap';
 import './scss/App.scss';
-import App from "./components/App/App.js";
+import App from "./components/App/App";
 import {BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(
@@ -16,5 +16,4 @@ ReactDOM.render(
     document.getElementById("root")
 );
 
-//I guess we don't need it here
-//module.hot.accept();
+module.hot.accept();
