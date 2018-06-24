@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 import Charts from '../../containers/Charts/charts';
 import Tables from '../../containers/Tables/tables';
