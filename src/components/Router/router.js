@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 import Charts from '../../containers/Charts/charts';
 import Tables from '../../containers/Tables/tables';
@@ -9,10 +9,10 @@ const Router = props => (
 
     <Switch>
 
-      <Route path="/" component={Charts}/>
-      <Route path="/charts" component={Charts}/>
-      <Route path="/tables" component={Tables}/>
-      <Route path="/settings" component={Settings}/>
+      <Route exact path="/" component={Charts}/>
+      <Route exact path="/charts" component={Charts}/>
+      <Route exact path="/tables" component={Tables}/>
+      <Route exact path="/settings" component={Settings}/>
 
     </Switch>
 );
