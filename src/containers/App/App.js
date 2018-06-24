@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './css/App.css'
+import '../../css/App.css'
 import './css/custom.css'
 import { HashRouter as Router, Route } from 'react-router-dom'
 import { Navbar } from './components/navbar'

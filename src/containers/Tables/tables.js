@@ -1,6 +1,6 @@
 import React from "react";
 
-export class Tableview extends React.Component {
+export class Tables extends React.Component {
     render() {
         return (
             <div>
