@@ -6,7 +6,7 @@ class Tables extends Component {
     return (
 
         <div>
-          <h1>Table View</h1>
+          <h1>Tables</h1>
         </div>
     );
   }
