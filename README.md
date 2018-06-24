@@ -1,3 +1,8 @@
+### You can take a look at our current state here: [217.163.23.24:9999](217.163.23.24:9999) [credentials](https://gitlab.tubit.tu-berlin.de/aal-ss-18/data-engine-user-interface/issues/2) 
+
+[![build status](https://gitlab.tubit.tu-berlin.de/aal-ss-18/data-engine-user-interface/badges/dev/build.svg)](https://gitlab.tubit.tu-berlin.de/aal-ss-18/data-engine-user-interface/commits/dev)
+
+
 # IOLite App (Data Engine UI)
 
 Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.
@@ -11,11 +16,14 @@ Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.
  
  
 ## How to use
+
 ### Development
-`npm install`
-`npm run server`
+First run `npm install` to install all needed modules for development, and then run `npm run server` to start the local development webserver. Once the bundle is packed, the Browser will open the URL automatically. Furthermore, it will automatically repack and refresh the webpage as soon any filechanges are detected.
+
 ### Build
-`mvn package`
+You can use attached [Maven Wrapper](https://github.com/takari/maven-wrapper) to build this project. No actual Maven installation is needed on your system (however you need JDK 8 to be installed).
+
+Just run `./mvnw package` to build the project.
  
 ## Built With
 
