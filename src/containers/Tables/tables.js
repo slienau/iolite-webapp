@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import './tables.css';
 
 var columnMetaData = [
     {
@@ -53,19 +54,29 @@ const TableHead = (prop) => {
 }
 
 
+const TableBody = (prop) =>{
+    return(
+        <tbody>
+        <tr>
+        </tr>
+        </tbody>
+)}
+
+
+
+
 class Tables extends Component {
-
-
-
-
 
   render() {
     return (
+        <div id="table">
         <div class="table-responsive">
           <table class="table table-striped table-sm">
             <TableHead list={columnMetaData}> </TableHead>
+            <TableBody list={TableData}> </TableBody>
           </table>
           </div>
+        </div>
     );
   }
 }
@@ -74,3 +85,5 @@ class Tables extends Component {
 
 
 export default Tables;
+
+
