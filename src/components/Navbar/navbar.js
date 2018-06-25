@@ -52,7 +52,7 @@ class Seperator extends Component {
       'width': '100%',
       'margin': '10px 0px'
     };
-    
+
     return (
       <div style={divStyle}></div>
     );
