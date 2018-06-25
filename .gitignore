@@ -33,3 +33,6 @@ logs/
 *.ipr
 *.iml
 
+
+#mac stuff
+.DS_Store
