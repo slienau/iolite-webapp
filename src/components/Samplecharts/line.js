@@ -56,8 +56,15 @@ const LineChart = (props) => {
       <div>
         <Line
             data={dataLine}
+            width={700}
+            height={600}
+            options={{
+              maintainAspectRatio: false
+            }}
         />
       </div>
+
+
   )
 };
 
