@@ -99,3 +99,26 @@ body {
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
+/*
+* Custom
+*/
+
+#sidenav {
+  background-color: #000 !important;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.room-device {
+  color: #fff;
+}
+.room-room {
+  width: 100%;
+  text-align: left;
+}
+.white {
+  color: #fff !important;
+}
+.bg-white {
+  background-color: #fff !important;
+}

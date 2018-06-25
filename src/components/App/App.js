@@ -12,7 +12,7 @@ class App extends Component {
       <div className="container-fluid">
         
         <div className="row">
-          <nav className="col-md-2 d-none d-md-block bg-light sidebar">
+          <nav id="sidenav" className="col-md-2 d-none d-md-block bg-light sidebar">
             <Navbar />
           </nav>
         </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-
+import { Room } from './room'
 class Navbar extends Component {
 
   render() {
@@ -10,36 +10,17 @@ class Navbar extends Component {
           <li className="nav-item">
             <Link to="/charts" className="nav-link active">
               <span data-feather="home"></span>
-              Total <span className="sr-only">(current)</span>
+              <h2 className="white">Charts</h2>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/charts/livingroom" className="nav-link">
-              <span data-feather="file"></span>
-              Living Room
-                </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/charts/kitchen" className="nav-link">
-              <span data-feather="shopping-cart"></span>
-              Kitchen
-                </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/charts/bedroom" className="nav-link">
-              <span data-feather="users"></span>
-              Bedroom
-                </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/charts/bathroom" className="nav-link">
-              <span data-feather="bar-chart-2"></span>
-              Bathroom
-                </Link>
-          </li>
+          <Room name="Living Room" devices={['Device 1', 'Device 2', 'Device 3', 'Device 4']} />
+          <Room name="Kitchen" devices={['Device 1', 'Device 2', 'Device 3']} />
+          <Room name="Bedroom" devices={['Device 1', 'Device 2']} />
+          <Room name="Bathroom" devices={['Device 1', 'Device 2', 'Device 3']} />
+
         </ul>
 
-        <hr />
+        <Seperator />
 
         <ul className="nav flex-column mb-2">
           <li className="nav-item">
@@ -48,6 +29,7 @@ class Navbar extends Component {
               Tables
                 </Link>
           </li>
+          <Seperator />
           <li className="nav-item">
             <Link to="/settings" className="nav-link">
               <span data-feather="file-text"></span>
@@ -61,3 +43,18 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+class Seperator extends Component {
+  render() {
+    const divStyle = {
+      'background-color': 'white',
+      'height': '2px',
+      'width': '100%',
+      'margin': '10px 0px'
+    };
+    
+    return (
+      <div style={divStyle}></div>
+    );
+  }
+}
