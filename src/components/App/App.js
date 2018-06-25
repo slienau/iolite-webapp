@@ -15,7 +15,7 @@ class App extends Component {
             <Navbar/>
           </div>
 
-          //TODO: Router should take EXACTLY WHOLE free space, no more no less.
+          {/* TODO Router should take EXACTLY WHOLE free space, no more no less. */}
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             <Router/>
           </main>
