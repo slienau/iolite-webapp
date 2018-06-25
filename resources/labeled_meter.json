@@ -1,1 +1,38 @@
-{"1512987870886": ["knx_lamps_wz_rechts"], "1515493383815": ["knx_kitchen_socket61C"], "1513092268490": ["OpenZWaveNode3"], "1507201185644": ["knx_living_lamps_2"], "1507198742638": ["knx_lamps_wz_rechts"], "1507124268079": ["OpenZWaveNode3"], "1507642980659": ["knx_lamps_wz_rechts"], "1514597906100": ["OpenZWaveNode3"], "1507209701877": ["00:17:88:01:00:dc:d3:fb-0b"], "1513093125179": ["knx_kitchen_lamps"], "1510239926494": ["knx_lamps_wz_links"], "1507201267199": ["knx_bedroom_lamps_2"]}
+{
+  "1512987870886": [
+    "knx_lamps_wz_rechts"
+  ],
+  "1515493383815": [
+    "knx_kitchen_socket61C"
+  ],
+  "1513092268490": [
+    "OpenZWaveNode3"
+  ],
+  "1507201185644": [
+    "knx_living_lamps_2"
+  ],
+  "1507198742638": [
+    "knx_lamps_wz_rechts"
+  ],
+  "1507124268079": [
+    "OpenZWaveNode3"
+  ],
+  "1507642980659": [
+    "knx_lamps_wz_rechts"
+  ],
+  "1514597906100": [
+    "OpenZWaveNode3"
+  ],
+  "1507209701877": [
+    "00:17:88:01:00:dc:d3:fb-0b"
+  ],
+  "1513093125179": [
+    "knx_kitchen_lamps"
+  ],
+  "1510239926494": [
+    "knx_lamps_wz_links"
+  ],
+  "1507201267199": [
+    "knx_bedroom_lamps_2"
+  ]
+}
