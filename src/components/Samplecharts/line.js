@@ -1,16 +1,15 @@
 import React from "react";
 import {Line} from 'react-chartjs-2';
 
-const dataLine = {
 
+const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
-      label: 'Boiler',
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      data: [65, 59, 80, 81, 56, 55, 40],
+      label: 'First dataset',
       fill: false,
       lineTension: 0.1,
+      backgroundColor: 'rgba(75,192,192,0.4)',
       borderColor: 'rgba(75,192,192,1)',
       borderCapStyle: 'butt',
       borderDash: [],
@@ -24,38 +23,40 @@ const dataLine = {
       pointHoverBorderColor: 'rgba(220,220,220,1)',
       pointHoverBorderWidth: 2,
       pointRadius: 1,
-      pointHitRadius: 10
+      pointHitRadius: 10,
+      data: [65, 59, 80, 81, 56, 55, 40]
     },
     {
-      label: 'Fridge',
-      backgroundColor: 'rgba(255,153,0,0.4)',
-      data: [60, 35, 65, 59, 95, 89, 20],
+      label: 'Second dataset',
       fill: false,
       lineTension: 0.1,
-      borderColor: 'rgba(255,153,0,0.4)',
+      backgroundColor: 'rgba(100,12,192,0.4)',
+      borderColor: 'rgba(100,12,192,1)',
       borderCapStyle: 'butt',
       borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(255,153,0,0.4)',
+      pointBorderColor: 'rgba(100,12,192,1)',
       pointBackgroundColor: '#fff',
       pointBorderWidth: 1,
       pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(255,153,0,0.4)',
+      pointHoverBackgroundColor: 'rgba(100,12,192,1)',
       pointHoverBorderColor: 'rgba(220,220,220,1)',
       pointHoverBorderWidth: 2,
       pointRadius: 1,
-      pointHitRadius: 10
+      pointHitRadius: 10,
+      data: [3, 9, 15, 40, 45, 60, 12]
     }
   ]
 };
+
 
 const LineChart = (props) => {
 
   return (
       <div>
         <Line
-            data={dataLine}
+            data={data}
         />
       </div>
   )
