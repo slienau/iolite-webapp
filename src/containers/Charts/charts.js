@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {LineChart} from '../../components/Samplecharts/line'
+import React, {Component} from 'react';
+import LineChart from '../../components/Samplecharts/line';
 
 class Charts extends Component {
 
