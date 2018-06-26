@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
 import LineChart from '../../components/Samplecharts/line';
 
+
+
 class Charts extends Component {
+
+  componentDidMount() {
+
+    console.log("Charts container mounted!");
+  }
 
   render() {
     return (
