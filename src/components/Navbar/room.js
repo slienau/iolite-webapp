@@ -8,17 +8,19 @@ export class Room extends React.Component {
                 <a className="btn btn-secondary room-room" data-toggle="collapse" href={"#" + collapseId} role="button" aria-expanded="false" aria-controls={collapseId}>{this.props.name}</a>
                 <div className="collapse show" id={collapseId}>
                     <table className="switchtable">
-                        {
-                            this.props.devices.map(device =>
-                                <tr>
-                                    <td className="room-device">
+                        <tbody>
+                            {
+                                this.props.devices.map(device =>
+                                    <tr>
+                                        <td className="room-device">
                                             <Switch device={device} />
-                                    </td>
-                                    <td>
-                                        {device}
-                                    </td>
-                                </tr>
-                            )}
+                                        </td>
+                                        <td>
+                                            {device}
+                                        </td>
+                                    </tr>
+                                )}
+                        </tbody>
                     </table>
                 </div>
             </li>
