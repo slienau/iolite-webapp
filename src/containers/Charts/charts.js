@@ -13,8 +13,13 @@ class Charts extends Component {
 
   componentDidMount() {
 
-    
+    fetch('./resources/power.json')
+        .then(data => data.json())
+        .then(json => {this.state.powerUsage = json});
 
+
+    console.log(this.state.powerUsage);
+    
     console.log("Charts container mounted!");
   }
 
