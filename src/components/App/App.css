@@ -29,7 +29,7 @@ body {
   position: relative;
   top: 0;
   height: calc(100vh - 48px);
-  padding-top: .5rem;
+  /* padding-top: .5rem; */
   overflow-x: hidden;
   overflow-y: auto;
   /* Scrollable contents if viewport is shorter than content. */
@@ -172,7 +172,6 @@ input:checked+.slider:before {
 */
 
 #sidenav {
-  background-color: #000 !important;
   padding-left: 0px;
   padding-right: 0px;
 }

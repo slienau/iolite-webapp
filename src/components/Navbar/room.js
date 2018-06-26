@@ -5,7 +5,7 @@ export class Room extends React.Component {
         var collapseId = this.props.name.replace(' ', '').toLowerCase()
         return (
             <li>
-                <a className="btn btn-primary room-room" data-toggle="collapse" href={"#" + collapseId} role="button" aria-expanded="false" aria-controls={collapseId}>{this.props.name}</a>
+                <a className="btn btn-secondary room-room" data-toggle="collapse" href={"#" + collapseId} role="button" aria-expanded="false" aria-controls={collapseId}>{this.props.name}</a>
                 <div className="collapse show" id={collapseId}>
                     <table className="switchtable">
                         {
