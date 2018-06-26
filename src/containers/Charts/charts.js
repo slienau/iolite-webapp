@@ -7,11 +7,13 @@ class Charts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      powerData: []
+      powerUsage: []
     };
   }
 
   componentDidMount() {
+
+    
 
     console.log("Charts container mounted!");
   }
