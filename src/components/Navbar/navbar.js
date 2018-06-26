@@ -48,7 +48,7 @@ export default Navbar;
 class Seperator extends Component {
   render() {
     const divStyle = {
-      'background-color': 'black',
+      'backgroundColor': 'black',
       'height': '2px',
       'width': '100%',
       'margin': '10px 0px'
