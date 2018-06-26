@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 
 
 import {
@@ -9,40 +9,63 @@ import {
 
 class Settings extends Component {
 
-    render() {
-        return (
+    constructor(props) {
+        super(props);
+        this.mySwitch = false;
+        }
 
-            <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit}>
-                <Toolbar />
-                <Group>
-                    <Switch name='mySwitch' title='Stop Recording data'/>
+        toggleNightmode()
+        {
+            if (this.mySwitch){
+                this.mySwitch = false;
+                //TODO make the CSS change better, not like this
+                document.body.style = 'filter: invert(0%);';
 
-                    <Switch name='mySwitch' title='Toggel Daymode'/>
-                    <Selection title="Views" name='mySelection' >
-                        <Option value='View 0' />
-                        <Option value='View 1' />
-                        <Option value='View 2' />
-                    </Selection>
-                </Group>
-                <Group>
+            }
+            else{
+                this.mySwitch = true;
+                //TODO make the CSS change better, not like this
+                document.body.style = 'filter: invert(100%);';
 
-                    <Input name='Preis_Pro_KwH' title='Preis Pro KwH'/>
+            }
 
-                    <RadioGroup title="Währung" name='Währung'>
-                        <Radio value='€' />
-                        <Radio value='$' />
-                        <Radio value='Ø' />
-                    </RadioGroup>
-                    <RadioGroup title="Sprache" name='Währung'>
-                        <Radio value='DE' />
-                        <Radio value='EN' />
-                        <Radio value='RUS' />
-                    </RadioGroup>
-                </Group>
+        }
 
-            </SettingsPanel>
-        );
-    }
+        render()
+        {
+            return (
+
+                <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit}>
+                    <Toolbar/>
+                    <Group>
+                        <Switch name='mySwitch' title='Stop Recording data' />
+                        <Switch name='mySwitch' title='Toggle Nightmode' onChange={e =>{this.toggleNightmode()}}/>
+                        <Selection title="Views" name='mySelection'>
+                            <Option value='View 0'/>
+                            <Option value='View 1'/>
+                            <Option value='View 2'/>
+                        </Selection>
+                    </Group>
+                    <Group>
+
+                        <Input name='Preis_Pro_KwH' title='Preis Pro KwH'/>
+
+                        <RadioGroup title="Währung" name='Währung'>
+                            <Radio value='€'/>
+                            <Radio value='$'/>
+                            <Radio value='Ø'/>
+                        </RadioGroup>
+                        <RadioGroup title="Sprache" name='Währung'>
+                            <Radio value='DE'/>
+                            <Radio value='EN'/>
+                            <Radio value='RUS'/>
+                        </RadioGroup>
+                    </Group>
+
+                </SettingsPanel>
+            );
+        }
+
 }
-
 export default Settings;
+
