@@ -1,66 +1,61 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
+import { Room } from './room'
 
-class Navbar extends Component {
+class Navbar extends React.Component {
 
   render() {
     return (
+      <div className="sidebar-sticky">
+        <ul className="nav flex-column">
+          <li className="nav-item">
+            <Link to="/charts" className="nav-link active btn btn-primary">
+              <span data-feather="home"></span>
+              Charts
+            </Link>
+          </li>
+          <Room name="Living Room" devices={['Device 1', 'Device 2', 'Device 3', 'Device 4']} />
+          <Room name="Kitchen" devices={['Device 1', 'Device 2', 'Device 3']} />
+          <Room name="Bedroom" devices={['Device 1', 'Device 2']} />
+          <Room name="Bathroom" devices={['Device 1', 'Device 2', 'Device 3']} />
 
-        <nav className="col-md-2 d-none d-md-block bg-light sidebar">
-          <div className="sidebar-sticky">
-            <ul className="nav flex-column">
-              <li className="nav-item">
-                <Link to="/" className="nav-link active">
-                  <span data-feather="home"></span>
-                  Total <span className="sr-only">(current)</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  Living Room
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  Kitchen
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <span data-feather="users"></span>
-                  Bedroom
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Bathroom
-                </a>
-              </li>
-            </ul>
+        </ul>
 
-            <hr/>
+        <Seperator />
 
-            <ul className="nav flex-column mb-2">
-              <li className="nav-item">
-                <Link to="/tables" className="nav-link">
-                  <span data-feather="file-text"></span>
-                  Tables
+        <ul className="nav flex-column mb-2">
+          <li className="nav-item">
+            <Link to="/tables" className="nav-link btn btn-primary">
+              <span data-feather="file-text"></span>
+              Tables
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/settings" className="nav-link">
-                  <span data-feather="file-text"></span>
-                  Settings
+          </li>
+          <Seperator />
+          <li className="nav-item">
+            <Link to="/settings" className="nav-link btn btn-primary">
+              <span data-feather="file-text"></span>
+              Settings
                 </Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
+          </li>
+        </ul>
+      </div>
     );
   }
 }
 
 export default Navbar;
+
+class Seperator extends Component {
+  render() {
+    const divStyle = {
+      'backgroundColor': 'black',
+      'height': '2px',
+      'width': '100%',
+      'margin': '10px 0px'
+    };
+
+    return (
+      <div style={divStyle}></div>
+    );
+  }
+}
