@@ -2,8 +2,14 @@ import React, {Component} from 'react';
 import LineChart from '../../components/Samplecharts/line';
 
 
-
 class Charts extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      powerData: []
+    };
+  }
 
   componentDidMount() {
 
