@@ -63,9 +63,17 @@ const TableBody = (prop) =>{
 class Tables extends Component {
 
   render() {
+      ExampleData.sort( function (a, b){
+          if(a.timestamp < b.timestamp)
+              return 1;
+          return -1;
+      })
+
       ExampleData.map(item =>(
           item.timestamp = new Date(parseInt(item.timestamp, 10)).toLocaleString()
       ))
+
+
 
     return (
         <div id="table">
