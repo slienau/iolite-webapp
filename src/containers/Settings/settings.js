@@ -19,13 +19,13 @@ class Settings extends Component {
             if (this.mySwitch){
                 this.mySwitch = false;
                 //TODO make the CSS change better, not like this
-                document.body.style = 'filter: invert(0%);';
+                
 
             }
             else{
                 this.mySwitch = true;
                 //TODO make the CSS change better, not like this
-                document.body.style = 'filter: invert(100%);';
+                
 
             }
 
@@ -35,7 +35,7 @@ class Settings extends Component {
         {
             return (
 
-                <SettingsPanel color={'#728ad8'} onSubmit={this.handleSubmit}>
+                <SettingsPanel onSubmit={this.handleSubmit}>
                     <Toolbar/>
                     <Group>
                         <Switch name='mySwitch' title='Stop Recording data' />

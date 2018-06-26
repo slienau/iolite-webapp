@@ -5,6 +5,10 @@ body {
   font-size: .875rem;
 }
 
+#root {
+  background-color: white !important;
+}
+
 .feather {
   width: 16px;
   height: 16px;
