@@ -165,7 +165,7 @@ public class App extends AbstractIOLITEApp {
 
         @Override
         protected IOLITEHTTPResponse handleRequest(final IOLITEHTTPRequest request, final String subPath) {
-            return new IOLITEHTTPStaticResponse(HTTPStatus.NotFound, IOLITEHTTPResponse.HTML_CONTENT_TYPE);
+            return new IOLITEHTTPStaticResponse(IOLITEHTTPResponse.HTML_CONTENT_TYPE);
         }
     }
 }
