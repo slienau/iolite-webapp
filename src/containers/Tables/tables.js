@@ -165,7 +165,8 @@ class Tables extends Component {
       var path = require("path");
 
       var pth = path.join( '..', '..', 'resources/power.json');
- 
+
+
 
     return (
         <div id="table">
