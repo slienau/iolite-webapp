@@ -6,9 +6,9 @@ import MdMenu from 'react-icons/lib/md/menu'
 import MdClose from 'react-icons/lib/md/close'
 import './navbar.css'
 
-const TOGGLE_BUTTON_SIZE=42;
+const TOGGLE_BUTTON_SIZE = 42;
 
-class Navbar extends React.Component {
+export default class Navbar extends React.Component {
 
   constructor(props) {
     super(props);
@@ -25,15 +25,7 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const settingsStyle = {
-      padding: '5px',
-      bottom: '0px'
-    }
-    const buttonStyle = {
-      width: '49.99%'
-    }
     const navClasses = (this.state.isToggleOn ? 'showSidebar' : '') + ' bg-light sidebar position-absolute'
-
     return (
       <nav id="sidenav" className={navClasses}>
         <button id="sidebar-toggle-button" onClick={this.handleClick} type="button" className="btn btn-secondary">
@@ -41,22 +33,16 @@ class Navbar extends React.Component {
         </button>
         <ul className="nav flex-column">
           <li className="nav-item">
-            <Link to="/charts" className="nav-link active btn btn-primary float-left" style={buttonStyle}>
-              Charts
-            </Link>
-            <Link to="/tables" className="nav-link btn btn-primary float-left" style={buttonStyle}>
-              Tables
-            </Link>
+            <LinkButton destination='/charts' name='Charts' active='true' />
+            <LinkButton destination='/tables' name='Tables' />
           </li>
           <Room name="Living Room" devices={['Device 1', 'Device 2', 'Device 3', 'Device 4']} />
           <Room name="Kitchen" devices={['Device 1', 'Device 2', 'Device 3']} />
           <Room name="Bedroom" devices={['Device 1', 'Device 2']} />
           <Room name="Bathroom" devices={['Device 1', 'Device 2', 'Device 3']} />
-
         </ul>
 
-
-        <div className="position-absolute bg-light" style={settingsStyle}>
+        <div id="navbar-settings-icon" className="position-absolute bg-light">
           <Link to="/settings">
             <MdSettings color="grey" size={36} />
           </Link>
@@ -66,4 +52,32 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+class LinkButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isActive: false };
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+  componentDidMount() {
+    if (this.props.active == 'true') {
+      this.setState({ isActive: true });
+    }
+  }
+
+  handleClick() {
+    this.setState({ isActive: true });
+  }
+
+  render() {
+
+    const classes = (this.state.isActive ? 'active' : '') + ' nav-link btn btn-primary float-left navbar-top-button'
+    return (
+      <Link to={this.props.destination} className={classes} onClick={this.handleClick}>
+        {this.props.name}
+      </Link>
+    )
+  }
+
+}

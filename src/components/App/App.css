@@ -155,3 +155,10 @@ table.switchtable label {
 table.switchtable tr {
   padding: 5px 0px;
 }
+
+
+@media only screen and (max-width: 767px) {
+  main h1.h2 {
+    margin-left: 40px;
+  }
+}
