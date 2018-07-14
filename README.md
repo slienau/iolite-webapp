@@ -36,6 +36,7 @@ Just run `./mvnw package` to build the project.
 * [npm](https://www.npmjs.com/) - package manager for JavaScript 
 * [Maven](https://maven.apache.org/) - Build automation tool and dependency management
 * [GitLab](https://about.gitlab.com/) - Git repository manager, wiki, issue tracking and CI/CD
+* [React Icons] (http://react-icons.github.io/react-icons/index.html) - Include popular icons in your React projects easly with react-icons, which utilizes ES6 imports that allows you to include only the icons that your project is using.
 
 
 ## Authors
