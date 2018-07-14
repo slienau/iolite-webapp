@@ -3,7 +3,25 @@ import LineChart from '../../components/Samplecharts/line';
 
 class Charts extends Component {
 
+  state = {
+
+    powerUsage: []
+  }
+
+  componentDidMount() {
+
+    fetch('./resources/power.json')
+        .then(data => data.json())
+        .then(json => this.setState({powerUsage: json}));
+
+    console.log("Charts container mounted!");
+  }
+
   render() {
+
+    const {powerUsage} = this.state;
+    console.log(powerUsage);
+
     return (
 
         <div>

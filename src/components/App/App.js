@@ -10,17 +10,12 @@ class App extends Component {
     return (
 
       <div className="container-fluid">
-        
         <div className="row">
-          <nav id="sidenav" className="col-md-2 d-none d-md-block bg-light sidebar">
-            <Navbar />
-          </nav>
+          <Navbar />
         </div>
-
         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
           <Router />
         </main>
-
       </div>
     );
   }
