@@ -6,6 +6,8 @@ import MdMenu from 'react-icons/lib/md/menu'
 import MdClose from 'react-icons/lib/md/close'
 import './navbar.css'
 
+const TOGGLE_BUTTON_SIZE=42;
+
 class Navbar extends React.Component {
 
   constructor(props) {
@@ -28,16 +30,14 @@ class Navbar extends React.Component {
       bottom: '0px'
     }
     const buttonStyle = {
-      width: '49.9%'
+      width: '49.99%'
     }
-
-    const navClasses = (this.state.isToggleOn ? 'showSidebar': null) + ' bg-light sidebar position-absolute'
-    const toggleButtonSize=42;
+    const navClasses = (this.state.isToggleOn ? 'showSidebar' : '') + ' bg-light sidebar position-absolute'
 
     return (
       <nav id="sidenav" className={navClasses}>
         <button id="sidebar-toggle-button" onClick={this.handleClick} type="button" className="btn btn-secondary">
-          {this.state.isToggleOn ? (<MdClose size={toggleButtonSize} />) : (<MdMenu size={toggleButtonSize} />)}
+          {this.state.isToggleOn ? (<MdClose size={TOGGLE_BUTTON_SIZE} />) : (<MdMenu size={TOGGLE_BUTTON_SIZE} />)}
         </button>
         <ul className="nav flex-column">
           <li className="nav-item">
