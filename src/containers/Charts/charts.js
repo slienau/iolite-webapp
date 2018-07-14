@@ -1,26 +1,27 @@
 import React, {Component} from 'react';
 import LineChart from '../../components/Samplecharts/line';
 
-
 class Charts extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      powerUsage: []
-    };
+  state = {
+
+    powerUsage: []
   }
 
   componentDidMount() {
 
     fetch('./resources/power.json')
         .then(data => data.json())
-        .then(json => console.log(json));
+        .then(json => this.setState({powerUsage: json}));
 
     console.log("Charts container mounted!");
   }
 
   render() {
+
+    const {powerUsage} = this.state;
+    console.log(powerUsage);
+
     return (
 
         <div>
