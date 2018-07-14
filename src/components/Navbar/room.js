@@ -11,7 +11,7 @@ export class Room extends React.Component {
                         <tbody>
                             {
                                 this.props.devices.map(device =>
-                                    <tr>
+                                    <tr key={device }>
                                         <td className="room-device">
                                             <Switch device={device} />
                                         </td>
