@@ -4,11 +4,22 @@ import {Line} from 'react-chartjs-2';
 
 
 const data = {
+  labels: [
+    '15:00',
+    '15:10',
+    '15:20',
+    '15:30',
+    '15:40',
+    '15:50',
+    '16:00',
+    '16:10',
+    '16:20',
+    '16:30'
+  ],
 
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
-      label: 'First dataset',
+      label: 'TV',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
@@ -26,10 +37,10 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40]
+      data: [2.0, 2.0, 0.1, 0.1, 0.1, 0.1, 2.0, 2.1, 2.2, 2.0]
     },
     {
-      label: 'Second dataset',
+      label: 'Lamp',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(100,12,192,0.4)',
@@ -47,7 +58,7 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [3, 9, 15, 40, 45, 60, 12]
+      data: [0, 0, 1.2, 1.4, 1.4, 1.4, 0, 0, 0, 0]
     }
   ]
 };
