@@ -46,16 +46,16 @@ class App extends Component {
 					borderColor: 'red',
 					fill: false,
 					data: [{
-						x: new Date(2018,1),
+						x: new Date(2018,1,10),
 						y: 10
 					}, {
-						x: new Date(2018,2),
+						x: new Date(2018,1,11),
 						y: 20
 					}, {
-						x: new Date(2018,3),
+						x: new Date(2018,1,12),
 						y: 15
 					}, {
-						x: dt,
+						x: new Date(2018,1,13),
 						y: 25
 					}],
 				}, {
@@ -64,16 +64,16 @@ class App extends Component {
 					borderColor: 'blue',
 					fill: false,
 					data: [{
-						x: new Date(2018,1),
+						x: new Date(2018,1,10),
 						y: 100
 					}, {
-						x: new Date(2018,2),
+						x: new Date(2018,1,11),
 						y: 200
 					}, {
-						x: new Date(2018,3),
+						x: new Date(2018,1,12),
 						y: 150
 					}, {
-						x: new Date(2018,4),
+						x: new Date(2018,1,13),
 						y: 250
 					}]
 				}]

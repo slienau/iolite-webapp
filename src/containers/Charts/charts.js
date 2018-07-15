@@ -17,6 +17,7 @@ export default class Charts extends Component {
 
   render() {
     var chartOptions = {
+      responsive: true,
       title: {
         display: this.props.displayTitle,
         fontSize: 25
@@ -28,6 +29,17 @@ export default class Charts extends Component {
       scales: {
         xAxes: [{
           type: 'time',
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Date'
+          },
+          ticks: {
+            major: {
+              fontStyle: 'bold',
+              fontColor: 'grey'
+            }
+          },
           time: {
             displayFormats: {
               quarter: 'MMM YYYY'
@@ -35,6 +47,11 @@ export default class Charts extends Component {
           }
         }],
         yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Power Consumption'
+          },
           ticks: {
             beginAtZero: true
           }
