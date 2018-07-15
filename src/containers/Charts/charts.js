@@ -24,51 +24,32 @@ export default class Charts extends Component {
 
   getChartData(){
     const restData = this.props.restData;
-    console.log(restData.rooms[0].devices[0].usage[0].timestamp);
-    const deviceName = restData.rooms[0].devices[0].name;
-    const ts = restData.rooms[0].devices[0].usage[0].timestamp;
-    const dt = new Date(ts);
-    console.log(dt.getFullYear());
-    console.log(dt.getDate());
+    const rooms = this.props.restData.rooms;
+    
+    var datasets = [];
+
+    rooms.forEach(room => {
+      room.devices.forEach(device => {
+        var dataset = {
+          label: device.name,
+          backgroundColor: 'red',
+          borderColor: 'red',
+          fill: false,
+          data: []
+        };
+        device.usage.forEach(usage => {
+          var dataEntry = {
+            x: new Date(usage.timestamp),
+            y: usage.value
+          }
+          dataset.data.push(dataEntry);
+        })
+        datasets.push(dataset);
+      })
+    });
 
     const chartData = {
-      datasets: [{
-        label: 'Dataset with string point data',
-        backgroundColor: 'red',
-        borderColor: 'red',
-        fill: false,
-        data: [{
-          x: new Date(2018,1,10),
-          y: 10
-        }, {
-          x: new Date(2018,1,11),
-          y: 20
-        }, {
-          x: new Date(2018,1,12),
-          y: 15
-        }, {
-          x: new Date(2018,1,13),
-          y: 25
-        }],
-      }, {
-        label: 'Dataset with date object point data',
-        backgroundColor: 'blue',
-        borderColor: 'blue',
-        fill: false,
-        data: [{
-          x: new Date(2018,1,10),
-          y: 100
-        }, {
-          x: new Date(2018,1,11),
-          y: 200
-        }, {
-          x: new Date(2018,1,12),
-          y: 150
-        }, {
-          x: new Date(2018,1,13),
-          y: 250
-        }]
-      }]
+      datasets: datasets
     }
     return chartData;
   }
