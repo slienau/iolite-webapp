@@ -12,14 +12,15 @@ class App extends Component {
     super();
     this.state = {
       contentPage: '',
-      restData: {}
+      restData: {},
+      selectedDevices: ['TV', 'Boiler'] // TODO
     }
     this.switchContentPage = this.switchContentPage.bind(this);
   }
 
   componentWillMount() {
     this.getRestData();
-    this.switchContentPage('charts')
+    this.switchContentPage('charts');
   }
 
   switchContentPage(page) {
@@ -34,6 +35,7 @@ class App extends Component {
       restData: sampleData
     });
   }
+
   render() {
     return (
       <div>
