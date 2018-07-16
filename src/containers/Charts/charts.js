@@ -36,7 +36,7 @@ export default class Charts extends Component {
           backgroundColor: device_color,
           borderColor: device_color,
           borderWidth: '1',
-          pointRadius: '1',
+          pointRadius: '0',
           pointHoverRadius: '3',
           fill: false,
           data: []
