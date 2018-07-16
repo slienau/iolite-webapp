@@ -12,15 +12,18 @@ class App extends Component {
     super();
     this.state = {
       contentPage: '',
-      restData: {},
-      selectedDevices: ['TV', 'Boiler'] // TODO
+      restData: { },
+      viewData: {
+        rooms: []
+      },
+      selectedDevices: []
     }
-    this.switchContentPage = this.switchContentPage.bind(this);
+    // this.switchContentPage = this.switchContentPage.bind(this);
   }
 
   componentWillMount() {
     this.getRestData();
-    this.switchContentPage('charts');
+    this.switchContentPage('charts'); // start on 'charts' page
   }
 
   switchContentPage(page) {
@@ -31,20 +34,44 @@ class App extends Component {
 
   getRestData() {
     // Ajax calls here
+    let ajaxResponse = sampleData;
     this.setState({
-      restData: sampleData
+      restData: ajaxResponse
+    });
+  }
+
+  handleNavbarSelect(deviceId, selected) {
+    let selectedDevices = this.state.selectedDevices;
+    if (selected) { // add to selectedDevices
+      selectedDevices.push(deviceId);
+    } else { // remove from selectedDevices
+      let index = selectedDevices.indexOf(deviceId);
+      selectedDevices.splice(index, 1);
+    }
+    this.setState({
+      selectedDevices: selectedDevices
+    });
+    console.log(this.state.selectedDevices)
+    this.updateViewData();
+  }
+
+  updateViewData() {
+    console.log('TODO: Update view data')
+    let viewData = this.state.viewData;
+    this.setState({
+      viewData: viewData
     });
   }
 
   render() {
     return (
       <div>
-        <Navbar switchPage={this.switchContentPage} contentPage={this.state.contentPage} restData={this.state.restData} />
+        <Navbar switchPage={this.switchContentPage.bind(this)} contentPage={this.state.contentPage} restData={this.state.restData} onDeviceSelect={this.handleNavbarSelect.bind(this)} />
         <div className="container-fluid">
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             {(() => {
               switch (this.state.contentPage) {
-                case "charts": return (<Charts restData={this.state.restData} />);
+                case "charts": return (<Charts restData={this.state.viewData} />);
                 case "tables": return (<Tables />);
                 case "settings": return (<Settings />);
                 default: return "Content";
