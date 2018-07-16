@@ -121,16 +121,16 @@ const TableBody = (prop) => {
       {prop.list.map(item => (
           <React.Fragment>
           <tbody>
-          <tr data-toggle="collapse" data-target={"#"+item.expId} aria-expanded="false">
+          <tr  data-toggle="collapse" data-target={"#"+item.expId} aria-expanded="false">
             <td>{item.device}</td>
             <td>{item.consumption}</td>
             <td>{item.costs}</td>
           </tr>
           </tbody>
-          <tbody class="collapse multi-collapse" id={item.expId}>
+          <tbody class="collapse multi-collapse expRows" id={item.expId}>
               {item.content.map(trow =>(
               <tr>
-                <td>{trow.deviceid}</td>
+                <td class="deviceCell">{trow.deviceid}</td>
                 <td>{trow.value}</td>
                 <td>$$</td>
             </tr>
