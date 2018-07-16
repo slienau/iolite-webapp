@@ -25,7 +25,7 @@ export default class Navbar extends React.Component {
   }
 
   render() {
-    const navClasses = (this.state.isToggleOn ? 'showSidebar' : '') + ' bg-light sidebar position-absolute';
+    const navClasses = (this.state.isToggleOn ? 'showSidebar ' : '') + 'bg-light sidebar position-absolute';
     const switchPage = this.props.switchPage;
     return (
       <nav id="sidenav" className={navClasses}>
@@ -34,8 +34,8 @@ export default class Navbar extends React.Component {
         </button>
         <ul className="nav flex-column">
           <li className="nav-item">
-            <button className="active nav-link btn btn-primary float-left navbar-top-button" onClick={() => switchPage('charts')}>Charts</button>
-            <button className="nav-link btn btn-primary float-left navbar-top-button" onClick={() => switchPage('tables')}>Tables</button>
+            <LinkButton contentPage="charts" activePage={this.props.contentPage} title="Charts" switchPage={this.props.switchPage} />
+            <LinkButton contentPage="tables" activePage={this.props.contentPage} title="Tables" switchPage={this.props.switchPage} />
           </li>
           <Room name="Living Room" devices={['Device 1', 'Device 2', 'Device 3', 'Device 4']} />
           <Room name="Kitchen" devices={['Device 1', 'Device 2', 'Device 3']} />
@@ -47,5 +47,15 @@ export default class Navbar extends React.Component {
         </div>
       </nav>
     );
+  }
+}
+
+class LinkButton extends Component {
+  render(){
+    const switchPage = this.props.switchPage;
+    const classes = (this.props.contentPage===this.props.activePage ? 'active ' : '') + "nav-link btn btn-primary float-left navbar-top-button";
+    return(
+      <button className={classes} onClick={() => switchPage(this.props.contentPage)}>{this.props.title}</button>
+    )
   }
 }

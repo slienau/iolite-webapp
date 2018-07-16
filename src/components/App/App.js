@@ -5,19 +5,20 @@ import Tables from '../../containers/Tables/tables'
 import Settings from '../../containers/Settings/settings'
 import '../../css/Main.css'
 import './App.css'
+import sampleData from '../../../resources/rest_sample_response.json'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       contentPage: '',
-      chartData: {}
+      restData: {}
     }
     this.switchContentPage = this.switchContentPage.bind(this);
   }
 
   componentWillMount() {
-    this.getChartData();
+    this.getRestData();
     this.switchContentPage('charts')
   }
 
@@ -27,45 +28,21 @@ class App extends Component {
     });
   }
 
-  getChartData() {
+  getRestData() {
     // Ajax calls here
     this.setState({
-      chartData: {
-        labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-        datasets: [
-          {
-            label: 'Population',
-            data: [
-              617594,
-              181045,
-              153060,
-              106519,
-              105162,
-              95072
-            ],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)',
-              'rgba(153, 102, 255, 0.6)',
-              'rgba(255, 159, 64, 0.6)',
-              'rgba(255, 99, 132, 0.6)'
-            ]
-          }
-        ]
-      }
+      restData: sampleData
     });
   }
   render() {
     return (
       <div>
-        <Navbar switchPage={this.switchContentPage} />
+        <Navbar switchPage={this.switchContentPage} contentPage={this.state.contentPage} />
         <div className="container-fluid">
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             {(() => {
               switch (this.state.contentPage) {
-                case "charts": return (<Charts chartData={this.state.chartData} />);
+                case "charts": return (<Charts restData={this.state.restData} />);
                 case "tables": return (<Tables />);
                 case "settings": return (<Settings />);
                 default: return "Content";
