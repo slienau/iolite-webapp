@@ -18,7 +18,6 @@ class App extends Component {
       },
       selectedDevices: []
     }
-    // this.switchContentPage = this.switchContentPage.bind(this);
   }
 
   componentWillMount() {
@@ -58,6 +57,10 @@ class App extends Component {
   updateViewData() {
     console.log('TODO: Update view data')
     let viewData = this.state.viewData;
+    let restData = this.state.restData;
+    if(restData.rooms){
+      console.log('rooms exist! go on working')
+    }
     this.setState({
       viewData: viewData
     });
