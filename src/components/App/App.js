@@ -3,7 +3,6 @@ import Router from '../Router/router';
 import Navbar from '../Navbar/navbar';
 import '../../css/Main.css'
 import './App.css'
-
 class App extends Component {
 
   render() {

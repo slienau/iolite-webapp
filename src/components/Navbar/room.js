@@ -9,18 +9,19 @@ export class Room extends React.Component {
                 <div className="collapse show" id={collapseId}>
                     <table className="switchtable">
                         <tbody>
-                            {
-                                this.props.devices.map(device =>
-                                    <tr>
-                                        <td className="room-device">
-                                            <Switch device={device} />
-                                        </td>
-                                        <td>
-                                            {device}
-                                        </td>
-                                    </tr>
-                                )}
-                        </tbody>
+                        {
+                            this.props.devices.map(device=>
+                                <tr key={device}>
+                                    <td className="room-device" >
+                                        <Switch device={device} />
+                                    </td>
+                                    <td>
+                                        {device}
+                                    </td>
+                                </tr>
+                            )}
+                    </tbody>
+
                     </table>
                 </div>
             </li>
@@ -28,7 +29,7 @@ export class Room extends React.Component {
     }
 }
 
-class Switch extends Component {
+export class Switch extends Component {
     render() {
         return (
             <label className="switch">
