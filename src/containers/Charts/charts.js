@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
+import * as zoom from 'chartjs-plugin-zoom';
 import moment from 'moment';
 import {Line} from 'react-chartjs-2';
 

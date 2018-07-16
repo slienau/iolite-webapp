@@ -74,7 +74,7 @@ class App extends Component {
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             {(() => {
               switch (this.state.contentPage) {
-                case "charts": return (<Charts restData={this.state.viewData} />);
+                case "charts": return (<Charts restData={this.state.restData} />);
                 case "tables": return (<Tables />);
                 case "settings": return (<Settings />);
                 default: return "Content";
