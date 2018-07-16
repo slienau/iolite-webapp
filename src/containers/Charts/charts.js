@@ -35,8 +35,10 @@ export default class Charts extends Component {
           label: device.name,
           backgroundColor: device_color,
           borderColor: device_color,
+          borderWidth: '1',
+          pointRadius: '1',
+          pointHoverRadius: '3',
           fill: false,
-          // showLine: false,
           data: []
         };
         device.usage.forEach(usage => {
