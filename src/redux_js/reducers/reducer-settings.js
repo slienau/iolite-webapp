@@ -7,6 +7,7 @@ import {
 } from "../constants/action-types";
 
 const initialState= {
+    mode: 'daymode',
     price: '0.3',
     currency: '€',
     graphType: 'Dotted',
@@ -22,6 +23,9 @@ export default function (state = initialState, action){
             return newState;
 
         case CHANGE_PRICE:
+            console.log(' hi', action.payload, 'ih');
+            if (action.payload === '')
+                return newState;
             newState.price = action.payload;
             return newState;
 

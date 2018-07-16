@@ -91,10 +91,10 @@ class Settings extends Component {
                                         <h2>Settings</h2>
                                         <div className="row">
                                             <div className="col-md-6">
-                                                Price
+                                                Price per KwH: {this.props.price} {this.props.currency}
                                             </div>
                                             <div className="col-md-6">
-                                                <input type="number" placeholder={this.props.price}
+                                                <input type="text"
                                                        onBlur={evt => this.props.changePrice(evt.target.value)} style={width} />
                                             </div>
                                             <div className="col-md-6">Currency
@@ -138,6 +138,7 @@ function mapStateToProps(state){
 
 
     return {
+        mode: state.settings.mode,
         price: state.settings.price,
         currency: state.settings.currency,
         graphType: state.settings.graphType,
