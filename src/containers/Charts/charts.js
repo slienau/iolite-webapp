@@ -168,8 +168,6 @@ export default class Charts extends Component {
               options={this.state.chartOptions}
           />
 
-          <button className="btn btn-sm btn-outline-secondary" onClick={this.resetZoom}>Reset Zoom</button>
-
         </div>
     );
   }
@@ -228,8 +226,9 @@ class DateRange extends Component {
                 onChange={this.handleChangeEnd}
             />
           </div>
-          <div className="col-2">
-
+          <div className="col-1">
+            <br/>
+            <button className="btn btn-sm btn-outline-secondary" onClick={this.resetZoom}>Reset</button>
           </div>
         </div>
     );
