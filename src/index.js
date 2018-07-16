@@ -6,13 +6,9 @@ import ReactDOM from "react-dom";
 import 'bootstrap';
 import './scss/Main.scss';
 import App from "./components/App/App";
-import {HashRouter} from 'react-router-dom';
 
 ReactDOM.render(
-    <HashRouter>
-      <App/>
-    </HashRouter>,
-
+      <App/>,
     document.getElementById("root")
 );
 
