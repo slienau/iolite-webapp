@@ -1,0 +1,15 @@
+{
+<<<<<<< HEAD
+  "presets": ["env", "react"],
+  "plugins": ["transform-object-rest-spread"]
+}
+=======
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "transform-class-properties"
+  ]
+}
+>>>>>>> origin/dev
