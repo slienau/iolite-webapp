@@ -130,17 +130,24 @@ const TableHead = (prop) => {
   )
 }
 
-
 const TableBody = (prop) => {
   return (
       <tbody>
       {prop.list.map(item => (
-          <tr>
+          <React.Fragment>
+          <tr data-toggle="collapse" data-target={"#"+item.id} aria-expanded="false">
             <th>{item.timestamp}</th>
             <th>{item.property}</th>
             <th>{item.deviceid}</th>
             <th>{item.value}</th>
           </tr>
+          <tr class="collapse multi-collapse" id={item.id}>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+          </tr>
+          </React.Fragment>
       ))}
 
       </tbody>
@@ -161,6 +168,12 @@ class Tables extends Component {
           item.timestamp = new Date(parseInt(item.timestamp, 10)).toLocaleString()
       ))
 
+      var len = ExampleData.length;
+      for(var i = 0; i < len; i++){
+        ExampleData[i].id = "row_" + i;
+      }
+
+      console.log(ExampleData);
 
       var path = require("path");
 
