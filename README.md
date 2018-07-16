@@ -37,6 +37,7 @@ Just run `./mvnw package` to build the project.
 * [Maven](https://maven.apache.org/) - Build automation tool and dependency management
 * [GitLab](https://about.gitlab.com/) - Git repository manager, wiki, issue tracking and CI/CD
 * [React Icons] (http://react-icons.github.io/react-icons/index.html) - Include popular icons in your React projects easly with react-icons, which utilizes ES6 imports that allows you to include only the icons that your project is using.
+* [chartjs-plugin-zoom] (https://github.com/chartjs/chartjs-plugin-zoom) - Zoom and pan plugin for Chart.js
 
 
 ## Authors
