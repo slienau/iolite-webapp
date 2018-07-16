@@ -127,7 +127,7 @@ export default class Charts extends Component {
     var newChartOptions = this.state.chartOptions;
     newChartOptions.scales.xAxes[0].time.min = null;
     newChartOptions.scales.xAxes[0].time.max = null;
-    
+
     this.setState(prevState => ({
       chartOptions: newChartOptions
     }));
@@ -137,23 +137,47 @@ export default class Charts extends Component {
   render() {
     return (
       <div>
-        <div
-          className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 className="h2">Energy consumption</h1>
-          <div className="btn-toolbar mb-2 mb-md-0">
-            <button className="btn btn-sm btn-outline-secondary dropdown-toggle">
-              <span data-feather="calendar"></span>
-              This week
-              </button>
-            <button className="btn btn-sm btn-outline-secondary" onClick={this.resetZoom}>Reset Zoom</button>
-          </div>
         </div>
+
+        <FormControls />
 
         <Line
           data={this.state.chartData}
           options={this.state.chartOptions}
         />
 
+        <button className="btn btn-sm btn-outline-secondary" onClick={this.resetZoom}>Reset Zoom</button>
+
+      </div>
+    );
+  }
+}
+
+class FormControls extends Component {
+  render() {
+    return (
+      <div className="row">
+        <div className="form-group col-md-4">
+          <label htmlFor="datefrom">Date from</label>
+          <input type="date" className="form-control" id="datefrom" />
+        </div>
+        <div className="form-group col-md-4">
+          <label htmlFor="dateto">Date to</label>
+          <input type="date" className="form-control" id="dateto" />
+        </div>
+        <div className="form-group col-md-4">
+          <label htmlFor="intervalSelector">Interval</label>
+          <select className="form-control form-control-sm" id="intervalSelector">
+            <option>Year</option>
+            <option>Month</option>
+            <option>Week</option>
+            <option>Day</option>
+            <option>Hour</option>
+            <option>Minute</option>
+          </select>
+        </div>
       </div>
     );
   }
