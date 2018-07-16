@@ -3,114 +3,99 @@ import React, {Component} from 'react';
 import './tables.css';
 
 const ExampleData = [{
-  "timestamp": "1516269028831",
-  "property": "powerUsage",
-  "deviceid": "knx_office_ledsocket",
-  "value": "0.0"
-}, {
-  "timestamp": "1516286483527",
-  "property": "powerUsage",
-  "deviceid": "knx_office_ledsocket",
-  "value": "0.0"
-}, {
-  "timestamp": "1516286483536",
-  "property": "powerUsage",
-  "deviceid": "knx_office_ledsocket",
-  "value": "0.0"
-}, {
-  "timestamp": "1516286483625",
-  "property": "powerUsage",
-  "deviceid": "knx_office_ledsocket",
-  "value": "0.0"
-}, {
-  "timestamp": "1507124268387",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.6"
-}, {
-  "timestamp": "1507124308447",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.6"
-}, {
-  "timestamp": "1507127908293",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507131507794",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.6"
-}, {
-  "timestamp": "1507135107710",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507138707625",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507142307542",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507145908017",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507149508068",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507153107553",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507156707292",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507160307121",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507163907038",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}, {
-  "timestamp": "1507167507236",
-  "property": "powerUsage",
-  "deviceid": "OpenZWaveNode3",
-  "value": "2.5"
-}];
+  id: 1,
+  device: "1.5.2018",
+  consumption: 215,
+  costs: 21.5,
+  content: [
+      {
+          "timestamp": "1516269028831",
+          "property": "powerUsage",
+          "deviceid": "knx_office_ledsocket",
+          "value": "0.0"
+      }, {
+          "timestamp": "1516286483527",
+          "property": "powerUsage",
+          "deviceid": "knx_office_ledsocket",
+          "value": "0.0"
+      }, {
+          "timestamp": "1516286483536",
+          "property": "powerUsage",
+          "deviceid": "knx_office_ledsocket",
+          "value": "0.0"
+      }, {
+          "timestamp": "1516286483625",
+          "property": "powerUsage",
+          "deviceid": "knx_office_ledsocket",
+          "value": "0.0"
+      }
+  ]},{
+   id: 2,
+   device: "2.5.2018",
+   consumption: 220,
+   costs: 22,
+   content: [
+       {
+           "timestamp": "1507127908293",
+           "property": "powerUsage",
+           "deviceid": "OpenZWaveNode3",
+           "value": "2.5"
+       }, {
+           "timestamp": "1507131507794",
+           "property": "powerUsage",
+           "deviceid": "OpenZWaveNode3",
+           "value": "2.6"
+       }, {
+           "timestamp": "1507135107710",
+           "property": "powerUsage",
+           "deviceid": "OpenZWaveNode3",
+           "value": "2.5"
+       }, {
+           "timestamp": "1507138707625",
+           "property": "powerUsage",
+           "deviceid": "OpenZWaveNode3",
+           "value": "2.5"
+       }
 
+    ]}, {
+    id: 3,
+    device: "3.5.2018",
+    consumption: 270,
+    costs: 38,
+    content: [{
+        "timestamp": "1507160307121",
+        "property": "powerUsage",
+        "deviceid": "OpenZWaveNode1",
+        "value": "2.5"
+    }, {
+        "timestamp": "1507163907038",
+        "property": "powerUsage",
+        "deviceid": "OpenZWaveNode2",
+        "value": "2.5"
+    }, {
+        "timestamp": "1507167507236",
+        "property": "powerUsage",
+        "deviceid": "OpenZWaveNode3",
+        "value": "2.5"
+    }]
+
+    }
+
+
+];
 
 var columnMetaData = [
   {
-    name: "timestamp",
-    title: "Time"
-  },
-  {
-    name: "property",
-    title: "Property"
-  },
-  {
     name: "deviceid",
-    title: "Id"
+    title: "Device"
   },
   {
     name: "value",
-    title: "Value"
+    title: "Consumption"
+  },
+  {
+    name: "costs",
+    title: "Costs"
   }
 ]
 
@@ -132,25 +117,29 @@ const TableHead = (prop) => {
 
 const TableBody = (prop) => {
   return (
-      <tbody>
+      <React.Fragment>
       {prop.list.map(item => (
           <React.Fragment>
-          <tr data-toggle="collapse" data-target={"#"+item.id} aria-expanded="false">
-            <th>{item.timestamp}</th>
-            <th>{item.property}</th>
-            <th>{item.deviceid}</th>
-            <th>{item.value}</th>
+          <tbody>
+          <tr data-toggle="collapse" data-target={"#"+item.expId} aria-expanded="false">
+            <td>{item.device}</td>
+            <td>{item.consumption}</td>
+            <td>{item.costs}</td>
           </tr>
-          <tr class="collapse multi-collapse" id={item.id}>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-          </tr>
+          </tbody>
+          <tbody class="collapse multi-collapse" id={item.expId}>
+              {item.content.map(trow =>(
+              <tr>
+                <td>{trow.deviceid}</td>
+                <td>{trow.value}</td>
+                <td>$$</td>
+            </tr>
+          ))}
+          </tbody>
           </React.Fragment>
-      ))}
 
-      </tbody>
+      ))}
+</React.Fragment>
   )
 }
 
@@ -168,10 +157,10 @@ class Tables extends Component {
           item.timestamp = new Date(parseInt(item.timestamp, 10)).toLocaleString()
       ))
 
-      var len = ExampleData.length;
-      for(var i = 0; i < len; i++){
-        ExampleData[i].id = "row_" + i;
-      }
+      ExampleData.map(item=>(
+          item.expId = "expanded_row" + item.id
+      ))
+
 
       console.log(ExampleData);
 
