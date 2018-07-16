@@ -1,61 +1,61 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import { Room } from './room'
+import MdSettings from 'react-icons/lib/md/settings'
+import MdMenu from 'react-icons/lib/md/menu'
+import MdClose from 'react-icons/lib/md/close'
+import './navbar.css'
 
-class Navbar extends React.Component {
+const TOGGLE_BUTTON_SIZE = 42;
+
+export default class Navbar extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isToggleOn: false
+    };
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
 
   render() {
+    const navClasses = (this.state.isToggleOn ? 'showSidebar ' : '') + 'bg-light sidebar position-absolute';
+    const switchPage = this.props.switchPage;
     return (
-      <div className="sidebar-sticky">
+      <nav id="sidenav" className={navClasses}>
+        <button id="sidebar-toggle-button" onClick={this.handleClick} type="button" className="btn btn-secondary">
+          {this.state.isToggleOn ? (<MdClose size={TOGGLE_BUTTON_SIZE} />) : (<MdMenu size={TOGGLE_BUTTON_SIZE} />)}
+        </button>
         <ul className="nav flex-column">
           <li className="nav-item">
-            <Link to="/charts" className="nav-link active btn btn-primary">
-              <span data-feather="home"></span>
-              Charts
-            </Link>
+            <LinkButton contentPage="charts" activePage={this.props.contentPage} title="Charts" switchPage={this.props.switchPage} />
+            <LinkButton contentPage="tables" activePage={this.props.contentPage} title="Tables" switchPage={this.props.switchPage} />
           </li>
           <Room name="Living Room" devices={['Device 1', 'Device 2', 'Device 3', 'Device 4']} />
           <Room name="Kitchen" devices={['Device 1', 'Device 2', 'Device 3']} />
           <Room name="Bedroom" devices={['Device 1', 'Device 2']} />
           <Room name="Bathroom" devices={['Device 1', 'Device 2', 'Device 3']} />
-
         </ul>
-
-        <Seperator />
-
-        <ul className="nav flex-column mb-2">
-          <li className="nav-item">
-            <Link to="/tables" className="nav-link btn btn-primary">
-              <span data-feather="file-text"></span>
-              Tables
-                </Link>
-          </li>
-          <Seperator />
-          <li className="nav-item">
-            <Link to="/settings" className="nav-link btn btn-primary">
-              <span data-feather="file-text"></span>
-              Settings
-                </Link>
-          </li>
-        </ul>
-      </div>
+        <div id="navbar-settings-icon" className="position-absolute bg-light">
+            <a onClick={() => switchPage('settings')}><MdSettings color="grey" size={36} /></a>
+        </div>
+      </nav>
     );
   }
 }
 
-export default Navbar;
-
-class Seperator extends Component {
-  render() {
-    const divStyle = {
-      'backgroundColor': 'black',
-      'height': '2px',
-      'width': '100%',
-      'margin': '10px 0px'
-    };
-
-    return (
-      <div style={divStyle}></div>
-    );
+class LinkButton extends Component {
+  render(){
+    const switchPage = this.props.switchPage;
+    const classes = (this.props.contentPage===this.props.activePage ? 'active ' : '') + "nav-link btn btn-primary float-left navbar-top-button";
+    return(
+      <button className={classes} onClick={() => switchPage(this.props.contentPage)}>{this.props.title}</button>
+    )
   }
 }

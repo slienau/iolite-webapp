@@ -5,8 +5,11 @@ import Tables from '../../containers/Tables/tables'
 import Settings from '../../containers/Settings/settings'
 import '../../css/Main.css'
 import './App.css'
+<<<<<<< HEAD
+=======
 import sampleData from '../../../resources/rest_sample_response.json'
 
+>>>>>>> origin/dev
 class App extends Component {
   constructor() {
     super();
