@@ -160,12 +160,8 @@ export default class Charts extends Component {
   render() {
     return (
         <div>
-          <div
-              className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 className="h2">Energy consumption</h1>
-          </div>
 
-          <FormControls/>
+          <DateRange/>
 
           <Line
               data={this.state.chartData}
@@ -179,7 +175,7 @@ export default class Charts extends Component {
   }
 }
 
-class FormControls extends Component {
+class DateRange extends Component {
 
   constructor(props) {
     super(props)
@@ -194,12 +190,16 @@ class FormControls extends Component {
   handleChangeStart(date) {
     this.setState({
       startDate: date
+    }, function () {
+      console.log(this.state.startDate);
     });
   }
 
   handleChangeEnd(date) {
     this.setState({
       endDate: date
+    }, function () {
+      console.log(this.state.endDate);
     });
   }
 
@@ -208,7 +208,7 @@ class FormControls extends Component {
     return (
         <div className="row justify-content-end">
           <div className="col-2">
-
+            From
             <DatePicker
                 selected={this.state.startDate}
                 selectsStart
@@ -219,6 +219,7 @@ class FormControls extends Component {
             />
           </div>
           <div className="col-2">
+            To
             <DatePicker
                 selected={this.state.endDate}
                 selectsEnd
@@ -226,6 +227,9 @@ class FormControls extends Component {
                 endDate={this.state.endDate}
                 onChange={this.handleChangeEnd}
             />
+          </div>
+          <div className="col-2">
+
           </div>
         </div>
     );
