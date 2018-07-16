@@ -40,12 +40,12 @@ export default class Navbar extends React.Component {
             this.props.restData.rooms
               .sort(function (a, b) { return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0); }) // sort by room name
               .map(room => (
-                <Room name={room.name}>
+                <Room name={room.name} id={room.id}>
                   {
                     room.devices
                       .sort(function (a, b) { return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0); }) // sort by device name
                       .map(device =>
-                        (<Device name={device.name} />)
+                        (<Device name={device.name} id={device.id} />)
                       )
                   }
                 </Room>
@@ -72,7 +72,7 @@ class LinkButton extends Component {
 
 class Room extends React.Component {
   render() {
-    var collapseId = this.props.name.replace(' ', '').toLowerCase()
+    var collapseId = this.props.id;
     return (
       <li>
         <a className="btn btn-secondary room-room" data-toggle="collapse" href={"#" + collapseId} role="button" aria-expanded="false" aria-controls={collapseId}>{this.props.name}</a>
@@ -91,9 +91,10 @@ class Room extends React.Component {
 class Device extends Component {
   render() {
     const deviceName = this.props.name;
+    const deviceId = this.props.id;
     return (
-      <tr key={deviceName}>
-        <td className="room-device"><Switch device={deviceName} /></td>
+      <tr key={deviceId}>
+        <td className="room-device"><Switch deviceId={deviceId} /></td>
         <td>{deviceName}</td>
       </tr>
     );
@@ -103,8 +104,8 @@ class Device extends Component {
 class Switch extends Component {
   render() {
     return (
-      <label className="switch">
-        <input type="checkbox"></input>
+      <label htmlFor={this.props.deviceId} className="switch">
+        <input type="checkbox" id={this.props.deviceId}></input>
         <span className="slider round"></span>
       </label>
     )
