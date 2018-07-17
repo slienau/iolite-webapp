@@ -4,23 +4,10 @@ import '../../redux_js/actions/index'
 import { changeMode, changePrice , changeCurrency, changeGraphtype, changeColortype} from "../../redux_js/actions/index";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Modal, Button} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
+import './settings.css';
 
-const pStyle ={
-background: "lightgrey",
 
-};
-
-const lila = {
-    background: '#422470',
-};
-const white = {
-    color: 'white',
-};
-
-const width = {
-    width: '50%',
-};
 
 class Settings extends Component {
 
@@ -29,18 +16,14 @@ class Settings extends Component {
 
         }
 
+
         render()
         {
-
             return (
+                <div >
+                    <form className="rounded_corner pStyle" >
 
-                <div className="static-modal">
-                    <Modal.Dialog bsSize="large" >
-                        <Modal.Header style ={lila}>
-                            <Modal.Title><h1 style={white}>Settings</h1></Modal.Title>
-                        </Modal.Header>
-
-                        <Modal.Body style={pStyle}>
+                    <h1 className="rounded_corner_top settings_header">Settings</h1>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-md-6">
@@ -95,7 +78,7 @@ class Settings extends Component {
                                             </div>
                                             <div className="col-md-6">
                                                 <input type="text"
-                                                       onBlur={evt => this.props.changePrice(evt.target.value)} style={width} />
+                                                       onBlur={evt => this.props.changePrice(evt.target.value)} className="width" />
                                             </div>
                                             <div className="col-md-6">Currency
                                             </div>
@@ -117,12 +100,7 @@ class Settings extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button bsStyle="primary" onClick={() => alert('how to go back without visible reload?')} href="./">Done</Button>
-                        </Modal.Footer>
-                    </Modal.Dialog>
+                    </form>
                 </div>
 
 
