@@ -12,10 +12,8 @@ class App extends Component {
     super();
     this.state = {
       contentPage: '',
-      restData: { },
-      viewData: {
-        rooms: []
-      },
+      restData: {},
+      devices: [],
       selectedDevices: []
     }
   }
@@ -34,9 +32,24 @@ class App extends Component {
   getRestData() {
     // Ajax calls here
     let ajaxResponse = sampleData;
+    let devices = this.makeDeviceData(ajaxResponse);
     this.setState({
-      restData: ajaxResponse
+      restData: ajaxResponse,
+      devices: devices
     });
+  }
+
+  makeDeviceData(restData) {
+    let result = []
+
+    const rooms = restData.rooms;
+    rooms.forEach(room => {
+      room.devices.forEach(device => {
+        device.show = true;
+        result.push(device);
+      })
+    });
+    return result;
   }
 
   handleNavbarSelect(deviceId, selected) {
@@ -50,19 +63,16 @@ class App extends Component {
     this.setState({
       selectedDevices: selectedDevices
     });
-    console.log(this.state.selectedDevices)
-    this.updateViewData();
-  }
-
-  updateViewData() {
-    console.log('TODO: Update view data')
-    let viewData = this.state.viewData;
-    let restData = this.state.restData;
-    if(restData.rooms){
-      console.log('rooms exist! go on working')
-    }
+    console.log('selected devices: ' + this.state.selectedDevices)
+    let devices = this.state.devices;
+    devices.forEach(device => {
+      if (device.id === deviceId) {
+        device.show = selected;
+        console.log(device)
+      }
+    })
     this.setState({
-      viewData: viewData
+      devices: devices
     });
   }
 
@@ -74,8 +84,8 @@ class App extends Component {
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             {(() => {
               switch (this.state.contentPage) {
-                case "charts": return (<Charts restData={this.state.restData} />);
-                case "tables": return (<Tables />);
+                case "charts": return (<Charts devices={this.state.devices} />);
+                case "tables": return (<Tables devices={this.state.devices} />);
                 case "settings": return (<Settings />);
                 default: return "Content";
               }
