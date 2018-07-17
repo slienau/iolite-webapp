@@ -4,8 +4,6 @@ import MdMenu from 'react-icons/lib/md/menu'
 import MdClose from 'react-icons/lib/md/close'
 import './navbar.css'
 
-const TOGGLE_BUTTON_SIZE = 42;
-
 export default class Navbar extends React.Component {
 
   constructor(props) {
@@ -13,8 +11,6 @@ export default class Navbar extends React.Component {
     this.state = {
       isToggleOn: false
     };
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
@@ -26,11 +22,37 @@ export default class Navbar extends React.Component {
   render() {
     const navClasses = (this.state.isToggleOn ? 'showSidebar ' : '') + 'bg-light sidebar position-absolute';
     const switchPage = this.props.switchPage;
+
+    let rooms = this.props.restData.rooms
+        .sort(function (a, b) {
+          return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
+        }) // sort by room name
+        .map(room => {
+          return (
+              <Room name={room.name} id={room.id} key={room.id}>
+                {
+                  room.devices
+                      .sort(function (a, b) {
+                        return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
+                      }) // sort by device name
+                      .map(device =>
+                          (<Device name={device.name} id={device.id} key={device.id}
+                                   onDeviceSelect={this.props.onDeviceSelect}/>)
+                      )
+                }
+              </Room>
+          )
+        });
+
+    const TOGGLE_BUTTON_SIZE = 42;
+    let toggleButton = <button id="sidebar-toggle-button" onClick={this.handleClick.bind(this)} type="button"
+                               className="btn btn-secondary">
+      {this.state.isToggleOn ? (<MdClose size={TOGGLE_BUTTON_SIZE}/>) : (<MdMenu size={TOGGLE_BUTTON_SIZE}/>)}
+    </button>
+
     return (
         <nav id="sidenav" className={navClasses}>
-          <button id="sidebar-toggle-button" onClick={this.handleClick} type="button" className="btn btn-secondary">
-            {this.state.isToggleOn ? (<MdClose size={TOGGLE_BUTTON_SIZE}/>) : (<MdMenu size={TOGGLE_BUTTON_SIZE}/>)}
-          </button>
+          {toggleButton}
           <ul className="nav flex-column">
             <li className="nav-item">
               <LinkButton contentPage="charts" activePage={this.props.contentPage} title="Charts"
@@ -38,25 +60,7 @@ export default class Navbar extends React.Component {
               <LinkButton contentPage="tables" activePage={this.props.contentPage} title="Tables"
                           switchPage={this.props.switchPage}/>
             </li>
-            {
-              this.props.restData.rooms
-                  .sort(function (a, b) {
-                    return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
-                  }) // sort by room name
-                  .map(room => (
-                      <Room name={room.name}>
-                        {
-                          room.devices
-                              .sort(function (a, b) {
-                                return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
-                              }) // sort by device name
-                              .map(device =>
-                                  (<Device name={device.name} key={device.name}/>)
-                              )
-                        }
-                      </Room>
-                  ))
-            }
+            {rooms}
           </ul>
           <div id="navbar-settings-icon" className="position-absolute bg-light">
             <a onClick={() => switchPage('settings')}><MdSettings color="grey" size={36}/></a>
@@ -78,7 +82,7 @@ class LinkButton extends Component {
 
 class Room extends React.Component {
   render() {
-    var collapseId = this.props.name.replace(' ', '').toLowerCase()
+    var collapseId = this.props.id;
     return (
         <li>
           <a className="btn btn-secondary room-room" data-toggle="collapse" href={"#" + collapseId} role="button"
@@ -99,10 +103,10 @@ class Device extends Component {
   render() {
 
     const deviceName = this.props.name;
-
+    const deviceId = this.props.id;
     return (
-        <tr key={deviceName}>
-          <td className="room-device"><Switch device={deviceName}/></td>
+        <tr key={deviceId}>
+          <td className="room-device"><Switch deviceId={deviceId} onDeviceSelect={this.props.onDeviceSelect}/></td>
           <td>{deviceName}</td>
         </tr>
     );
@@ -110,10 +114,16 @@ class Device extends Component {
 }
 
 class Switch extends Component {
+
+  handleChange() {
+    this.props.onDeviceSelect(this.refs.selected.id, this.refs.selected.checked);
+  }
+
   render() {
     return (
-        <label className="switch">
-          <input type="checkbox"></input>
+        <label htmlFor={this.props.deviceId} className="switch">
+          <input type="checkbox" id={this.props.deviceId} ref="selected"
+                 onChange={this.handleChange.bind(this)}></input>
           <span className="slider round"></span>
         </label>
     )
