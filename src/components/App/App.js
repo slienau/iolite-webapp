@@ -13,14 +13,14 @@ class App extends Component {
     this.state = {
       contentPage: '',
       restData: {},
-      selectedDevices: ['TV', 'Boiler'] // TODO
+      devices: [],
+      selectedDevices: []
     }
-    this.switchContentPage = this.switchContentPage.bind(this);
   }
 
   componentWillMount() {
     this.getRestData();
-    this.switchContentPage('charts');
+    this.switchContentPage('charts'); // start on 'charts' page
   }
 
   switchContentPage(page) {
@@ -31,21 +31,61 @@ class App extends Component {
 
   getRestData() {
     // Ajax calls here
+    let ajaxResponse = sampleData;
+    let devices = this.makeDeviceData(ajaxResponse);
     this.setState({
-      restData: sampleData
+      restData: ajaxResponse,
+      devices: devices
+    });
+  }
+
+  makeDeviceData(restData) {
+    let result = []
+
+    const rooms = restData.rooms;
+    rooms.forEach(room => {
+      room.devices.forEach(device => {
+        device.show = true;
+        result.push(device);
+      })
+    });
+    return result;
+  }
+
+  handleNavbarSelect(deviceId, selected) {
+    let selectedDevices = this.state.selectedDevices;
+    if (selected) { // add to selectedDevices
+      selectedDevices.push(deviceId);
+    } else { // remove from selectedDevices
+      let index = selectedDevices.indexOf(deviceId);
+      selectedDevices.splice(index, 1);
+    }
+    this.setState({
+      selectedDevices: selectedDevices
+    });
+    console.log('selected devices: ' + this.state.selectedDevices)
+    let devices = this.state.devices;
+    devices.forEach(device => {
+      if (device.id === deviceId) {
+        device.show = selected;
+        console.log(device)
+      }
+    })
+    this.setState({
+      devices: devices
     });
   }
 
   render() {
     return (
       <div>
-        <Navbar switchPage={this.switchContentPage} contentPage={this.state.contentPage} restData={this.state.restData} />
+        <Navbar switchPage={this.switchContentPage.bind(this)} contentPage={this.state.contentPage} restData={this.state.restData} onDeviceSelect={this.handleNavbarSelect.bind(this)} />
         <div className="container-fluid">
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             {(() => {
               switch (this.state.contentPage) {
-                case "charts": return (<Charts restData={this.state.restData} />);
-                case "tables": return (<Tables />);
+                case "charts": return (<Charts devices={this.state.devices} />);
+                case "tables": return (<Tables devices={this.state.devices} />);
                 case "settings": return (<Settings />);
                 default: return "Content";
               }
