@@ -39,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar switchPage={this.switchContentPage} contentPage={this.state.contentPage} />
+        <Navbar switchPage={this.switchContentPage} contentPage={this.state.contentPage} restData={this.state.restData} />
         <div className="container-fluid">
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             {(() => {

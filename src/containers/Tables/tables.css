@@ -4,3 +4,17 @@
     margin-right: auto;
     width: 80%;
 }
+
+
+td:hover{background-color: #10b9ff;}
+table:nth-child(even) {background-color: #f2f2f2;}
+
+th {
+    background-color: #593196;
+    color: white;
+}
+
+.deviceCell{
+
+   align: right;
+}
