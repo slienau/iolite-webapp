@@ -1,0 +1,37 @@
+.white{
+    color:white;
+}
+
+.settings_header{
+    color:white;
+    background:rgb(89, 49, 150);
+    padding-left:10px !important;
+}
+
+.pStyle{
+    background:rgb(249, 248, 252);
+}
+
+
+.width{
+    width:50%;
+}
+
+.rounded_corner{
+    border-radius: 10px !important;
+    border-color: rgb(68, 68, 68) !important;
+
+}
+.rounded_corner_top{
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+
+}
+.done_button{
+    margin-left:10px;
+    border-radius:3px !important;
+
+}
+.form{
+    background:rgb(249, 248, 252);
+}
