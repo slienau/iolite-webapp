@@ -24,7 +24,7 @@ class Settings extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-6">
-                  <h2>Preferences</h2>
+                  <h2>Look</h2>
                   <div className="row">
                     <div className="col-md-6">
                       Graphtype:
@@ -68,7 +68,7 @@ class Settings extends Component {
 
 
                 <div className="col-md-6">
-                  <h2>Settings</h2>
+                  <h2>Price</h2>
                   <div className="row">
                     <div className="col-md-6">
                       Price per KwH: {this.props.price} {this.props.currency}
