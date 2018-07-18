@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../../redux_js/store/index'
 import '../../redux_js/actions/index'
-import {changeColortype, changeCurrency, changeGraphtype, changeMode, changePrice} from "../../redux_js/actions/index";
+import {changeDateRange, changeCurrency, changeNavbarDefault, changeMode, changePrice} from "../../redux_js/actions/index";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import './settings.css';
@@ -14,71 +14,96 @@ class Settings extends Component {
 
   }
 
+  displayNavbar(string){
+     return string.charAt(0).toLowerCase() + string.slice(1);
+    }
+
+    daterange(string){
+      if (string === '1d'){
+          return 'one day';
+      }
+        if (string === '1w'){
+            return 'one week';
+        }
+        if (string === '1m'){
+            return 'one month';
+        }
+        if (string === '1y'){
+            return 'one year';
+        }
+    }
 
   render() {
     return (
         <div>
           <form className="rounded_corner pStyle">
 
-            <h1 className="rounded_corner_top settings_header">Settings</h1>
-            <div className="container">
+            <div className="container inside_div">
               <div className="row">
                 <div className="col-md-6">
-                  <h2>Look</h2>
                   <div className="row">
                     <div className="col-md-6">
-                      Graphtype:
+                      Navbar is {this.displayNavbar(this.props.navbar)}
                     </div>
                     <div className="col-md-6">
                       <div className="dropdown">
                         <button className="btn btn-secondary dropdown-toggle" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                          {this.props.graphType}
+                          {this.props.navbar}
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a className="dropdown-item" onClick={() => this.props.changeGraphtype('Dotted')}>Dotted</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeGraphtype('Line')}>Line</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeGraphtype('Bars')}>Bars</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeNavbarDefault('Collapsed')}>Collapsed</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeNavbarDefault('Expanded')}>Expanded</a>
 
                         </div>
                       </div>
                     </div>
                   </div>
+                    <br/>
                   <div className="row">
                     <div className="col-md-6">
-                      Colorscheme:
+                       Daterange is {this.daterange(this.props.daterange)}
                     </div>
                     <div className="col-md-6">
                       <div className="dropdown">
                         <button className="btn btn-secondary dropdown-toggle" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                          {this.props.colorType}
+                          {this.props.daterange}
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a className="dropdown-item" onClick={() => this.props.changeColortype('Light')}>Light</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeColortype('Dark')}>Dark</a>
-
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1d')}>1 Day</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1w')}>1 Week</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1m')}>1 Month</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1m')}>1 Year</a>
                         </div>
                       </div>
                     </div>
                   </div>
+                    <br/>
                 </div>
 
 
                 <div className="col-md-6">
-                  <h2>Price</h2>
                   <div className="row">
+
                     <div className="col-md-6">
                       Price per KwH: {this.props.price} {this.props.currency}
                     </div>
+
                     <div className="col-md-6">
                       <input type="text"
                              onBlur={evt => this.props.changePrice(evt.target.value)} className="width"/>
                     </div>
-                    <div className="col-md-6">Currency
+                  </div>
+                    <br/>
+                    <div className="row">
+
+                    <div className="col-md-6">
+                        Currency
                     </div>
+
                     <div className="col-md-6">
                       <div className="dropdown">
                         <button className="btn btn-secondary dropdown-toggle" type="button"
@@ -92,8 +117,7 @@ class Settings extends Component {
                         </div>
                       </div>
                     </div>
-                  </div>
-
+                    </div>
                 </div>
               </div>
             </div>
@@ -115,15 +139,15 @@ function mapStateToProps(state) {
     mode: state.settings.mode,
     price: state.settings.price,
     currency: state.settings.currency,
-    graphType: state.settings.graphType,
-    colorType: state.settings.colorType
+    navbar: state.settings.navbar,
+    daterange: state.settings.daterange
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
         changeMode: changeMode, changePrice: changePrice, changeCurrency: changeCurrency,
-        changeGraphtype: changeGraphtype, changeColortype: changeColortype
+        changeNavbarDefault: changeNavbarDefault, changeDateRange: changeDateRange
       }
       , dispatch)
 }
