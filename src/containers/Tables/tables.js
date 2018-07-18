@@ -188,6 +188,7 @@ class Tables extends Component {
 
 /*
 USAGE
+pass value to functions to use with constant function
 {this.props.price} to get current price
 {this.props.currency} to get current selected currency
  */
