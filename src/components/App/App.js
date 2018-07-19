@@ -6,8 +6,6 @@ import Tables from '../../containers/Tables/tables'
 import Settings from '../../containers/Settings/settings'
 import '../../css/Main.css'
 import './App.css'
-
-//Redux imports
 import {connect} from 'react-redux';
 import {fetchData} from '../../redux_js/actions/homeActions';
 
@@ -28,20 +26,6 @@ class App extends Component {
     this.setState({
       contentPage: page
     });
-  }
-
-  handleNavbarSelect(deviceId, selected) {
-    let selectedDevices = this.state.selectedDevices;
-    if (selected) { // add to selectedDevices
-      selectedDevices.push(deviceId);
-    } else { // remove from selectedDevices
-      let index = selectedDevices.indexOf(deviceId);
-      selectedDevices.splice(index, 1);
-    }
-    this.setState({
-      selectedDevices: selectedDevices
-    });
-    console.log('selected devices: ' + this.state.selectedDevices)
   }
 
   render() {

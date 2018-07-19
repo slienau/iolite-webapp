@@ -7,8 +7,6 @@ import './navbar.css'
 import PageSwitchButton from './PageSwitchButton'
 import Room from './Room'
 import Device from './Device'
-
-// Redux imports
 import {connect} from 'react-redux';
 import '../../redux_js/store/index'
 

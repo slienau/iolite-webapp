@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-//Redux imports
 import {connect} from "react-redux";
 import {toggleDeviceSwitch} from "../../redux_js/actions/homeActions";
 

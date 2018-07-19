@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Line} from 'react-chartjs-2';
 import {colorPool, chartOptions} from './options'
 import DateRange from './DateRange'
-
-//Redux imports
 import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 
