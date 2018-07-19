@@ -6,8 +6,7 @@ class Device extends Component {
     render() {
         return (
             <tr>
-                <td className="room-device"><DeviceSwitch deviceId={this.props.deviceId}
-                                                          onDeviceSelect={this.props.onDeviceSelect}/>
+                <td className="room-device"><DeviceSwitch deviceId={this.props.deviceId}/>
                 </td>
                 <td>{this.props.deviceName}</td>
             </tr>

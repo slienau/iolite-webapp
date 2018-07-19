@@ -16,7 +16,6 @@ class App extends Component {
     super();
     this.state = {
       contentPage: '',
-      selectedDevices: []
     }
   }
 
@@ -48,8 +47,7 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Navbar switchPage={this.switchContentPage.bind(this)} contentPage={this.state.contentPage}
-                  onDeviceSelect={this.handleNavbarSelect.bind(this)}/>
+          <Navbar switchPage={this.switchContentPage.bind(this)} contentPage={this.state.contentPage}/>
         <div className="container-fluid">
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             {(() => {

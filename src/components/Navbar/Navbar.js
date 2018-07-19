@@ -44,8 +44,7 @@ class Navbar extends React.Component {
                                     return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
                                 }) // sort by device name
                                 .map(device =>
-                                    (<Device deviceName={device.name} deviceId={device.id} key={device.id}
-                                             onDeviceSelect={this.props.onDeviceSelect}/>)
+                                    (<Device deviceName={device.name} deviceId={device.id} key={device.id}/>)
                                 )
                         }
                     </Room>
@@ -80,7 +79,6 @@ class Navbar extends React.Component {
 
 Navbar.propTypes = {
     contentPage: PropTypes.string.isRequired,
-    onDeviceSelect: PropTypes.func.isRequired,
     restData: PropTypes.object.isRequired,
     switchPage: PropTypes.func.isRequired
 }

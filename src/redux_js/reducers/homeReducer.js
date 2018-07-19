@@ -2,17 +2,24 @@
 import { TOGGLE_DEVICE, FETCH_DATA } from '../actions/types'
 
 const initialState = {
-    restData: {}
+    restData: {},
+    visibleDevices: []
 }
 
 export default function (state = initialState, action) {
     switch (action.type) {
         case TOGGLE_DEVICE:
-            return Object.assign({}, state, {
-                newProp: action.content
-            })
+            let stateCopy = Object.assign({}, state);
+            let visibleDevices = stateCopy.visibleDevices;
+            let deviceId = action.content.deviceId;
+            if (action.content.visible) { // add to visibleDevices
+                visibleDevices.push(deviceId);
+            } else { // remove from visibleDevices
+                let index = visibleDevices.indexOf(deviceId);
+                visibleDevices.splice(index, 1);
+            }
+            return stateCopy;
         case FETCH_DATA:
-            console.log (action.content)
             return Object.assign({}, state, {
                 restData: action.content
             })

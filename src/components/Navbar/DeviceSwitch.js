@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+//Redux imports
+import {connect} from "react-redux";
+import {toggleDevice} from "../../redux_js/actions/homeActions";
 
 class DeviceSwitch extends Component {
     handleChange() {
-        this.props.onDeviceSelect(this.refs.selected.id, this.refs.selected.checked);
+        this.props.toggleDevice(this.refs.selected.id, this.refs.selected.checked);
     }
 
     render() {
@@ -19,7 +22,7 @@ class DeviceSwitch extends Component {
 
 DeviceSwitch.propTypes = {
     deviceId: PropTypes.string.isRequired,
-    onDeviceSelect: PropTypes.func.isRequired
+    toggleDevice: PropTypes.func.isRequired
 };
 
-export default DeviceSwitch;
+export default connect(null, {toggleDevice})(DeviceSwitch);
