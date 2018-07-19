@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import Navbar from '../Navbar/Navbar';
 import Charts from '../../containers/Charts/Charts'
 import Tables from '../../containers/Tables/tables'
@@ -6,6 +7,10 @@ import Settings from '../../containers/Settings/settings'
 import '../../css/Main.css'
 import './App.css'
 import sampleData from '../../../resources/rest_sample_response.json'
+
+//Redux imports
+import {connect} from 'react-redux';
+import {fetchData} from '../../redux_js/actions/homeActions';
 
 class App extends Component {
   constructor() {
@@ -18,6 +23,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+      this.props.fetchData();
     this.getRestData();
     this.switchContentPage('charts'); // start on 'charts' page
   }
@@ -72,4 +78,8 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+    fetchData: PropTypes.func.isRequired
+};
+
+export default connect(null, {fetchData})(App);

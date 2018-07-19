@@ -1,10 +1,8 @@
 /* REDUCER DUERFEN KEINE SEITENEFFEKTE ERZEUGEN! */
 import { TOGGLE_DEVICE, FETCH_DATA } from '../actions/types'
-import sampleData from '../../../resources/rest_sample_response.json'
-
 
 const initialState = {
-    restData: sampleData
+    restData: {}
 }
 
 export default function (state = initialState, action) {
