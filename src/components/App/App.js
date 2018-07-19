@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../Navbar/Navbar';
-import Charts from '../../containers/Charts/charts'
+import Charts from '../../containers/Charts/Charts'
 import Tables from '../../containers/Tables/tables'
 import Settings from '../../containers/Settings/settings'
 import '../../css/Main.css'
