@@ -3,7 +3,11 @@ import {Line} from 'react-chartjs-2';
 import {colorPool, chartOptions} from './options'
 import DateRange from './DateRange'
 
-export default class Charts extends Component {
+//Redux imports
+import {connect} from 'react-redux';
+import PropTypes from "prop-types";
+
+class Charts extends Component {
 
     constructor(props) {
         super(props);
@@ -70,3 +74,15 @@ export default class Charts extends Component {
         );
     }
 }
+
+Charts.propTypes = {
+    showData: PropTypes.object.isRequired
+}
+
+function mapStateToProps(state) {
+    return {
+        showData: state.home.restData
+    };
+}
+
+export default connect(mapStateToProps, null)(Charts);
