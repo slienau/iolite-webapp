@@ -1,0 +1,2 @@
+export const TOGGLE_DEVICE_SWITCH = 'TOGGLE_DEVICE_SWITCH'
+export const FETCH_DATA = 'FETCH_DATA'
