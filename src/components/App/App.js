@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../Navbar/navbar';
+import Navbar from '../Navbar/Navbar';
 import Charts from '../../containers/Charts/charts'
 import Tables from '../../containers/Tables/tables'
 import Settings from '../../containers/Settings/settings'
