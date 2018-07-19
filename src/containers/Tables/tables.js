@@ -199,6 +199,7 @@ function mapStateToProps(state) {
     return {
         price: state.settings.price,
         currency: state.settings.currency,
+        visibleData: state.home.visibleData
     };
 }
 
