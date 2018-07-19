@@ -53,7 +53,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar switchPage={this.switchContentPage.bind(this)} contentPage={this.state.contentPage} restData={this.state.restData} onDeviceSelect={this.handleNavbarSelect.bind(this)} />
+          <Navbar switchPage={this.switchContentPage.bind(this)} contentPage={this.state.contentPage}
+                  onDeviceSelect={this.handleNavbarSelect.bind(this)}/>
         <div className="container-fluid">
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             {(() => {

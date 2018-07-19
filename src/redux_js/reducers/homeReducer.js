@@ -1,11 +1,10 @@
 /* REDUCER DUERFEN KEINE SEITENEFFEKTE ERZEUGEN! */
 import { TOGGLE_DEVICE, FETCH_DATA } from '../actions/types'
+import sampleData from '../../../resources/rest_sample_response.json'
+
 
 const initialState = {
-    homeData: {},
-    viewData: [],
-    selectedDevices: [],
-    greeting: 'hello'
+    restData: sampleData
 }
 
 export default function (state = initialState, action) {
@@ -17,7 +16,7 @@ export default function (state = initialState, action) {
         case FETCH_DATA:
             console.log (action.content)
             return Object.assign({}, state, {
-                homeData: action.content
+                restData: action.content
             })
         default:
             return state;

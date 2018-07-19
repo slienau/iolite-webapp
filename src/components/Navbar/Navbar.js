@@ -8,7 +8,11 @@ import PageSwitchButton from './PageSwitchButton'
 import Room from './Room'
 import Device from './Device'
 
-export default class Navbar extends React.Component {
+// Redux imports
+import {connect} from 'react-redux';
+import '../../redux_js/store/index'
+
+class Navbar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -80,3 +84,12 @@ Navbar.propTypes = {
     restData: PropTypes.object.isRequired,
     switchPage: PropTypes.func.isRequired
 }
+
+function mapStateToProps(state) {
+    return {
+        restData: state.home.restData,
+        completeState: state
+    };
+}
+
+export default connect(mapStateToProps, null)(Navbar);
