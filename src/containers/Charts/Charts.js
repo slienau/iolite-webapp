@@ -19,7 +19,14 @@ class Charts extends Component {
     }
 
     componentWillMount() {
-        const chartData = this.getChartData(this.props.showData);
+        const chartData = this.getChartData(this.props.visibleData);
+        this.setState({
+            chartData: chartData
+        });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const chartData = this.getChartData(nextProps.visibleData);
         this.setState({
             chartData: chartData
         });
@@ -76,12 +83,12 @@ class Charts extends Component {
 }
 
 Charts.propTypes = {
-    showData: PropTypes.object.isRequired
+    visibleData: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
     return {
-        showData: state.home.restData
+        visibleData: state.home.visibleData
     };
 }
 
