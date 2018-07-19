@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
 import settingReducer from './reducer-settings';
-const allReducers = combineReducers({
-    settings: settingReducer
-});
+import homeReducer from './homeReducer'
 
+const allReducers = combineReducers({
+    settings: settingReducer,
+    home: homeReducer
+});
 
 export default  allReducers;
