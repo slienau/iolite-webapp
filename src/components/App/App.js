@@ -13,7 +13,6 @@ class App extends Component {
     this.state = {
       contentPage: '',
       restData: {},
-      devices: [],
       selectedDevices: []
     }
   }
@@ -32,24 +31,9 @@ class App extends Component {
   getRestData() {
     // Ajax calls here
     let ajaxResponse = sampleData;
-    let devices = this.makeDeviceData(ajaxResponse);
     this.setState({
       restData: ajaxResponse,
-      devices: devices
     });
-  }
-
-  makeDeviceData(restData) {
-    let result = []
-
-    const rooms = restData.rooms;
-    rooms.forEach(room => {
-      room.devices.forEach(device => {
-        device.show = true;
-        result.push(device);
-      })
-    });
-    return result;
   }
 
   handleNavbarSelect(deviceId, selected) {
@@ -64,16 +48,6 @@ class App extends Component {
       selectedDevices: selectedDevices
     });
     console.log('selected devices: ' + this.state.selectedDevices)
-    let devices = this.state.devices;
-    devices.forEach(device => {
-      if (device.id === deviceId) {
-        device.show = selected;
-        console.log(device)
-      }
-    })
-    this.setState({
-      devices: devices
-    });
   }
 
   render() {
@@ -84,8 +58,8 @@ class App extends Component {
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             {(() => {
               switch (this.state.contentPage) {
-                case "charts": return (<Charts devices={this.state.devices} />);
-                case "tables": return (<Tables devices={this.state.devices} />);
+                case "charts": return (<Charts showData={this.state.restData} />);
+                case "tables": return (<Tables showData={this.state.restData} />);
                 case "settings": return (<Settings />);
                 default: return "Content";
               }

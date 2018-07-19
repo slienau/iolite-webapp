@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -94,12 +94,10 @@ export default class Charts extends Component {
         responsiveAnimationDuration: 0, // animation duration after a resize
       }
     };
-
-    this.resetZoom = this.resetZoom.bind(this);
   }
 
   componentDidMount() {
-    const chartData = this.getChartData(this.props.devices);
+    const chartData = this.getChartData(this.props.showData);
     this.setState({
       chartData: chartData
     });
@@ -107,40 +105,33 @@ export default class Charts extends Component {
     console.log(moment());
   }
 
-  componentDidUpdate() {
-
-  }
-
-  getChartData(devices) {
-    // const restData = this.props.restData;
-    // const devices = this.props.devices;
+  getChartData(showData) {
 
     var datasets = [];
 
-    devices.forEach(device => {
-      if (!device.show) {
-        return;
-      }
-      var device_color = this.state.color_pool.shift();
-      var dataset = {
-        label: device.name,
-        backgroundColor: device_color,
-        borderColor: device_color,
-        borderWidth: '1',
-        pointRadius: '0',
-        pointHoverRadius: '3',
-        fill: false,
-        data: []
-      };
-      device.usage.slice(800).forEach(usage => {
-        var dataEntry = {
-          x: new Date(usage.timestamp),
-          y: usage.value
-        }
-        dataset.data.push(dataEntry);
+    showData.rooms.forEach(room => {
+      room.devices.forEach(device => {
+        var device_color = this.state.color_pool.shift();
+        var dataset = {
+          label: device.name,
+          backgroundColor: device_color,
+          borderColor: device_color,
+          borderWidth: '1',
+          pointRadius: '0',
+          pointHoverRadius: '3',
+          fill: false,
+          data: []
+        };
+        device.usage.slice(800).forEach(usage => {
+          var dataEntry = {
+            x: new Date(usage.timestamp),
+            y: usage.value
+          }
+          dataset.data.push(dataEntry);
+        })
+        datasets.push(dataset);
       })
-      datasets.push(dataset);
-    });
+    })
 
     const chartData = {
       datasets: datasets
@@ -148,32 +139,18 @@ export default class Charts extends Component {
     return chartData;
   }
 
-  resetZoom() {
-    console.log('resetting zoom');
-    // TODO: reset zoom
-    alert('TODO')
-    var newChartOptions = this.state.chartOptions;
-    newChartOptions.scales.xAxes[0].time.min = null;
-    newChartOptions.scales.xAxes[0].time.max = null;
-
-    this.setState(prevState => ({
-      chartOptions: newChartOptions
-    }));
-    this.forceUpdate();
-  }
-
   render() {
     return (
-        <div>
+      <div>
 
-          <DateRange/>
+        <DateRange />
 
-          <Line
-              data={this.state.chartData}
-              options={this.state.chartOptions}
-          />
+        <Line
+          data={this.state.chartData}
+          options={this.state.chartOptions}
+        />
 
-        </div>
+      </div>
     );
   }
 }
@@ -209,33 +186,29 @@ class DateRange extends Component {
   render() {
 
     return (
-        <div className="row justify-content-end">
-          <div className="col-2">
-            From
+      <div className="row justify-content-end">
+        <div className="col-2">
+          From
             <DatePicker
-                selected={this.state.startDate}
-                selectsStart
-                startDate={this.state.startDate}
-                endDate={this.state.endDate}
-                onChange={this.handleChangeStart}
-                dateFormatCalendar={"DD MM YYYY"}
-            />
-          </div>
-          <div className="col-2">
-            To
-            <DatePicker
-                selected={this.state.endDate}
-                selectsEnd
-                startDate={this.state.startDate}
-                endDate={this.state.endDate}
-                onChange={this.handleChangeEnd}
-            />
-          </div>
-          <div className="col-1">
-            <br/>
-            <button className="btn btn-sm btn-outline-secondary" onClick={this.resetZoom}>Reset</button>
-          </div>
+            selected={this.state.startDate}
+            selectsStart
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+            onChange={this.handleChangeStart}
+            dateFormatCalendar={"DD MM YYYY"}
+          />
         </div>
+        <div className="col-2">
+          To
+            <DatePicker
+            selected={this.state.endDate}
+            selectsEnd
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+            onChange={this.handleChangeEnd}
+          />
+        </div>
+      </div>
     );
   }
 }
