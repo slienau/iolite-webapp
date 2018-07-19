@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Switch from './Switch'
+import DeviceSwitch from './DeviceSwitch'
 
 class Device extends Component {
     render() {
         return (
             <tr>
-                <td className="room-device"><Switch deviceId={this.props.deviceId}
-                                                    onDeviceSelect={this.props.onDeviceSelect}/>
+                <td className="room-device"><DeviceSwitch deviceId={this.props.deviceId}
+                                                          onDeviceSelect={this.props.onDeviceSelect}/>
                 </td>
                 <td>{this.props.deviceName}</td>
             </tr>
