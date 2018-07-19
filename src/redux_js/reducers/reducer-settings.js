@@ -2,16 +2,16 @@ import {
     CHANGE_CURRENCY,
     CHANGE_PRICE,
     CHANGE_MODE,
-    CHANGE_GRAPHTYPE,
-    CHANGE_COLORTYPE
+    CHANGE_DEFAULT_NAVBAR,
+    CHANGE_DATE_RANGE
 } from "../constants/action-types";
 
 const initialState= {
     mode: 'daymode',
     price: '0.3',
     currency: '€',
-    graphType: 'Dotted',
-    colorType: 'Light'
+    navbar: 'Collapsed',
+    daterange: '1 Week'
 };
 
 export default function (state = initialState, action){
@@ -23,7 +23,6 @@ export default function (state = initialState, action){
             return newState;
 
         case CHANGE_PRICE:
-            console.log(' hi', action.payload, 'ih');
             if (action.payload === '')
                 return newState;
             newState.price = action.payload;
@@ -33,11 +32,11 @@ export default function (state = initialState, action){
             newState.currency=action.payload;
             return newState;
 
-        case CHANGE_GRAPHTYPE:
-            newState.graphType=action.payload;
+        case CHANGE_DEFAULT_NAVBAR:
+            newState.navbar=action.payload;
             return newState;
-        case CHANGE_COLORTYPE:
-            newState.colorType = action.payload;
+        case CHANGE_DATE_RANGE:
+            newState.daterange = action.payload;
             return newState;
 
         default: return state;
