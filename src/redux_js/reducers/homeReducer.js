@@ -1,5 +1,5 @@
 /* REDUCER DUERFEN KEINE SEITENEFFEKTE ERZEUGEN! */
-import { TOGGLE_DEVICE, FETCH_DATA } from '../actions/types'
+import {TOGGLE_DEVICE_SWITCH, FETCH_DATA} from '../actions/types'
 
 const initialState = {
     restData: {},
@@ -8,7 +8,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case TOGGLE_DEVICE:
+        case TOGGLE_DEVICE_SWITCH:
             let stateCopy = Object.assign({}, state);
             let visibleDevices = stateCopy.visibleDevices;
             let deviceId = action.content.deviceId;
