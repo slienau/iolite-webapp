@@ -6,6 +6,7 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 const persistConfig = {
     key: 'root',
     storage: storage,
+    whitelist: ['settings'], // persist only 'settings'
     stateReconciler: autoMergeLevel2 // see "Merge Process" section for details.
 };
 const pReducer = persistReducer(persistConfig, rootReducer);
