@@ -87,8 +87,7 @@ Navbar.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        restData: state.home.restData,
-        completeState: state
+        restData: state.home.restData
     };
 }
 
