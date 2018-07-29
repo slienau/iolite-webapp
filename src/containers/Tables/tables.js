@@ -123,15 +123,15 @@ const TableBody = (prop) => {
           <React.Fragment>
           <tbody>
           <tr  data-toggle="collapse" data-target={"#"+item.expId} aria-expanded="false">
-            <td>{item.device}</td>
+            <td>{item.date.toString()}</td>
             <td>{item.consumption}</td>
-            <td>{item.costs}</td>
+            <td>$$</td>
           </tr>
           </tbody>
           <tbody class="collapse multi-collapse expRows" id={item.expId}>
               {item.content.map(trow =>(
               <tr>
-                <td class="deviceCell">{trow.deviceid}</td>
+                <td class="deviceCell">{trow.device}</td>
                 <td>{trow.value}</td>
                 <td>$$</td>
             </tr>
@@ -163,14 +163,80 @@ class Tables extends Component {
       ))
 
 
-      console.log(ExampleData);
+      console.log(this.props.visibleData);
 
-      var path = require("path");
+      var dateFrom = new Date("2018-7-3");
+      var dateTo = new Date("2018-8-3");
+      var resArray = [];
 
-      var pth = path.join( '..', '..', 'resources/power.json');
+      this.props.visibleData.rooms.map(item=>(
+          item.devices.map(device=>(
+                device.usage.map(entry=>(
+
+          entry.device = device.name
+              ))
+          ))
+        ))
+
+      this.props.visibleData.rooms.map(item=>(
+          item.devices.map(device=>(
+              device.usage.map(entry=>(
+
+                  entry.room = item.name
+              ))
+      ))
+  ))
+
+      this.props.visibleData.rooms.map(room=>(
+          room.devices.map(device=>(
+              resArray = resArray.concat(device.usage.filter((entry:any) =>{
+                  var date = Date.parse(entry.timestamp);
+                  return date > dateFrom.getTime() && date < dateTo.getTime();
+          //  return true;
+            })
+              )))
+      ))
+
+      console.log("gello");
+      console.log(resArray);
 
 
 
+      var getDateArray = function(start, end) {
+
+          var
+              counter = 0,
+              arr = new Array(),
+              dt = new Date(start);
+
+          while (dt <= end) {
+              arr.push({"id": counter, "expId" : "exprow" + counter, "date" : new Date(dt), "content" : [], "consumption" : 0});
+              dt.setDate(dt.getDate() + 1);
+              counter++;
+          }
+
+          return arr;
+
+      }
+
+      var tableData = getDateArray(dateFrom, dateTo);
+      console.log(tableData);
+
+        var datalen = tableData.length;
+      resArray.forEach(function (elem){
+          var currDate = Date.parse(elem.timestamp);
+          for(var i = 0; i < datalen; i++){
+              if(currDate > tableData[i].date.getTime() && currDate < tableData[i+1].date.getTime()) {
+                  tableData[i].content.push(elem);
+                  tableData[i].consumption += elem.value;
+                  return false;
+              }
+
+          }
+      })
+
+
+      console.log(tableData);
     return (
         <div id="table">
           <h1 className="h2">Energy consumption</h1>
@@ -178,7 +244,7 @@ class Tables extends Component {
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <TableHead list={columnMetaData}> </TableHead>
-              <TableBody list={ExampleData}> </TableBody>
+              <TableBody list={tableData}> </TableBody>
             </table>
           </div>
         </div>
