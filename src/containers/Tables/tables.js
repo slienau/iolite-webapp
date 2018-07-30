@@ -40,19 +40,19 @@ const TableBody = (prop) => {
       <React.Fragment>
       {prop.list.map(item => (
           <React.Fragment>
-          <tbody>
+          <tbody className="headerRows">
           <tr  data-toggle="collapse" data-target={"#"+item.expId} aria-expanded="false">
-            <td>{item.date.toString()}</td>
+            <td>{item.date.toDateString()}</td>
             <td>{item.consumption}</td>
             <td>$$</td>
           </tr>
           </tbody>
-          <tbody class="collapse multi-collapse expRows" id={item.expId}>
+          <tbody className="collapse multi-collapse expRows" id={item.expId}>
               {item.content.map(trow =>(
               <tr>
-                <td class="deviceCell">{trow.device}</td>
+                <td className="deviceCell">{trow.device + " (" + trow.room + ")"}</td>
                 <td>{trow.value}</td>
-                <td>$$</td>
+                <td>{trow.costs}</td>
             </tr>
           ))}
           </tbody>
@@ -74,6 +74,8 @@ class Tables extends Component {
       var dateTo = new Date("2018-8-3");
       var resArray = [];
 
+
+        //adding device and room property
       this.props.visibleData.rooms.map(item=>(
           item.devices.map(device=>(
                 device.usage.map(entry=>(
@@ -92,19 +94,19 @@ class Tables extends Component {
       ))
   ))
 
+      //getting values from visibleData
       this.props.visibleData.rooms.map(room=>(
           room.devices.map(device=>(
               resArray = resArray.concat(device.usage.filter((entry:any) =>{
                   var date = Date.parse(entry.timestamp);
                   return date > dateFrom.getTime() && date < dateTo.getTime();
-          //  return true;
             })
               )))
       ))
 
-      console.log(resArray);
 
 
+      //creating table
 
       var getDateArray = function(start, end) {
 
@@ -124,8 +126,10 @@ class Tables extends Component {
       }
 
       var tableData = getDateArray(dateFrom, dateTo);
-      console.log(tableData);
 
+      //grouping data by day
+
+      console.log(this.props.costs);
         var datalen = tableData.length;
       resArray.forEach(function (elem){
           var currDate = Date.parse(elem.timestamp);
@@ -133,11 +137,14 @@ class Tables extends Component {
               if(currDate > tableData[i].date.getTime() && currDate < tableData[i+1].date.getTime()) {
                   tableData[i].content.push(elem);
                   tableData[i].consumption += elem.value;
+                  //elem.costs =  elem.value * this.props.costs + " " + this.props.currency;
                   return false;
               }
 
           }
       })
+
+      tableData.splice(-1, 1);
 
 
       console.log(tableData);
@@ -145,8 +152,8 @@ class Tables extends Component {
         <div id="table">
           <h1 className="h2">Energy consumption</h1>
 
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
+          <div className="table-responsive">
+            <table className="table table-striped table-sm">
               <TableHead list={columnMetaData}> </TableHead>
               <TableBody list={tableData}> </TableBody>
             </table>
