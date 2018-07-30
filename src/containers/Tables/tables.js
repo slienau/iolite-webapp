@@ -3,87 +3,6 @@ import React, {Component} from 'react';
 import './tables.css';
 import {connect} from "react-redux";
 
-const ExampleData = [{
-  id: 1,
-  device: "1.5.2018",
-  consumption: 215,
-  costs: 21.5,
-  content: [
-      {
-          "timestamp": "1516269028831",
-          "property": "powerUsage",
-          "deviceid": "knx_office_ledsocket",
-          "value": "0.0"
-      }, {
-          "timestamp": "1516286483527",
-          "property": "powerUsage",
-          "deviceid": "knx_office_ledsocket",
-          "value": "0.0"
-      }, {
-          "timestamp": "1516286483536",
-          "property": "powerUsage",
-          "deviceid": "knx_office_ledsocket",
-          "value": "0.0"
-      }, {
-          "timestamp": "1516286483625",
-          "property": "powerUsage",
-          "deviceid": "knx_office_ledsocket",
-          "value": "0.0"
-      }
-  ]},{
-   id: 2,
-   device: "2.5.2018",
-   consumption: 220,
-   costs: 22,
-   content: [
-       {
-           "timestamp": "1507127908293",
-           "property": "powerUsage",
-           "deviceid": "OpenZWaveNode3",
-           "value": "2.5"
-       }, {
-           "timestamp": "1507131507794",
-           "property": "powerUsage",
-           "deviceid": "OpenZWaveNode3",
-           "value": "2.6"
-       }, {
-           "timestamp": "1507135107710",
-           "property": "powerUsage",
-           "deviceid": "OpenZWaveNode3",
-           "value": "2.5"
-       }, {
-           "timestamp": "1507138707625",
-           "property": "powerUsage",
-           "deviceid": "OpenZWaveNode3",
-           "value": "2.5"
-       }
-
-    ]}, {
-    id: 3,
-    device: "3.5.2018",
-    consumption: 270,
-    costs: 38,
-    content: [{
-        "timestamp": "1507160307121",
-        "property": "powerUsage",
-        "deviceid": "OpenZWaveNode1",
-        "value": "2.5"
-    }, {
-        "timestamp": "1507163907038",
-        "property": "powerUsage",
-        "deviceid": "OpenZWaveNode2",
-        "value": "2.5"
-    }, {
-        "timestamp": "1507167507236",
-        "property": "powerUsage",
-        "deviceid": "OpenZWaveNode3",
-        "value": "2.5"
-    }]
-
-    }
-
-
-];
 
 var columnMetaData = [
   {
@@ -148,20 +67,6 @@ const TableBody = (prop) => {
 class Tables extends Component {
 
   render() {
-      ExampleData.sort( function (a, b){
-          if(a.timestamp < b.timestamp)
-              return 1;
-          return -1;
-      })
-
-      ExampleData.map(item =>(
-          item.timestamp = new Date(parseInt(item.timestamp, 10)).toLocaleString()
-      ))
-
-      ExampleData.map(item=>(
-          item.expId = "expanded_row" + item.id
-      ))
-
 
       console.log(this.props.visibleData);
 
@@ -197,7 +102,6 @@ class Tables extends Component {
               )))
       ))
 
-      console.log("gello");
       console.log(resArray);
 
 
