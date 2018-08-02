@@ -1,5 +1,6 @@
 /* REDUCER DUERFEN KEINE SEITENEFFEKTE ERZEUGEN! */
-import {TOGGLE_DEVICE_SWITCH, FETCH_DATA} from '../actions/types'
+import {TOGGLE_DEVICE_SWITCH, FETCH_DATA, CHANGE_START_DATE, CHANGE_END_DATE, CHANGE_INTERVAL} from '../actions/types'
+import moment from "moment/moment";
 
 const initialState = {
     restData: {},
@@ -7,7 +8,10 @@ const initialState = {
     visibleData: {
         'rooms': []
     },
-    deviceColors: []
+    deviceColors: [],
+    startDate: moment().subtract(1, 'months'),
+    endDate: moment(),
+    interval: 'day'
 }
 
 export default function (state = initialState, action) {
@@ -41,6 +45,18 @@ export default function (state = initialState, action) {
                 restData: action.content,
                 deviceColors: newDeviceColors
             })
+        case CHANGE_START_DATE:
+            return Object.assign({}, state, {
+                startDate: action.content
+            });
+        case CHANGE_END_DATE:
+            return Object.assign({}, state, {
+                endDate: action.content
+            });
+        case CHANGE_INTERVAL:
+            return Object.assign({}, state, {
+                interval: action.content
+            });
         default:
             return state;
     }
