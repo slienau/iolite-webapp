@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {toggleDeviceSwitch} from "../../redux_js/actions/homeActions";
+import './deviceSwitch.css'
 
 class DeviceSwitch extends Component {
     handleChange() {
