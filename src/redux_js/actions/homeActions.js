@@ -1,4 +1,10 @@
-import {TOGGLE_DEVICE_SWITCH, FETCH_DATA, CHANGE_START_DATE, CHANGE_END_DATE, CHANGE_INTERVAL} from './types'
+import {
+    TOGGLE_DEVICE_SWITCH,
+    FETCH_DATA,
+    CHANGE_START_DATE,
+    CHANGE_END_DATE,
+    CHANGE_INTERVAL
+} from './types'
 import sampleData from '../../../resources/rest_sample_response.json'
 
 export function toggleDeviceSwitch(deviceId, visible) {
@@ -12,9 +18,27 @@ export function toggleDeviceSwitch(deviceId, visible) {
     }
 }
 
-export function fetchData() {
-    console.log('fetching data')
-    return { type: FETCH_DATA, content: sampleData }
+export function fetchData(startDate, endDate, interval) {
+    console.log('fetching data from ' + startDate + ' to ' + endDate + ' with interval ' + interval)
+    //TODO: get data from REST Server (http://sebastian-lienau.de/aal.json for testing)
+    //return { type: FETCH_DATA, content: sampleData }
+    return dispatch => {
+        return fetch('http://sebastian-lienau.de/aal.json')
+            .then(handleErrors)
+            .then(res => res.json())
+            .then(json => {
+                console.log(json);
+                return { type: FETCH_DATA, content: json };
+            })
+    }
+}
+
+// Handle HTTP errors since fetch won't.
+function handleErrors(response) {
+    if(!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
 }
 
 export function changeStartDate(date) {

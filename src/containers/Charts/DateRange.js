@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
-import {changeStartDate, changeEndDate, changeInterval} from "../../redux_js/actions/homeActions";
+import {changeStartDate, changeEndDate, changeInterval, fetchData} from "../../redux_js/actions/homeActions";
 import connect from "react-redux/es/connect/connect";
 import PropTypes from "prop-types";
 
@@ -10,6 +10,7 @@ class DateRange extends Component {
         super(props);
         this.handleChangeStart = this.handleChangeStart.bind(this);
         this.handleChangeEnd = this.handleChangeEnd.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChangeStart(date) {
@@ -18,6 +19,10 @@ class DateRange extends Component {
 
     handleChangeEnd(date) {
         this.props.changeEndDate(date);
+    }
+
+    handleSubmit() {
+        this.props.fetchData(this.props.startDate, this.props.endDate, this.props.interval)
     }
 
     render() {
@@ -45,6 +50,9 @@ class DateRange extends Component {
                         onChange={this.handleChangeEnd}
                     />
                 </div>
+                <div className="col-2">
+                    <button onClick={this.handleSubmit}>Submit</button>
+                </div>
             </div>
         );
     }
@@ -56,8 +64,8 @@ DateRange.propTypes = {
     changeInterval: PropTypes.func.isRequired,
     startDate: PropTypes.object.isRequired,
     endDate: PropTypes.object.isRequired,
-    interval: PropTypes.string.isRequired
-
+    interval: PropTypes.string.isRequired,
+    fetchData: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -68,4 +76,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {changeStartDate: changeStartDate, changeEndDate: changeEndDate, changeInterval: changeInterval})(DateRange);
+export default connect(mapStateToProps, {changeStartDate: changeStartDate, changeEndDate: changeEndDate, changeInterval: changeInterval, fetchData: fetchData})(DateRange);

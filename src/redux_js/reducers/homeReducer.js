@@ -1,9 +1,17 @@
 /* REDUCER DUERFEN KEINE SEITENEFFEKTE ERZEUGEN! */
-import {TOGGLE_DEVICE_SWITCH, FETCH_DATA, CHANGE_START_DATE, CHANGE_END_DATE, CHANGE_INTERVAL} from '../actions/types'
+import {
+    TOGGLE_DEVICE_SWITCH,
+    FETCH_DATA,
+    CHANGE_START_DATE,
+    CHANGE_END_DATE,
+    CHANGE_INTERVAL
+} from '../actions/types'
 import moment from "moment/moment";
 
 const initialState = {
-    restData: {},
+    restData: {
+        'rooms': []
+    },
     visibleDevices: [],
     visibleData: {
         'rooms': []
@@ -44,7 +52,7 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, {
                 restData: action.content,
                 deviceColors: newDeviceColors
-            })
+            });
         case CHANGE_START_DATE:
             return Object.assign({}, state, {
                 startDate: action.content
