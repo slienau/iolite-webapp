@@ -11,6 +11,10 @@
 .pStyle{
     background:rgb(249, 248, 252);
 }
+.inside_div{
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
 
 
 .width{
@@ -19,7 +23,8 @@
 
 .rounded_corner{
     border-radius: 10px !important;
-    border-color: rgb(68, 68, 68) !important;
+    margin-top: 50px !important;
+    border: lightgrey solid 1px;
 
 }
 .rounded_corner_top{

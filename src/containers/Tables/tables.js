@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import './tables.css';
+import {connect} from "react-redux";
 
 const ExampleData = [{
   id: 1,
@@ -185,7 +186,25 @@ class Tables extends Component {
   }
 }
 
+/*
+USAGE
+pass value to functions to use with constant function
+{this.props.price} to get current price
+{this.props.currency} to get current selected currency
+ */
 
-export default Tables;
+function mapStateToProps(state) {
+
+
+    return {
+        price: state.settings.price,
+        currency: state.settings.currency,
+        visibleData: state.home.visibleData
+    };
+}
+
+export default connect(mapStateToProps)(Tables);
+
+
 
 

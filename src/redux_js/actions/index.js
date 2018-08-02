@@ -1,4 +1,4 @@
-import {CHANGE_CURRENCY, CHANGE_PRICE, CHANGE_MODE, CHANGE_GRAPHTYPE, CHANGE_COLORTYPE} from "../constants/action-types";
+import {CHANGE_CURRENCY, CHANGE_PRICE, CHANGE_MODE, CHANGE_DEFAULT_NAVBAR, CHANGE_DATE_RANGE} from "../constants/action-types";
 
 
 export const changeMode = (mode) => {
@@ -14,12 +14,12 @@ export const changeCurrency = (currency) => {
     return {type: CHANGE_CURRENCY, payload: currency}
 };
 
-export const changeGraphtype = (graphtype) => {
-    return {type: CHANGE_GRAPHTYPE, payload: graphtype}
+export const changeNavbarDefault = (navbarDefault) => {
+    return {type: CHANGE_DEFAULT_NAVBAR, payload: navbarDefault}
 };
 
-export const changeColortype = (colortype) => {
-    return {type: CHANGE_COLORTYPE, payload: colortype}
+export const changeDateRange = (dateRange) => {
+    return {type: CHANGE_DATE_RANGE, payload: dateRange}
 };
 
 
