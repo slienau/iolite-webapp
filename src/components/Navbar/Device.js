@@ -40,7 +40,7 @@ class Device extends Component {
             <tr>
                 <td className="room-device">
                     <label htmlFor={this.props.deviceId} className="switch">
-                        <input type="checkbox" id={this.props.deviceId} ref="selected"
+                        <input disabled={this.props.noUsageData} type="checkbox" id={this.props.deviceId} ref="selected"
                                onChange={this.handleChange.bind(this)}/>
                         <span className="slider round" style={sliderStyle}/>
                     </label>
