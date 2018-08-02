@@ -36,7 +36,7 @@ class Charts extends Component {
 
         showData.rooms.forEach(room => {
             room.devices.forEach(device => {
-                var deviceColor = this.state.colorPool.shift();
+                var deviceColor = device.color;
                 var dataset = {
                     label: device.name,
                     backgroundColor: deviceColor,

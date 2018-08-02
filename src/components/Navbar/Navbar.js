@@ -38,11 +38,17 @@ class Navbar extends React.Component {
                     <Room roomName={room.name} roomId={room.id} key={room.id}>
                         {
                             room.devices
-                                .sort(function (a, b) {
+                                .sort(function (a, b) { // sort by device name
                                     return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
-                                }) // sort by device name
-                                .map(device =>
-                                    (<Device deviceName={device.name} deviceId={device.id} key={device.id}/>)
+                                })
+                                .map(device => {
+                                    let deviceColors = this.props.deviceColors;
+                                    const colorPosition = deviceColors.findIndex(x => x.id === device.id)
+                                    const deviceColor = deviceColors[colorPosition].color // the device color
+                                    const noUsageData = device.usage.length == 0 ? true : false; // true if this device has no usage data
+                                    // render device component
+                                    return (<Device deviceName={device.name} deviceId={device.id} key={device.id} deviceColor={deviceColor} noUsageData={noUsageData}/>)
+                                    }
                                 )
                         }
                     </Room>
@@ -78,12 +84,14 @@ class Navbar extends React.Component {
 Navbar.propTypes = {
     contentPage: PropTypes.string.isRequired,
     restData: PropTypes.object.isRequired,
-    switchPage: PropTypes.func.isRequired
+    switchPage: PropTypes.func.isRequired,
+    deviceColors: PropTypes.array.isRequired
 }
 
 function mapStateToProps(state) {
     return {
-        restData: state.home.restData
+        restData: state.home.restData,
+        deviceColors: state.home.deviceColors
     };
 }
 

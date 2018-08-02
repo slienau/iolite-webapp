@@ -23,7 +23,7 @@ export const chartOptions = {
         fontSize: 25
     },
     legend: {
-        display: true,
+        display: false,
         position: 'top'
     },
     zoom: {
