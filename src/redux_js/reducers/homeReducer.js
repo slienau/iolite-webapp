@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
                 let index = visibleDevices.indexOf(deviceId);
                 visibleDevices.splice(index, 1);
             }
-            newState.visibleData = getVisibleData(newState.restData, newState.visibleDevices);
+            newState.visibleData = getVisibleData(newState.restData, newState.visibleDevices, newState.deviceColors);
             return newState;
         // FETCH DATA FROM API
         case FETCH_DATA:
@@ -46,7 +46,7 @@ export default function (state = initialState, action) {
     }
 }
 
-function getVisibleData(restData, visibleDevices) {
+function getVisibleData(restData, visibleDevices, deviceColors) {
     console.log('making visible data')
     let rooms = restData.rooms;
     if (typeof rooms === 'undefined')
@@ -61,8 +61,12 @@ function getVisibleData(restData, visibleDevices) {
             devices: []
         }
         room.devices.forEach(device => {
-            if (visibleDevices.some(x => x === device.id))
-                singleRoom.devices.push((device));
+            if (visibleDevices.some(x => x === device.id)) {
+                // device is visible -> get device color from the deviceColors array
+                let colorPosition = deviceColors.findIndex(x => x.id === device.id)
+                device.color = deviceColors[colorPosition].color
+                singleRoom.devices.push((device))
+            };
         })
         result.rooms.push(singleRoom);
     })
@@ -70,6 +74,10 @@ function getVisibleData(restData, visibleDevices) {
 }
 
 function getColor() {
-    //TODO: return random color
-    return '#001f3f'
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }
