@@ -38,14 +38,16 @@ class Navbar extends React.Component {
                     <Room roomName={room.name} roomId={room.id} key={room.id}>
                         {
                             room.devices
-                                .sort(function (a, b) {
+                                .sort(function (a, b) { // sort by device name
                                     return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
-                                }) // sort by device name
+                                })
                                 .map(device => {
                                     let deviceColors = this.props.deviceColors;
                                     const colorPosition = deviceColors.findIndex(x => x.id === device.id)
-                                    const deviceColor = deviceColors[colorPosition].color
-                                    return (<Device deviceName={device.name} deviceId={device.id} key={device.id} deviceColor={deviceColor}/>)
+                                    const deviceColor = deviceColors[colorPosition].color // the device color
+                                    const noUsageData = device.usage.length == 0 ? true : false; // true if this device has no usage data
+                                    // render device component
+                                    return (<Device deviceName={device.name} deviceId={device.id} key={device.id} deviceColor={deviceColor} noUsageData={noUsageData}/>)
                                     }
                                 )
                         }

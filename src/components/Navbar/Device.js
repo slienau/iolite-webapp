@@ -31,6 +31,11 @@ class Device extends Component {
                 fontWeight: 'bold'
             }
         }
+        if(this.props.noUsageData) {
+            deviceNameStyle = {
+                fontStyle: 'italic'
+            }
+        }
         return (
             <tr>
                 <td className="room-device">
@@ -50,6 +55,7 @@ Device.propTypes = {
     deviceName: PropTypes.string.isRequired,
     deviceId: PropTypes.string.isRequired,
     deviceColor: PropTypes.string.isRequired,
+    noUsageData: PropTypes.bool.isRequired,
     toggleDeviceSwitch: PropTypes.func.isRequired
 };
 
