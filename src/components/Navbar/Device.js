@@ -21,11 +21,14 @@ class Device extends Component {
     }
 
     render() {
-        let sliderStyle = {
-        }
+        let sliderStyle = {}
+        let deviceNameStyle = {}
         if(this.state.checked) {
             sliderStyle = {
                 backgroundColor: this.props.deviceColor
+            }
+            deviceNameStyle = {
+                fontWeight: 'bold'
             }
         }
         return (
@@ -37,7 +40,7 @@ class Device extends Component {
                         <span className="slider round" style={sliderStyle}/>
                     </label>
                 </td>
-                <td>{this.props.deviceName}</td>
+                <td><span style={deviceNameStyle}>{this.props.deviceName}</span></td>
             </tr>
         );
     }
