@@ -6,11 +6,13 @@ const initialState = {
     visibleDevices: [],
     visibleData: {
         'rooms': []
-    }
+    },
+    deviceColors: []
 }
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        // DEVICE ON/OFF SWITCH IN NAVBAR
         case TOGGLE_DEVICE_SWITCH:
             let newState = Object.assign({}, state);
             let visibleDevices = newState.visibleDevices;
@@ -23,9 +25,21 @@ export default function (state = initialState, action) {
             }
             newState.visibleData = getVisibleData(newState.restData, newState.visibleDevices);
             return newState;
+        // FETCH DATA FROM API
         case FETCH_DATA:
+            let newDeviceColors = []
+            action.content.rooms.forEach(room => {
+                room.devices.forEach(device => {
+                    let singleDevice = {
+                        id: device.id,
+                        color: getColor()
+                    }
+                    newDeviceColors.push(singleDevice)
+                })
+            })
             return Object.assign({}, state, {
-                restData: action.content
+                restData: action.content,
+                deviceColors: newDeviceColors
             })
         default:
             return state;
@@ -53,4 +67,9 @@ function getVisibleData(restData, visibleDevices) {
         result.rooms.push(singleRoom);
     })
     return result;
+}
+
+function getColor() {
+    //TODO: return random color
+    return '#001f3f'
 }
