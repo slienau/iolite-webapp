@@ -51,7 +51,8 @@ class DateRange extends Component {
                     />
                 </div>
                 <div className="col-2">
-                    <button onClick={this.handleSubmit}>Submit</button>
+                    <br/>
+                    <button onClick={this.handleSubmit} className="btn btn-secondary">Submit</button>
                 </div>
             </div>
         );
