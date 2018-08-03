@@ -78,7 +78,7 @@ export const createDeviceColors = data => ({
 });
 
 export function changeStartDate(date) {
-    console.log('handling CHANGE_START_DATE event. date:"' + date)
+    console.log('handling CHANGE_START_DATE event. date: ' + date)
     return {
         type: CHANGE_START_DATE,
         content: date
@@ -86,7 +86,7 @@ export function changeStartDate(date) {
 }
 
 export function changeEndDate(date) {
-    console.log('handling CHANGE_END_DATE event. date:"' + date)
+    console.log('handling CHANGE_END_DATE event. date: ' + date)
     return {
         type: CHANGE_END_DATE,
         content: date
@@ -94,7 +94,7 @@ export function changeEndDate(date) {
 }
 
 export function changeInterval(interval) {
-    console.log('handling CHANGE_INTERVAL event. interval:"' + interval)
+    console.log('handling CHANGE_INTERVAL event. interval: ' + interval)
     return {
         type: CHANGE_INTERVAL,
         content: interval
