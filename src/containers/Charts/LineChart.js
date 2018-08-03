@@ -9,7 +9,8 @@ class LineChart extends Component {
         super(props);
         this.state = {
             chartData: {},
-            chartOptions: lineChartOptions
+            chartOptions: lineChartOptions,
+            alertSent: false
         };
     }
 
@@ -28,11 +29,19 @@ class LineChart extends Component {
     }
 
     getChartData(showData) {
-
-        var datasets = [];
+        const MAX_ENTRYS = 200;
+        let alertSentInside = false;
+        let datasets = [];
 
         showData.rooms.forEach(room => {
             room.devices.forEach(device => {
+                if(device.usage.length>MAX_ENTRYS && !this.state.alertSent && !alertSentInside) {
+                    alert('Too many data entrys for line chart. Only the first ' + MAX_ENTRYS + ' entrys will be displayed. Please choose a different time range or change interval.')
+                    alertSentInside = true;
+                    this.setState({
+                        alertSent: true
+                    })
+                }
                 var deviceColor = device.color;
                 var dataset = {
                     label: device.name,
@@ -44,7 +53,7 @@ class LineChart extends Component {
                     fill: false,
                     data: []
                 };
-                device.usage.slice(800).forEach(usage => { //TODO: remove 'slice(800)' when productive
+                device.usage.slice(0,MAX_ENTRYS-1).forEach(usage => {
                     var dataEntry = {
                         x: new Date(usage.timestamp),
                         y: usage.value

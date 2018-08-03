@@ -30,12 +30,13 @@ class BarChart extends Component {
 
     getChartData(visibleData) {
         const MAX_ENTRYS = 50;
-
+        let alertSentInside = false;
         let labels = []
         visibleData.rooms.forEach(room => {
             room.devices.forEach(device => {
-                if(device.usage.length>MAX_ENTRYS && !this.state.alertSent) {
+                if(device.usage.length>MAX_ENTRYS && !this.state.alertSent && !alertSentInside) {
                     alert('Too many data entrys for Bar chart. Only the first ' + MAX_ENTRYS + ' entrys will be displayed. Please choose a different time range or change interval.')
+                    alertSentInside = true;
                     this.setState({
                         alertSent: true
                     })
