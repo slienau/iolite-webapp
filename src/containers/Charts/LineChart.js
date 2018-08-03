@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Line} from 'react-chartjs-2';
-import {lineChartOptions} from './options'
+import {lineChartOptions} from './chartOptions'
 import PropTypes from "prop-types";
 
 class LineChart extends Component {

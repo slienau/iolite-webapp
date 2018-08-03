@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Pie} from 'react-chartjs-2';
-import {pieChartOptions} from './options'
+import {pieChartOptions} from './chartOptions'
 import PropTypes from "prop-types";
 
 class PieChart extends Component {
