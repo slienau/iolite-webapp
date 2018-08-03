@@ -42,9 +42,7 @@ class Navbar extends React.Component {
                                     return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
                                 })
                                 .map(device => {
-                                    let deviceColors = this.props.deviceColors;
-                                    const colorPosition = deviceColors.findIndex(x => x.id === device.id)
-                                    const deviceColor = deviceColors[colorPosition].color // the device color
+                                    const deviceColor = this.props.deviceColors[device.id] // the device color
                                     const noUsageData = device.usage.length == 0 ? true : false; // true if this device has no usage data
                                     // render device component
                                     return (<Device deviceName={device.name} deviceId={device.id} key={device.id} deviceColor={deviceColor} noUsageData={noUsageData}/>)
@@ -85,7 +83,7 @@ Navbar.propTypes = {
     contentPage: PropTypes.string.isRequired,
     restData: PropTypes.object.isRequired,
     switchPage: PropTypes.func.isRequired,
-    deviceColors: PropTypes.array.isRequired
+    deviceColors: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {

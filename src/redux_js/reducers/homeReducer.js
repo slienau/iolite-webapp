@@ -6,7 +6,8 @@ import {
     CHANGE_INTERVAL,
     FETCH_DATA_BEGIN,
     FETCH_DATA_SUCCESS,
-    FETCH_DATA_FAILURE
+    FETCH_DATA_FAILURE,
+    CREATE_DEVICE_COLORS
 } from '../actions/types'
 import moment from "moment/moment";
 
@@ -18,7 +19,7 @@ const initialState = {
     visibleData: {
         'rooms': []
     },
-    deviceColors: [],
+    deviceColors: {},
     startDate: moment().subtract(1, 'months'),
     endDate: moment(),
     interval: 'day'
@@ -48,19 +49,8 @@ export default function (state = initialState, action) {
             };
 
         case FETCH_DATA_SUCCESS:
-            let newDeviceColors = []
-            action.content.rooms.forEach(room => {
-                room.devices.forEach(device => {
-                    let singleDevice = {
-                        id: device.id,
-                        color: getColor()
-                    }
-                    newDeviceColors.push(singleDevice)
-                })
-            })
             return Object.assign({}, state, {
                 restData: action.content,
-                deviceColors: newDeviceColors,
                 loading: false,
             });
 
@@ -69,6 +59,19 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 error: action.content,
+            };
+
+        case CREATE_DEVICE_COLORS:
+            let newDeviceColors = Object.assign({}, state.deviceColors)
+            action.content.rooms.forEach(room => {
+                room.devices.forEach(device => {
+                    if(!(device.id in newDeviceColors)) // if device has no color, assign a new one
+                        newDeviceColors[device.id] = getColor()
+                })
+            })
+            return {
+                ...state,
+                deviceColors: newDeviceColors,
             };
 
         case CHANGE_START_DATE:
@@ -107,9 +110,7 @@ function getVisibleData(restData, visibleDevices, deviceColors) {
         }
         room.devices.forEach(device => {
             if (visibleDevices.some(x => x === device.id)) {
-                // device is visible -> get device color from the deviceColors array
-                let colorPosition = deviceColors.findIndex(x => x.id === device.id)
-                device.color = deviceColors[colorPosition].color
+                device.color = deviceColors[device.id]
                 singleRoom.devices.push((device))
             };
         })

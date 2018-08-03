@@ -5,7 +5,8 @@ import {
     CHANGE_INTERVAL,
     FETCH_DATA_BEGIN,
     FETCH_DATA_SUCCESS,
-    FETCH_DATA_FAILURE
+    FETCH_DATA_FAILURE,
+    CREATE_DEVICE_COLORS
 } from './types'
 import sampleData from '../../../resources/rest_sample_response.json' //TODO: remove this when productive
 import moment from "moment";
@@ -39,6 +40,7 @@ export function fetchData(startDate = moment().subtract(1, 'months'), endDate = 
             .then(res => res.json())
             .then(json => {
                 dispatch(fetchDataSuccess(json));
+                dispatch(createDeviceColors(json))
                 return json;
             })
             .catch(error => {
@@ -68,6 +70,11 @@ export const fetchDataSuccess = data => ({
 export const fetchDataFailure = error => ({
     type: FETCH_DATA_FAILURE,
     content: error
+});
+
+export const createDeviceColors = data => ({
+    type: CREATE_DEVICE_COLORS,
+    content: data
 });
 
 export function changeStartDate(date) {
