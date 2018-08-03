@@ -83,7 +83,7 @@ Navbar.propTypes = {
     contentPage: PropTypes.string.isRequired,
     restData: PropTypes.object.isRequired,
     switchPage: PropTypes.func.isRequired,
-    deviceColors: PropTypes.object.isRequired
+    deviceColors: PropTypes.object
 }
 
 function mapStateToProps(state) {

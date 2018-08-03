@@ -54,7 +54,7 @@ class Device extends Component {
 Device.propTypes = {
     deviceName: PropTypes.string.isRequired,
     deviceId: PropTypes.string.isRequired,
-    deviceColor: PropTypes.string.isRequired,
+    deviceColor: PropTypes.string,
     noUsageData: PropTypes.bool.isRequired,
     toggleDeviceSwitch: PropTypes.func.isRequired
 };
