@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import {Pie} from 'react-chartjs-2';
-import {pieChartOptions} from './chartOptions'
+import {HorizontalBar} from 'react-chartjs-2';
+import {barHorizontalChartOptions} from './chartOptions'
 import PropTypes from "prop-types";
 
-class PieChart extends Component {
+class BarHorizontalChart extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             chartData: {},
-            chartOptions: pieChartOptions
+            chartOptions: barHorizontalChartOptions
         };
     }
 
@@ -59,7 +59,7 @@ class PieChart extends Component {
                 newChartData.datasets[0].data.push(device.usageSum)
                 newChartData.datasets[0].backgroundColor.push(device.color)
                 newChartData.datasets[0].hoverBackgroundColor.push(device.color)
-            })
+        })
         return newChartData;
     }
 
@@ -67,7 +67,7 @@ class PieChart extends Component {
         return (
             <div>
 
-                <Pie
+                <HorizontalBar
                     data={this.state.chartData}
                     options={this.state.chartOptions}
                 />
@@ -77,8 +77,8 @@ class PieChart extends Component {
     }
 }
 
-PieChart.propTypes = {
+BarHorizontalChart.propTypes = {
     visibleData: PropTypes.object.isRequired
 }
 
-export default PieChart;
+export default BarHorizontalChart;
