@@ -34,7 +34,7 @@ class DateRange extends Component {
 
         return (
             <div className="row justify-content-end">
-                <div className="col-2">
+                <div>
                     From
                     <DatePicker
                         selected={this.props.startDate}
@@ -45,7 +45,7 @@ class DateRange extends Component {
                         dateFormatCalendar={"DD MM YYYY"}
                     />
                 </div>
-                <div className="col-2">
+                <div>
                     To
                     <DatePicker
                         selected={this.props.endDate}
@@ -55,7 +55,7 @@ class DateRange extends Component {
                         onChange={this.handleChangeEnd}
                     />
                 </div>
-                <div className="col-2">
+                <div>
                     <label htmlFor="intervalSelector">Interval</label>
                     <select id="intervalSelector" className="form-control" value={this.props.interval} onChange={this.handleChangeInterval}>
                         <option value="minute">Minute</option>
@@ -66,7 +66,7 @@ class DateRange extends Component {
                         <option value="year">Yearly</option>
                     </select>
                 </div>
-                <div className="col-2">
+                <div>
                     <br/>
                     <button onClick={this.handleSubmit} className="btn btn-secondary">Submit</button>
                 </div>

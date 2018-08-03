@@ -31,17 +31,20 @@ class Charts extends Component {
         return (
             <div>
 
-                <div>
-                    Chart Type<br/>
-                    <div className="btn-group" style={buttonGroupStyle} role="group" aria-label="Chart switcher">
-                        <ChartTypeButton chartType="line" displayName="Line" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
-                        <ChartTypeButton chartType="bar" displayName="Bar" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
-                        <ChartTypeButton chartType="barhorizontal" displayName="Horizontal Bar" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
-                        <ChartTypeButton chartType="pie" displayName="Pie" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
+                <div className="row">
+                    <div className="col-4">
+                        Chart Type<br/>
+                        <div className="btn-group" style={buttonGroupStyle} role="group" aria-label="Chart switcher">
+                            <ChartTypeButton chartType="line" displayName="Line" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
+                            <ChartTypeButton chartType="bar" displayName="Bar" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
+                            <ChartTypeButton chartType="barhorizontal" displayName="Horizontal Bar" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
+                            <ChartTypeButton chartType="pie" displayName="Pie" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
+                        </div>
+                    </div>
+                    <div className="col-8">
+                        <DateRange/>
                     </div>
                 </div>
-
-                <DateRange/>
 
                 {(() => {
                     switch (this.state.chartType) {
