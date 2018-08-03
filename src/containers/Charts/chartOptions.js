@@ -14,6 +14,10 @@ export const pieChartOptions = {
     ...generalOptions
 }
 
+export const barChartOptions = {
+    ...generalOptions
+}
+
 export const barHorizontalChartOptions = {
     ...generalOptions
 }

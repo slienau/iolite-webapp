@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 import LineChart from './LineChart'
 import PieChart from './PieChart'
+import BarChart from './BarChart'
 import BarHorizontalChart from './BarHorizontalChart'
 
 class Charts extends Component {
@@ -34,8 +35,9 @@ class Charts extends Component {
                     Chart Type<br/>
                     <div className="btn-group" style={buttonGroupStyle} role="group" aria-label="Chart switcher">
                         <ChartTypeButton chartType="line" displayName="Line" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
-                        <ChartTypeButton chartType="pie" displayName="Pie" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
+                        <ChartTypeButton chartType="bar" displayName="Bar" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
                         <ChartTypeButton chartType="barhorizontal" displayName="Horizontal Bar" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
+                        <ChartTypeButton chartType="pie" displayName="Pie" changeChartType={this.changeChartType} activeChartType={this.state.chartType} />
                     </div>
                 </div>
 
@@ -47,6 +49,8 @@ class Charts extends Component {
                             return (<LineChart visibleData={this.props.visibleData}/>);
                         case "pie":
                             return (<PieChart visibleData={this.props.visibleData}/>);
+                        case "bar":
+                            return (<BarChart visibleData={this.props.visibleData}/>);
                         case "barhorizontal":
                             return (<BarHorizontalChart visibleData={this.props.visibleData}/>);
                         default:
