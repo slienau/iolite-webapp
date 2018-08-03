@@ -47,8 +47,6 @@ class PieChart extends Component {
                 newChartData.datasets[0].hoverBackgroundColor.push(device.color)
             }))
         })
-
-        console.log(newChartData)
         return newChartData;
     }
 
