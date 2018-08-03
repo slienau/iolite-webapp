@@ -15,7 +15,15 @@ export const pieChartOptions = {
 }
 
 export const barChartOptions = {
-    ...generalOptions
+    ...generalOptions,
+    scales: {
+        xAxes: [{
+            stacked: true
+        }],
+        yAxes: [{
+            stacked: true
+        }]
+    }
 }
 
 export const barHorizontalChartOptions = {

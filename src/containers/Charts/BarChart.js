@@ -9,7 +9,8 @@ class BarChart extends Component {
         super(props);
         this.state = {
             chartData: {},
-            chartOptions: barChartOptions
+            chartOptions: barChartOptions,
+            alertSent: false
         };
     }
 
@@ -27,40 +28,53 @@ class BarChart extends Component {
         });
     }
 
-    getChartData(showData) {
-        let showDevices = []
-        showData.rooms.forEach(room => {
-            room.devices.forEach((device => {
-                let sum = device.usage.reduce((acc,cur) => acc + cur.value, 0)
-                let thisDevice = {
-                    name: device.name,
-                    color: device.color,
-                    usageSum: sum
+    getChartData(visibleData) {
+        const MAX_ENTRYS = 50;
+
+        let labels = []
+        visibleData.rooms.forEach(room => {
+            room.devices.forEach(device => {
+                if(device.usage.length>MAX_ENTRYS && !this.state.alertSent) {
+                    alert('Too many data entrys for Bar chart. Only the first ' + MAX_ENTRYS + ' entrys will be displayed. Please choose a different time range or change interval.')
+                    this.setState({
+                        alertSent: true
+                    })
                 }
-                showDevices.push(thisDevice);
-            }))
+                if(labels.length==0){
+                    device.usage.slice(0,MAX_ENTRYS-1).forEach(usage => {
+                        labels.push(usage.timestamp)
+                    })
+                }
+            })
         })
 
-        let newChartData = {
-            labels: [
-            ],
-            datasets: [{
-                data: [],
-                backgroundColor: [],
-                hoverBackgroundColor: []
-            }]
-        }
-        showDevices
-            .sort(function (a, b) { // sort by usage sum
-                return (a.usageSum < b.usageSum) ? 1 : ((b.usageSum < a.usageSum) ? -1 : 0);
+        let datasets = []
+
+        visibleData.rooms.forEach(room => {
+            room.devices.forEach(device => {
+                let singleDataset = {
+                    label: device.name,
+                    backgroundColor: device.color,
+                    borderColor: device.color,
+                    borderWidth: 1,
+                    hoverBackgroundColor: device.color,
+                    hoverBorderColor: device.color,
+                    data: []
+                }
+                device.usage.forEach(usage => {
+                    singleDataset.data.push(usage.value)
+                })
+                datasets.push(singleDataset)
             })
-            .forEach(device => {
-                newChartData.labels.push(device.name)
-                newChartData.datasets[0].data.push(device.usageSum)
-                newChartData.datasets[0].backgroundColor.push(device.color)
-                newChartData.datasets[0].hoverBackgroundColor.push(device.color)
         })
-        return newChartData;
+
+
+        const chartData = {
+            labels: labels,
+            datasets: datasets
+        }
+
+        return chartData;
     }
 
     render() {
