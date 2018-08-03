@@ -1,10 +1,12 @@
 /* REDUCER DUERFEN KEINE SEITENEFFEKTE ERZEUGEN! */
 import {
     TOGGLE_DEVICE_SWITCH,
-    FETCH_DATA,
     CHANGE_START_DATE,
     CHANGE_END_DATE,
-    CHANGE_INTERVAL
+    CHANGE_INTERVAL,
+    FETCH_DATA_BEGIN,
+    FETCH_DATA_SUCCESS,
+    FETCH_DATA_FAILURE
 } from '../actions/types'
 import moment from "moment/moment";
 
@@ -37,8 +39,15 @@ export default function (state = initialState, action) {
             }
             newState.visibleData = getVisibleData(newState.restData, newState.visibleDevices, newState.deviceColors);
             return newState;
-        // FETCH DATA FROM API
-        case FETCH_DATA:
+
+        case FETCH_DATA_BEGIN:
+            return {
+                ...state,
+                loading: true,
+                error: null
+            };
+
+        case FETCH_DATA_SUCCESS:
             let newDeviceColors = []
             action.content.rooms.forEach(room => {
                 room.devices.forEach(device => {
@@ -51,20 +60,32 @@ export default function (state = initialState, action) {
             })
             return Object.assign({}, state, {
                 restData: action.content,
-                deviceColors: newDeviceColors
+                deviceColors: newDeviceColors,
+                loading: false,
             });
+
+        case FETCH_DATA_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.content,
+            };
+
         case CHANGE_START_DATE:
             return Object.assign({}, state, {
                 startDate: action.content
             });
+
         case CHANGE_END_DATE:
             return Object.assign({}, state, {
                 endDate: action.content
             });
+
         case CHANGE_INTERVAL:
             return Object.assign({}, state, {
                 interval: action.content
             });
+
         default:
             return state;
     }

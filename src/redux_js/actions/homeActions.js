@@ -1,11 +1,14 @@
 import {
     TOGGLE_DEVICE_SWITCH,
-    FETCH_DATA,
     CHANGE_START_DATE,
     CHANGE_END_DATE,
-    CHANGE_INTERVAL
+    CHANGE_INTERVAL,
+    FETCH_DATA_BEGIN,
+    FETCH_DATA_SUCCESS,
+    FETCH_DATA_FAILURE
 } from './types'
-import sampleData from '../../../resources/rest_sample_response.json'
+import sampleData from '../../../resources/rest_sample_response.json' //TODO: remove this when productive
+import moment from "moment";
 
 export function toggleDeviceSwitch(deviceId, visible) {
     console.log('toggle device switch with device id "' + deviceId + '"; visible: ' + visible)
@@ -18,18 +21,30 @@ export function toggleDeviceSwitch(deviceId, visible) {
     }
 }
 
-export function fetchData(startDate, endDate, interval) {
+export function fetchData(startDate = moment().subtract(1, 'months'), endDate = moment(), interval = 'day') {
+    startDate = startDate.unix();
+    endDate = endDate.unix();
     console.log('fetching data from ' + startDate + ' to ' + endDate + ' with interval ' + interval)
-    //TODO: get data from REST Server (http://sebastian-lienau.de/aal.json for testing)
-    //return { type: FETCH_DATA, content: sampleData }
+    let url = new URL('http://localhost:3000/resources/rest_data.json');
+    const params = {
+        from: startDate,
+        to: endDate,
+        interval: interval
+    };
+    url.search = new URLSearchParams(params);
     return dispatch => {
-        return fetch('http://sebastian-lienau.de/aal.json')
+        dispatch(fetchDataBegin());
+        return fetch(url)
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
-                console.log(json);
-                return { type: FETCH_DATA, content: json };
+                dispatch(fetchDataSuccess(json));
+                return json;
             })
+            .catch(error => {
+                dispatch(fetchDataFailure(error))
+                dispatch(fetchDataSuccess(sampleData)); //TODO: remove this when productive
+            });
     }
 }
 
@@ -40,6 +55,20 @@ function handleErrors(response) {
     }
     return response;
 }
+
+export const fetchDataBegin = () => ({
+    type: FETCH_DATA_BEGIN
+});
+
+export const fetchDataSuccess = data => ({
+    type: FETCH_DATA_SUCCESS,
+    content: data
+});
+
+export const fetchDataFailure = error => ({
+    type: FETCH_DATA_FAILURE,
+    content: error
+});
 
 export function changeStartDate(date) {
     console.log('handling CHANGE_START_DATE event. date:"' + date)
