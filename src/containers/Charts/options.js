@@ -1,4 +1,4 @@
-export const lineChartOptions = {
+const generalOptions = {
     responsive: true,
     title: {
         display: false,
@@ -7,7 +7,15 @@ export const lineChartOptions = {
     legend: {
         display: false,
         position: 'top'
-    },
+    }
+}
+
+export const pieChartOptions = {
+    ...generalOptions
+}
+
+export const lineChartOptions = {
+    ...generalOptions,
     zoom: {
         enabled: true,
         drag: true,

@@ -3,6 +3,7 @@ import DateRange from './DateRange'
 import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 import LineChart from './LineChart'
+import PieChart from './PieChart'
 
 class Charts extends Component {
 
@@ -13,6 +14,8 @@ class Charts extends Component {
                 <DateRange/>
 
                 <LineChart visibleData={this.props.visibleData}/>
+
+                <PieChart visibleData={this.props.visibleData}/>
 
             </div>
         );
