@@ -35,7 +35,9 @@ export function fetchData(startDate = moment().subtract(1, 'months'), endDate = 
     url.search = new URLSearchParams(params);
     return dispatch => {
         dispatch(fetchDataBegin());
-        return fetch(url)
+        dispatch(fetchDataSuccess(sampleData)) //TODO: remove this when productive
+        dispatch(createDeviceColors(sampleData)) //TODO: remove this when productive
+        /* return fetch(url)
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
@@ -45,8 +47,8 @@ export function fetchData(startDate = moment().subtract(1, 'months'), endDate = 
             })
             .catch(error => {
                 dispatch(fetchDataFailure(error))
-                dispatch(fetchDataSuccess(sampleData)); //TODO: remove this when productive
-            });
+                dispatch(fetchDataSuccess(sampleData));
+            }); */ //TODO: remove comment when productive
     }
 }
 
