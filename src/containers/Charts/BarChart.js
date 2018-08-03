@@ -49,10 +49,26 @@ class BarChart extends Component {
             })
         })
 
-        let datasets = []
-
+        let devices = []
         visibleData.rooms.forEach(room => {
-            room.devices.forEach(device => {
+            room.devices.forEach((device => {
+                let sum = device.usage.reduce((acc,cur) => acc + cur.value, 0)
+                let thisDevice = {
+                    name: device.name,
+                    color: device.color,
+                    usage: device.usage,
+                    usageSum: sum
+                }
+                devices.push(thisDevice);
+            }))
+        })
+
+        let datasets = []
+        devices
+            .sort(function (a, b) { // sort by usage sum
+                return (a.usageSum < b.usageSum) ? 1 : ((b.usageSum < a.usageSum) ? -1 : 0);
+            })
+            .forEach(device => {
                 let singleDataset = {
                     label: device.name,
                     backgroundColor: device.color,
@@ -67,8 +83,6 @@ class BarChart extends Component {
                 })
                 datasets.push(singleDataset)
             })
-        })
-
 
         const chartData = {
             labels: labels,
