@@ -10,6 +10,7 @@ class DateRange extends Component {
         super(props);
         this.handleChangeStart = this.handleChangeStart.bind(this);
         this.handleChangeEnd = this.handleChangeEnd.bind(this);
+        this.handleChangeInterval = this.handleChangeInterval.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -19,6 +20,10 @@ class DateRange extends Component {
 
     handleChangeEnd(date) {
         this.props.changeEndDate(date);
+    }
+
+    handleChangeInterval(event) {
+        this.props.changeInterval(event.target.value);
     }
 
     handleSubmit() {
@@ -49,6 +54,17 @@ class DateRange extends Component {
                         endDate={this.props.endDate}
                         onChange={this.handleChangeEnd}
                     />
+                </div>
+                <div className="col-2">
+                    <label htmlFor="intervalSelector">Interval</label>
+                    <select id="intervalSelector" className="form-control" value={this.props.interval} onChange={this.handleChangeInterval}>
+                        <option value="minute">Minute</option>
+                        <option value="hour">Hourly</option>
+                        <option value="day">Daily</option>
+                        <option value="week">Weekly</option>
+                        <option value="month">Monthly</option>
+                        <option value="year">Yearly</option>
+                    </select>
                 </div>
                 <div className="col-2">
                     <br/>
