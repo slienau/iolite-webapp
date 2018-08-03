@@ -42,7 +42,7 @@ class BarChart extends Component {
                     })
                 }
                 if(labels.length==0){
-                    device.usage.slice(0,MAX_ENTRYS-1).forEach(usage => {
+                    device.usage.slice(0,MAX_ENTRYS).forEach(usage => {
                         labels.push(usage.timestamp)
                     })
                 }
@@ -78,7 +78,7 @@ class BarChart extends Component {
                     hoverBorderColor: device.color,
                     data: []
                 }
-                device.usage.forEach(usage => {
+                device.usage.slice(0,MAX_ENTRYS).forEach(usage => {
                     singleDataset.data.push(usage.value)
                 })
                 datasets.push(singleDataset)

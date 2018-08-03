@@ -18,10 +18,36 @@ export const barChartOptions = {
     ...generalOptions,
     scales: {
         xAxes: [{
-            stacked: true
+            stacked: true,
+            type: "time",
+            display: true,
+            scaleLabel: {
+                display: true,
+                labelString: 'Date'
+            },
+            ticks: {
+                major: {
+                    fontStyle: 'bold',
+                    fontColor: 'grey'
+                }
+            },
+            time: {
+                displayFormats: {
+                    quarter: 'MMM YYYY'
+                },
+                min: null,
+                max: null
+            }
         }],
         yAxes: [{
-            stacked: true
+            stacked: true,
+            scaleLabel: {
+                display: true,
+                labelString: 'Power Consumption'
+            },
+            ticks: {
+                beginAtZero: true
+            }
         }]
     }
 }

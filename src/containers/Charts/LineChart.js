@@ -53,7 +53,7 @@ class LineChart extends Component {
                     fill: false,
                     data: []
                 };
-                device.usage.slice(0,MAX_ENTRYS-1).forEach(usage => {
+                device.usage.slice(0,MAX_ENTRYS).forEach(usage => {
                     var dataEntry = {
                         x: new Date(usage.timestamp),
                         y: usage.value
