@@ -33,7 +33,8 @@ class Device extends Component {
         }
         if(this.props.noUsageData) {
             deviceNameStyle = {
-                fontStyle: 'italic'
+                fontStyle: 'italic',
+                color: 'lightgrey'
             }
         }
         return (
