@@ -10,7 +10,8 @@ class LineChart extends Component {
         this.state = {
             chartData: {},
             chartOptions: lineChartOptions,
-            alertSent: false
+            max_entries: 200,
+            showWarning: false
         };
     }
 
@@ -29,21 +30,19 @@ class LineChart extends Component {
     }
 
     getChartData(showData) {
-        const MAX_ENTRYS = 200;
-        let alertSentInside = false;
         let datasets = [];
-
+        this.setState({
+            showWarning: false
+        });
         showData.rooms.forEach(room => {
             room.devices.forEach(device => {
-                if(device.usage.length>MAX_ENTRYS && !this.state.alertSent && !alertSentInside) {
-                    alert('Too many data entrys for line chart. Only the first ' + MAX_ENTRYS + ' entrys will be displayed. Please choose a different time range or change interval.')
-                    alertSentInside = true;
+                if (device.usage.length > this.state.max_entries) {
                     this.setState({
-                        alertSent: true
+                        showWarning: true
                     })
                 }
-                var deviceColor = device.color;
-                var dataset = {
+                const deviceColor = device.color;
+                const dataset = {
                     label: device.name,
                     backgroundColor: deviceColor,
                     borderColor: deviceColor,
@@ -53,27 +52,34 @@ class LineChart extends Component {
                     fill: false,
                     data: []
                 };
-                device.usage.slice(0,MAX_ENTRYS).forEach(usage => {
-                    var dataEntry = {
+                device.usage.slice(0, this.state.max_entries).forEach(usage => {
+                    const dataEntry = {
                         x: new Date(usage.timestamp),
                         y: usage.value
-                    }
+                    };
                     dataset.data.push(dataEntry);
-                })
+                });
                 datasets.push(dataset);
             })
-        })
+        });
 
-        const chartData = {
+        return {
             datasets: datasets
-        }
-        return chartData;
+        };
     }
 
     render() {
+        let warning = '';
+        if (this.state.showWarning) {
+            warning = (<div className="alert alert-warning" role="alert">
+                Too many data points for line chart in the selected time frame / interval. <b>Only the
+                first {this.state.max_entries} entries will be displayed</b>. Please choose a different time range or
+                change interval.
+            </div>)
+        }
         return (
             <div>
-
+                {warning}
                 <Line
                     data={this.state.chartData}
                     options={this.state.chartOptions}

@@ -10,7 +10,8 @@ class BarChart extends Component {
         this.state = {
             chartData: {},
             chartOptions: barChartOptions,
-            alertSent: false
+            max_entries: 50,
+            showWarning: false
         };
     }
 
@@ -29,27 +30,26 @@ class BarChart extends Component {
     }
 
     getChartData(visibleData) {
-        const MAX_ENTRYS = 50;
-        let alertSentInside = false;
-        let labels = []
+        let labels = [];
+        this.setState({
+            showWarning: false
+        });
         visibleData.rooms.forEach(room => {
             room.devices.forEach(device => {
-                if(device.usage.length>MAX_ENTRYS && !this.state.alertSent && !alertSentInside) {
-                    alert('Too many data entrys for Bar chart. Only the first ' + MAX_ENTRYS + ' entrys will be displayed. Please choose a different time range or change interval.')
-                    alertSentInside = true;
+                if (device.usage.length > this.state.max_entries) {
                     this.setState({
-                        alertSent: true
+                        showWarning: true
                     })
                 }
-                if(labels.length==0){
-                    device.usage.slice(0,MAX_ENTRYS).forEach(usage => {
+                if (labels.length === 0) {
+                    device.usage.slice(0, this.state.max_entries).forEach(usage => {
                         labels.push(usage.timestamp)
                     })
                 }
             })
-        })
+        });
 
-        let devices = []
+        let devices = [];
         visibleData.rooms.forEach(room => {
             room.devices.forEach((device => {
                 let sum = device.usage.reduce((acc,cur) => acc + cur.value, 0)
@@ -58,12 +58,12 @@ class BarChart extends Component {
                     color: device.color,
                     usage: device.usage,
                     usageSum: sum
-                }
+                };
                 devices.push(thisDevice);
             }))
-        })
+        });
 
-        let datasets = []
+        let datasets = [];
         devices
             .sort(function (a, b) { // sort by usage sum
                 return (a.usageSum < b.usageSum) ? 1 : ((b.usageSum < a.usageSum) ? -1 : 0);
@@ -77,25 +77,31 @@ class BarChart extends Component {
                     hoverBackgroundColor: device.color,
                     hoverBorderColor: device.color,
                     data: []
-                }
-                device.usage.slice(0,MAX_ENTRYS).forEach(usage => {
+                };
+                device.usage.slice(0, this.state.max_entries).forEach(usage => {
                     singleDataset.data.push(usage.value)
-                })
+                });
                 datasets.push(singleDataset)
-            })
+            });
 
-        const chartData = {
+        return {
             labels: labels,
             datasets: datasets
-        }
-
-        return chartData;
+        };
     }
 
     render() {
+        let warning = '';
+        if (this.state.showWarning) {
+            warning = (<div className="alert alert-warning" role="alert">
+                Too many data points for bar chart in the selected time frame / interval. <b>Only the
+                first {this.state.max_entries} entries will be displayed</b>. Please choose a different time range or
+                change interval.
+            </div>)
+        }
         return (
             <div>
-
+                {warning}
                 <Bar
                     data={this.state.chartData}
                     options={this.state.chartOptions}
