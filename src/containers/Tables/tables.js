@@ -44,7 +44,7 @@ const TableBody = (prop) => {
           <tr  data-toggle="collapse" data-target={"#"+item.expId} aria-expanded="false">
             <td>{item.date.toDateString()}</td>
             <td>{item.consumption}</td>
-            <td>$$</td>
+            <td>{(item.consumption * prop.costs).toFixed(2)} {prop.currency}</td>
           </tr>
           </tbody>
           <tbody className="collapse multi-collapse expRows" id={item.expId}>
@@ -52,7 +52,7 @@ const TableBody = (prop) => {
               <tr>
                 <td className="deviceCell">{trow.device + " (" + trow.room + ")"}</td>
                 <td>{trow.value}</td>
-                <td>{trow.costs}</td>
+                <td>{(trow.value * prop.costs).toFixed(2)} {prop.currency}</td>
             </tr>
           ))}
           </tbody>
@@ -137,7 +137,6 @@ class Tables extends Component {
               if(currDate > tableData[i].date.getTime() && currDate < tableData[i+1].date.getTime()) {
                   tableData[i].content.push(elem);
                   tableData[i].consumption += elem.value;
-                  //elem.costs =  elem.value * this.props.costs + " " + this.props.currency;
                   return false;
               }
 
@@ -155,7 +154,7 @@ class Tables extends Component {
           <div className="table-responsive">
             <table className="table table-striped table-sm">
               <TableHead list={columnMetaData}> </TableHead>
-              <TableBody list={tableData}> </TableBody>
+              <TableBody list={tableData}costs={this.props.price}currency={this.props.currency}> </TableBody>
             </table>
           </div>
         </div>
