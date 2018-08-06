@@ -76,7 +76,7 @@ class Settings extends Component {
                           <a className="dropdown-item" onClick={() => this.props.changeDateRange('1d')}>1 Day</a>
                           <a className="dropdown-item" onClick={() => this.props.changeDateRange('1w')}>1 Week</a>
                           <a className="dropdown-item" onClick={() => this.props.changeDateRange('1m')}>1 Month</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1m')}>1 Year</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1y')}>1 Year</a>
                         </div>
                       </div>
                     </div>
