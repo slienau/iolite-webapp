@@ -14,6 +14,9 @@ class Settings extends Component {
 
   }
 
+  upperCase(string){
+    return string.charAt(0).toUpperCase()+string.slice(1);
+  }
   displayNavbar(string){
      return string.charAt(0).toLowerCase() + string.slice(1);
     }
@@ -76,10 +79,10 @@ class Settings extends Component {
                         <button className="btn btn-secondary dropdown-toggle" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                          {this.props.daterange}
+                          {this.upperCase(this.daterange(this.props.daterange))}
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('minute')}>Minute</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('minute')}>Minutely</a>
                           <a className="dropdown-item" onClick={() => this.props.changeDateRange('hour')}>Hourly</a>
                           <a className="dropdown-item" onClick={() => this.props.changeDateRange('day')}>Daily</a>
                           <a className="dropdown-item" onClick={() => this.props.changeDateRange('week')}>Weekly</a>
