@@ -19,17 +19,23 @@ class Settings extends Component {
     }
 
     daterange(string){
-      if (string === '1d'){
-          return 'one day';
-      }
-        if (string === '1w'){
-            return 'one week';
+        if (string === 'minute'){
+            return 'minutely';
         }
-        if (string === '1m'){
-            return 'one month';
+        if (string === 'hour'){
+            return 'hourly';
         }
-        if (string === '1y'){
-            return 'one year';
+        if (string === 'day'){
+          return 'daily';
+        }
+        if (string === 'week'){
+            return 'weekly';
+        }
+        if (string === 'month'){
+            return 'monthly';
+        }
+        if (string === 'year'){
+            return 'yearly';
         }
     }
 
@@ -63,7 +69,7 @@ class Settings extends Component {
                     <br/>
                   <div className="row">
                     <div className="col-md-6">
-                       Daterange is {this.daterange(this.props.daterange)}
+                       Interval is {this.daterange(this.props.daterange)}
                     </div>
                     <div className="col-md-6">
                       <div className="dropdown">
@@ -73,10 +79,12 @@ class Settings extends Component {
                           {this.props.daterange}
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1d')}>1 Day</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1w')}>1 Week</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1m')}>1 Month</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1y')}>1 Year</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('minute')}>Minute</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('hour')}>Hourly</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('day')}>Daily</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('week')}>Weekly</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('month')}>Monthly</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('year')}>Yearly</a>
                         </div>
                       </div>
                     </div>

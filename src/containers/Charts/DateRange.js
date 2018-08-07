@@ -32,6 +32,14 @@ class DateRange extends Component {
 
     render() {
 
+        var interval = this.props.standardInterval;
+
+        if (this.props.interval !== ''){
+            interval = this.props.interval;
+        }
+
+        console.log(interval);
+
         return (
             <div className="row justify-content-end">
                 <div>
@@ -57,7 +65,7 @@ class DateRange extends Component {
                 </div>
                 <div>
                     <label htmlFor="intervalSelector">Interval</label>
-                    <select id="intervalSelector" className="form-control" value={this.props.interval} onChange={this.handleChangeInterval}>
+                    <select id="intervalSelector" className="form-control" value={interval} onChange={this.handleChangeInterval}>
                         <option value="minute">Minute</option>
                         <option value="hour">Hourly</option>
                         <option value="day">Daily</option>
@@ -89,7 +97,8 @@ function mapStateToProps(state) {
     return {
         startDate: state.home.startDate,
         endDate: state.home.endDate,
-        interval: state.home.interval
+        interval: state.home.interval,
+        standardInterval: state.settings.daterange
     };
 }
 
