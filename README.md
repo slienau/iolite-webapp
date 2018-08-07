@@ -15,6 +15,7 @@ Modul Ambient Assisted Living (BINF-SWT-AAL), summer term 2018, group 3.
   
 ## Features
 
+![Energy UI APP Screenshot](energy_ui_screenshot.png)
 * TODO
  
  
