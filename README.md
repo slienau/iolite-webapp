@@ -40,16 +40,20 @@ Just run `./mvnw package` to build the project.
 ## Built With
 
 * [React](https://reactjs.org/) - JavaScript library for building user interfaces
+* [Redux](https://redux.js.org/) - state container for JavaScript apps
+* [webpack](https://webpack.js.org/) - JavaScript bundler
+* [Babel](https://babeljs.io/) - JavaScript compiler
+* [Bootstrap](https://getbootstrap.com/) - Sleek, intuitive, and powerful front-end framework
 * [Chart.js](https://www.chartjs.org/) - Simple yet flexible JavaScript charting for designers & developers
 * [react-chartjs-2](https://github.com/jerairrest/react-chartjs-2/) - React wrapper for Chart.js 2
-* [Bootstrap](https://getbootstrap.com/) - Sleek, intuitive, and powerful front-end framework
-* [Babel](https://babeljs.io/) - JavaScript compiler
-* [webpack](https://webpack.js.org/) - JavaScript bundler
+* [ReactJS Datepicker](https://reactdatepicker.com/) - a datepicker component for React.
+* [React Icons](http://react-icons.github.io/react-icons/index.html) - icons for React projects
+
+Tools:
 * [npm](https://www.npmjs.com/) - package manager for JavaScript 
 * [Maven](https://maven.apache.org/) - Build automation tool and dependency management
 * [GitLab](https://about.gitlab.com/) - Git repository manager, wiki, issue tracking and CI/CD
-* [React Icons] (http://react-icons.github.io/react-icons/index.html) - Include popular icons in your React projects easly with react-icons, which utilizes ES6 imports that allows you to include only the icons that your project is using.
-* [chartjs-plugin-zoom] (https://github.com/chartjs/chartjs-plugin-zoom) - Zoom and pan plugin for Chart.js
+
 
 
 ## Authors
