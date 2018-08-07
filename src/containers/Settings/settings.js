@@ -14,6 +14,25 @@ class Settings extends Component {
 
   }
 
+  checkInput(string){
+    string = string.replace('.', ',');
+    if (string.length>5){
+      console.log('there');
+      return string[5];
+    }
+
+    var rgx = /^[0-9]*\,?[0-9]*$/;
+    var x = string.match(rgx);
+    if(x == null){
+        return this.props.price;
+
+    }
+    if (x[0] === string){
+      return string
+      }
+
+    return this.props.price;
+  }
   upperCase(string){
     return string.charAt(0).toUpperCase()+string.slice(1);
   }
@@ -105,7 +124,7 @@ class Settings extends Component {
 
                     <div className="col-md-6">
                       <input type="text"
-                             onBlur={evt => this.props.changePrice(evt.target.value.replace('.', ','))} className="width"/>
+                             onBlur={evt => this.props.changePrice(this.checkInput(evt.target.value))} className="width"/>
                     </div>
                   </div>
                     <br/>
