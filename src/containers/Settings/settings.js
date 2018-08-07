@@ -105,7 +105,7 @@ class Settings extends Component {
 
                     <div className="col-md-6">
                       <input type="text"
-                             onBlur={evt => this.props.changePrice(evt.target.value)} className="width"/>
+                             onBlur={evt => this.props.changePrice(evt.target.value.replace('.', ','))} className="width"/>
                     </div>
                   </div>
                     <br/>
