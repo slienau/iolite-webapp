@@ -49,8 +49,31 @@ export default function (state = initialState, action) {
             };
 
         case FETCH_DATA_SUCCESS:
+            let newStateRestData = Object.assign({}, state.restData)
+            let incomingRooms = action.content.rooms;
+            incomingRooms.forEach(room => {
+                room.devices.forEach(device => {
+                    device.usage.forEach(usage => {
+                        if (usage.hasOwnProperty('startTimestamp'))
+                            usage.timestamp = usage.startTimestamp;
+                    })
+                })
+            })
+
+            let indexOfUnknownRoom = newStateRestData.rooms.findIndex(room => room.id === "unknown")
+            if(incomingRooms[0].id === "unknown") {
+                // Handle rest data from group 1 (room id = "unknown")
+                newStateRestData.rooms.splice(indexOfUnknownRoom)
+                newStateRestData.rooms.push(incomingRooms[0])
+            } else {
+                // Handle rest data from group 2 (multiple incomingRooms / no room id "unknown")
+                const unknownRoom = newStateRestData.rooms[indexOfUnknownRoom]; // save unknown room to add it later
+                newStateRestData.rooms = incomingRooms;
+                newStateRestData.rooms.push(unknownRoom)
+            }
+
             return Object.assign({}, state, {
-                restData: action.content,
+                restData: newStateRestData,
                 loading: false,
             });
 

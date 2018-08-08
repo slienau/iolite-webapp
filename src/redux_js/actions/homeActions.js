@@ -9,7 +9,6 @@ import {
     CREATE_DEVICE_COLORS
 } from './types'
 import sampleData from '../../../resources/rest_sample_response.json'
-import sampleDataGroup1 from '../../../resources/sample_data_group_1.json'
 import moment from "moment";
 
 export function toggleDeviceSwitch(deviceId, visible) {
@@ -23,11 +22,16 @@ export function toggleDeviceSwitch(deviceId, visible) {
     }
 }
 
-export function fetchData(startDate = moment().subtract(1, 'months'), endDate = moment(), interval = 'day') {
+export function fetchData(group = 0, startDate = moment().subtract(1, 'months'), endDate = moment(), interval = 'day') {
     startDate = startDate.unix();
     endDate = endDate.unix();
-    console.log('fetching data from ' + startDate + ' to ' + endDate + ' with interval ' + interval)
-    let url = new URL('http://localhost:3000/resources/rest_sample_response.json');
+    let urlString = 'http://localhost:3000/resources/rest_sample_response.json';
+    if(group===1)
+        urlString = 'http://localhost:3000/resources/sample_data_group_1.json' //TODO: insert group 1 endpoint
+    if(group===2)
+        urlString = 'http://localhost:3000/resources/rest_sample_response.json' //TODO: insert group 2 endpoint
+    console.log('fetching data from ' + startDate + ' to ' + endDate + ' with interval ' + interval + ' from URL ' + urlString)
+    let url = new URL(urlString);
     const params = {
         from: startDate,
         to: endDate,

@@ -1,6 +1,8 @@
 {
   "rooms": [
     {
+      "id": "unknown",
+      "name": "Unknown",
       "devices": [
         {
           "id": "oven",

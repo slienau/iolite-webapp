@@ -27,7 +27,8 @@ class DateRange extends Component {
     }
 
     handleSubmit() {
-        this.props.fetchData(this.props.startDate, this.props.endDate, this.props.interval)
+        this.props.fetchData(1, this.props.startDate, this.props.endDate, this.props.interval); // fetch data from group 1
+        this.props.fetchData(2, this.props.startDate, this.props.endDate, this.props.interval); // fetch data from group 2
     }
 
     render() {
