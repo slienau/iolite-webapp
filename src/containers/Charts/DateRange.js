@@ -58,12 +58,10 @@ class DateRange extends Component {
                 <div>
                     <label htmlFor="intervalSelector">Interval</label>
                     <select id="intervalSelector" className="form-control" value={this.props.interval} onChange={this.handleChangeInterval}>
-                        <option value="minute">Minute</option>
                         <option value="hour">Hourly</option>
                         <option value="day">Daily</option>
                         <option value="week">Weekly</option>
                         <option value="month">Monthly</option>
-                        <option value="year">Yearly</option>
                     </select>
                 </div>
                 <div>
