@@ -47,7 +47,7 @@ class LineChart extends Component {
                     backgroundColor: deviceColor,
                     borderColor: deviceColor,
                     borderWidth: '1',
-                    pointRadius: '0',
+                    pointRadius: '2',
                     pointHoverRadius: '3',
                     fill: false,
                     data: []
