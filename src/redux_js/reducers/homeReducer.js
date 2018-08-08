@@ -55,7 +55,7 @@ export default function (state = initialState, action) {
                 room.devices.forEach(device => {
                     device.usage.forEach(usage => {
                         if (usage.hasOwnProperty('startTimestamp'))
-                            usage.timestamp = usage.startTimestamp;
+                            usage.timestamp = moment.unix(usage.startTimestamp).utc();
                     })
                 })
             })
@@ -71,7 +71,6 @@ export default function (state = initialState, action) {
                 newStateRestData.rooms = incomingRooms;
                 newStateRestData.rooms.push(unknownRoom)
             }
-
             return Object.assign({}, state, {
                 restData: newStateRestData,
                 loading: false,
