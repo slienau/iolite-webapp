@@ -8,7 +8,8 @@ import {
     FETCH_DATA_FAILURE,
     CREATE_DEVICE_COLORS
 } from './types'
-import sampleData from '../../../resources/rest_sample_response.json' //TODO: remove this when productive
+import sampleData from '../../../resources/rest_sample_response.json'
+import sampleDataGroup1 from '../../../resources/sample_data_group_1.json'
 import moment from "moment";
 
 export function toggleDeviceSwitch(deviceId, visible) {
@@ -26,7 +27,7 @@ export function fetchData(startDate = moment().subtract(1, 'months'), endDate = 
     startDate = startDate.unix();
     endDate = endDate.unix();
     console.log('fetching data from ' + startDate + ' to ' + endDate + ' with interval ' + interval)
-    let url = new URL('http://localhost:3000/resources/rest_data.json');
+    let url = new URL('http://localhost:3000/resources/rest_sample_response.json');
     const params = {
         from: startDate,
         to: endDate,
@@ -35,9 +36,7 @@ export function fetchData(startDate = moment().subtract(1, 'months'), endDate = 
     url.search = new URLSearchParams(params);
     return dispatch => {
         dispatch(fetchDataBegin());
-        dispatch(fetchDataSuccess(sampleData)) //TODO: remove this when productive
-        dispatch(createDeviceColors(sampleData)) //TODO: remove this when productive
-        /* return fetch(url)
+        return fetch(url)
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
@@ -48,7 +47,8 @@ export function fetchData(startDate = moment().subtract(1, 'months'), endDate = 
             .catch(error => {
                 dispatch(fetchDataFailure(error))
                 dispatch(fetchDataSuccess(sampleData));
-            }); */ //TODO: remove comment when productive
+                dispatch(createDeviceColors(sampleData));
+            });
     }
 }
 
