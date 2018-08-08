@@ -31,12 +31,13 @@ class PieChart extends Component {
         let showDevices = []
         showData.rooms.forEach(room => {
             room.devices.forEach((device => {
-                let sum = device.usage.reduce((acc,cur) => acc + cur.value, 0)
+                let sum = device.usage.reduce((acc, cur) => acc + cur.value, 0);
+                sum = Math.round(sum * 100) / 100;
                 let thisDevice = {
                     name: device.name,
                     color: device.color,
                     usageSum: sum
-                }
+                };
                 showDevices.push(thisDevice);
             }))
         })

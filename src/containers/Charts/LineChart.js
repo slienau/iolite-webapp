@@ -55,7 +55,7 @@ class LineChart extends Component {
                 device.usage.slice(0, this.state.max_entries).forEach(usage => {
                     const dataEntry = {
                         x: new Date(usage.timestamp),
-                        y: usage.value
+                        y: Math.round(usage.value * 100) / 100
                     };
                     dataset.data.push(dataEntry);
                 });
