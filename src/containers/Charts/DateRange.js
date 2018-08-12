@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import {changeStartDate, changeEndDate, changeInterval, fetchData} from "../../redux_js/actions/homeActions";
 import connect from "react-redux/es/connect/connect";
 import PropTypes from "prop-types";
+import moment from "moment";
 
 
 class DateRange extends Component {
@@ -14,11 +15,13 @@ class DateRange extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChangeStart(date) {
+    handleChangeStart(event) {
+        let date = moment(event.target.value);
         this.props.changeStartDate(date);
     }
 
-    handleChangeEnd(date) {
+    handleChangeEnd(event) {
+        let date = moment(event.target.value);
         this.props.changeEndDate(date);
     }
 
@@ -31,30 +34,46 @@ class DateRange extends Component {
         this.props.fetchData(2, this.props.startDate, this.props.endDate, this.props.interval); // fetch data from group 2
     }
 
+    getCurrentDate(date){
+
+        let dd = date.getDate();
+        let mm = date.getMonth()+1; //January is 0!
+        let yyyy = date.getFullYear();
+
+        if(dd<10) {
+            dd = '0'+dd
+        }
+
+        if(mm<10) {
+            mm = '0'+mm
+        }
+
+        return yyyy + '-' + mm + '-' + dd;
+    }
     render() {
+
+        var interval = this.props.standardInterval;
+
+        if (this.props.interval !== ''){
+            interval = this.props.interval;
+        }
 
         return (
             <div className="row justify-content-end">
                 <div>
                     From
-                    <DatePicker
-                        selected={this.props.startDate}
-                        selectsStart
-                        startDate={this.props.startDate}
-                        endDate={this.props.endDate}
-                        onChange={this.handleChangeStart}
-                        dateFormatCalendar={"DD MM YYYY"}
-                    />
+                    <form>
+                        <input type='date' value={this.getCurrentDate(this.props.startDate['_d'])} onChange={this.handleChangeStart}/>
+                    </form>
+
                 </div>
                 <div>
+
                     To
-                    <DatePicker
-                        selected={this.props.endDate}
-                        selectsEnd
-                        startDate={this.props.startDate}
-                        endDate={this.props.endDate}
-                        onChange={this.handleChangeEnd}
-                    />
+                    <form>
+                        <input type='date' value={this.getCurrentDate(this.props.endDate['_d'])} onChange={this.handleChangeEnd}/>
+                    </form>
+
                 </div>
                 <div>
                     <label htmlFor="intervalSelector">Interval</label>
@@ -88,7 +107,8 @@ function mapStateToProps(state) {
     return {
         startDate: state.home.startDate,
         endDate: state.home.endDate,
-        interval: state.home.interval
+        interval: state.home.interval,
+        standardInterval: state.settings.daterange
     };
 }
 

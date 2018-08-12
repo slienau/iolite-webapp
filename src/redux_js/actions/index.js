@@ -6,7 +6,6 @@ export const changeMode = (mode) => {
 };
 
 export const changePrice = (price) => {
-    console.log('unexpected hello');
     return {type: CHANGE_PRICE, payload: price}
 };
 

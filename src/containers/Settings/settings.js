@@ -14,22 +14,53 @@ class Settings extends Component {
 
   }
 
+  checkInput(string){
+    string = string.replace('.', ',');
+    if (string.length>5){
+      console.log('there');
+      return string[5];
+    }
+
+    var rgx = /^[0-9]*\,?[0-9]*$/;
+    var x = string.match(rgx);
+    if(x == null){
+        return this.props.price;
+
+    }
+    if (x[0] === string){
+      return string
+      }
+
+    return this.props.price;
+  }
+  upperCase(string){
+      if (string == null){
+          return '';
+      }
+    return string.charAt(0).toUpperCase()+string.slice(1);
+  }
   displayNavbar(string){
      return string.charAt(0).toLowerCase() + string.slice(1);
     }
 
     daterange(string){
-      if (string === '1d'){
-          return 'one day';
-      }
-        if (string === '1w'){
-            return 'one week';
+        if (string === 'minute'){
+            return 'minutely';
         }
-        if (string === '1m'){
-            return 'one month';
+        if (string === 'hour'){
+            return 'hourly';
         }
-        if (string === '1y'){
-            return 'one year';
+        if (string === 'day'){
+          return 'daily';
+        }
+        if (string === 'week'){
+            return 'weekly';
+        }
+        if (string === 'month'){
+            return 'monthly';
+        }
+        if (string === 'year'){
+            return 'yearly';
         }
     }
 
@@ -43,7 +74,7 @@ class Settings extends Component {
                 <div className="col-md-6">
                   <div className="row">
                     <div className="col-md-6">
-                      Navbar is {this.displayNavbar(this.props.navbar)}
+                      Navbar: {this.displayNavbar(this.props.navbar)}
                     </div>
                     <div className="col-md-6">
                       <div className="dropdown">
@@ -63,20 +94,22 @@ class Settings extends Component {
                     <br/>
                   <div className="row">
                     <div className="col-md-6">
-                       Daterange is {this.daterange(this.props.daterange)}
+                       Interval: {this.daterange(this.props.daterange)}
                     </div>
                     <div className="col-md-6">
                       <div className="dropdown">
                         <button className="btn btn-secondary dropdown-toggle" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                          {this.props.daterange}
+                          {this.upperCase(this.daterange(this.props.daterange))}
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1d')}>1 Day</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1w')}>1 Week</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1m')}>1 Month</a>
-                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('1m')}>1 Year</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('minute')}>Minutely</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('hour')}>Hourly</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('day')}>Daily</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('week')}>Weekly</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('month')}>Monthly</a>
+                          <a className="dropdown-item" onClick={() => this.props.changeDateRange('year')}>Yearly</a>
                         </div>
                       </div>
                     </div>
@@ -94,7 +127,7 @@ class Settings extends Component {
 
                     <div className="col-md-6">
                       <input type="text"
-                             onBlur={evt => this.props.changePrice(evt.target.value)} className="width"/>
+                             onBlur={evt => this.props.changePrice(this.checkInput(evt.target.value))} className="width"/>
                     </div>
                   </div>
                     <br/>
