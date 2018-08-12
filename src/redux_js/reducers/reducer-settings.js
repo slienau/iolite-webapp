@@ -11,7 +11,7 @@ const initialState= {
     price: '0.3',
     currency: '€',
     navbar: 'Collapsed',
-    daterange: '1 Week'
+    daterange: 'week'
 };
 
 export default function (state = initialState, action){

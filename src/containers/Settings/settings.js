@@ -34,6 +34,9 @@ class Settings extends Component {
     return this.props.price;
   }
   upperCase(string){
+      if (string == null){
+          return '';
+      }
     return string.charAt(0).toUpperCase()+string.slice(1);
   }
   displayNavbar(string){
@@ -71,7 +74,7 @@ class Settings extends Component {
                 <div className="col-md-6">
                   <div className="row">
                     <div className="col-md-6">
-                      Navbar is {this.displayNavbar(this.props.navbar)}
+                      Navbar: {this.displayNavbar(this.props.navbar)}
                     </div>
                     <div className="col-md-6">
                       <div className="dropdown">
@@ -91,7 +94,7 @@ class Settings extends Component {
                     <br/>
                   <div className="row">
                     <div className="col-md-6">
-                       Interval is {this.daterange(this.props.daterange)}
+                       Interval: {this.daterange(this.props.daterange)}
                     </div>
                     <div className="col-md-6">
                       <div className="dropdown">
