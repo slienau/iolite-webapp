@@ -52,7 +52,8 @@ class BarChart extends Component {
         let devices = [];
         visibleData.rooms.forEach(room => {
             room.devices.forEach((device => {
-                let sum = device.usage.reduce((acc,cur) => acc + cur.value, 0)
+                let sum = device.usage.reduce((acc, cur) => acc + cur.value, 0);
+                sum = Math.round(sum * 100) / 100;
                 let thisDevice = {
                     name: device.name,
                     color: device.color,
@@ -79,7 +80,7 @@ class BarChart extends Component {
                     data: []
                 };
                 device.usage.slice(0, this.state.max_entries).forEach(usage => {
-                    singleDataset.data.push(usage.value)
+                    singleDataset.data.push(Math.round(usage.value * 100) / 100)
                 });
                 datasets.push(singleDataset)
             });

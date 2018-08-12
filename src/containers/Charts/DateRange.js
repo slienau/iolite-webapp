@@ -30,7 +30,8 @@ class DateRange extends Component {
     }
 
     handleSubmit() {
-        this.props.fetchData(this.props.startDate, this.props.endDate, this.props.interval)
+        this.props.fetchData(1, this.props.startDate, this.props.endDate, this.props.interval); // fetch data from group 1
+        this.props.fetchData(2, this.props.startDate, this.props.endDate, this.props.interval); // fetch data from group 2
     }
 
     getCurrentDate(date){
@@ -76,13 +77,11 @@ class DateRange extends Component {
                 </div>
                 <div>
                     <label htmlFor="intervalSelector">Interval</label>
-                    <select id="intervalSelector" className="form-control" value={interval} onChange={this.handleChangeInterval}>
-                        <option value="minute">Minute</option>
+                    <select id="intervalSelector" className="form-control" value={this.props.interval} onChange={this.handleChangeInterval}>
                         <option value="hour">Hourly</option>
                         <option value="day">Daily</option>
                         <option value="week">Weekly</option>
                         <option value="month">Monthly</option>
-                        <option value="year">Yearly</option>
                     </select>
                 </div>
                 <div>

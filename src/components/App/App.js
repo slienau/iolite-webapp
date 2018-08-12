@@ -18,7 +18,8 @@ class App extends Component {
   }
 
   componentWillMount() {
-      this.props.fetchData();
+      this.props.fetchData(1); // fetch data from group 1
+      this.props.fetchData(2); // fetch data from group 2
       this.switchContentPage('charts'); // start on 'charts' page
   }
 
