@@ -28,6 +28,8 @@ import java.net.URI;
 import java.text.MessageFormat;
 import java.util.Map;
 
+import de.aalss18.dataEngine2.Main;
+
 public class App extends AbstractIOLITEApp {
 
     @Nonnull
@@ -39,6 +41,8 @@ public class App extends AbstractIOLITEApp {
     private FrontendAPI frontendAPI;
     private EnvironmentAPI environmentAPI;
 
+    private Thread restServer;
+
     /**
      * front end assets
      */
@@ -48,11 +52,26 @@ public class App extends AbstractIOLITEApp {
 
     }
 
+    public static Thread startServer() {
+        Thread server =  new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Main.main(null);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        server.start();
+        return server;
+    }
+
     @Override
     protected final void startHook(@Nonnull final IOLITEAPIProvider context) throws StartFailedException {
         LOGGER.debug("Starting");
 
         try {
+            Class.forName("org.postgresql.Driver");
             // use User API
             this.userAPI = context.getAPI(UserAPI.class);
             LOGGER.debug("Running for user '{}' with locale '{}'", this.userAPI.getUser().getIdentifier(), this.userAPI.getUser().getLocale());
@@ -85,8 +104,12 @@ public class App extends AbstractIOLITEApp {
             throw new StartFailedException(MessageFormat.format("Start failed due to permission denied problems in the Energy UI: {0}", e.getMessage()), e);
         } catch (final StorageAPIException | FrontendAPIException e) {
             throw new StartFailedException(MessageFormat.format("Start failed due to an error in the App API Energy UI: {0}", e.getMessage()), e);
+        } catch (ClassNotFoundException e) {
+            throw new StartFailedException(MessageFormat.format("Start failed due to an error with loading the database driver: {0}", e.getMessage()), e);
         }
 
+        LOGGER.debug("starting api...");
+        restServer = this.startServer();
         LOGGER.debug("Started");
     }
 
@@ -98,6 +121,8 @@ public class App extends AbstractIOLITEApp {
         if (this.disposeableAssets != null) {
             this.disposeableAssets.dispose();
         }
+
+        restServer.stop();
 
         LOGGER.debug("Stopped");
     }
