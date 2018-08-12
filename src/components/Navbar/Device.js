@@ -33,7 +33,8 @@ class Device extends Component {
         }
         if(this.props.noUsageData) {
             deviceNameStyle = {
-                fontStyle: 'italic'
+                fontStyle: 'italic',
+                color: 'lightgrey'
             }
         }
         return (
@@ -54,7 +55,7 @@ class Device extends Component {
 Device.propTypes = {
     deviceName: PropTypes.string.isRequired,
     deviceId: PropTypes.string.isRequired,
-    deviceColor: PropTypes.string.isRequired,
+    deviceColor: PropTypes.string,
     noUsageData: PropTypes.bool.isRequired,
     toggleDeviceSwitch: PropTypes.func.isRequired
 };

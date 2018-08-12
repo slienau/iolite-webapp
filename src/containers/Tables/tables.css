@@ -18,3 +18,11 @@ th {
 
    align: right;
 }
+
+.expRows{
+    background-color: antiquewhite;
+}
+
+.headerRows{
+    background-color: white;
+}

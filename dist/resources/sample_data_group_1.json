@@ -1,0 +1,640 @@
+{
+	"rooms": [
+		{
+			"devices": [
+				{
+					"usage": [
+						{
+							"endTimestamp": 1404062630,
+							"value": 0,
+							"startTimestamp": 1404059030
+						},
+						{
+							"endTimestamp": 1404066230,
+							"value": 189.65447154471545,
+							"startTimestamp": 1404062630
+						},
+						{
+							"endTimestamp": 1404069830,
+							"value": 15.078231292517007,
+							"startTimestamp": 1404066230
+						},
+						{
+							"endTimestamp": 1404073430,
+							"value": 6.885964912280702,
+							"startTimestamp": 1404069830
+						},
+						{
+							"endTimestamp": 1404077030,
+							"value": 0,
+							"startTimestamp": 1404073430
+						},
+						{
+							"endTimestamp": 1404080630,
+							"value": 0,
+							"startTimestamp": 1404077030
+						},
+						{
+							"endTimestamp": 1404084230,
+							"value": 0,
+							"startTimestamp": 1404080630
+						},
+						{
+							"endTimestamp": 1404087830,
+							"value": 0,
+							"startTimestamp": 1404084230
+						},
+						{
+							"endTimestamp": 1404091430,
+							"value": 0,
+							"startTimestamp": 1404087830
+						},
+						{
+							"endTimestamp": 1404095030,
+							"value": 0,
+							"startTimestamp": 1404091430
+						},
+						{
+							"endTimestamp": 1404098630,
+							"value": 0,
+							"startTimestamp": 1404095030
+						},
+						{
+							"endTimestamp": 1404102230,
+							"value": 0,
+							"startTimestamp": 1404098630
+						},
+						{
+							"endTimestamp": 1404105830,
+							"value": 0,
+							"startTimestamp": 1404102230
+						},
+						{
+							"endTimestamp": 1404109430,
+							"value": 0,
+							"startTimestamp": 1404105830
+						},
+						{
+							"endTimestamp": 1404113030,
+							"value": 0,
+							"startTimestamp": 1404109430
+						},
+						{
+							"endTimestamp": 1404116630,
+							"value": 0,
+							"startTimestamp": 1404113030
+						},
+						{
+							"endTimestamp": 1404120230,
+							"value": 0,
+							"startTimestamp": 1404116630
+						},
+						{
+							"endTimestamp": 1404123830,
+							"value": 0,
+							"startTimestamp": 1404120230
+						},
+						{
+							"endTimestamp": 1404127430,
+							"value": 0,
+							"startTimestamp": 1404123830
+						},
+						{
+							"endTimestamp": 1404131030,
+							"value": 687.9238938053097,
+							"startTimestamp": 1404127430
+						},
+						{
+							"endTimestamp": 1404134630,
+							"value": 13.41736227045075,
+							"startTimestamp": 1404131030
+						},
+						{
+							"endTimestamp": 1404138230,
+							"value": 3.4496644295302015,
+							"startTimestamp": 1404134630
+						},
+						{
+							"endTimestamp": 1404141830,
+							"value": 0,
+							"startTimestamp": 1404138230
+						},
+						{
+							"endTimestamp": 1404145430,
+							"value": 0,
+							"startTimestamp": 1404141830
+						}
+					],
+					"name": "oven",
+					"id": "oven"
+				},
+				{
+					"usage": [
+						{
+							"endTimestamp": 1404062630,
+							"value": 0,
+							"startTimestamp": 1404059030
+						},
+						{
+							"endTimestamp": 1404066230,
+							"value": 0,
+							"startTimestamp": 1404062630
+						},
+						{
+							"endTimestamp": 1404069830,
+							"value": 0,
+							"startTimestamp": 1404066230
+						},
+						{
+							"endTimestamp": 1404073430,
+							"value": 0,
+							"startTimestamp": 1404069830
+						},
+						{
+							"endTimestamp": 1404077030,
+							"value": 0,
+							"startTimestamp": 1404073430
+						},
+						{
+							"endTimestamp": 1404080630,
+							"value": 0,
+							"startTimestamp": 1404077030
+						},
+						{
+							"endTimestamp": 1404084230,
+							"value": 0,
+							"startTimestamp": 1404080630
+						},
+						{
+							"endTimestamp": 1404087830,
+							"value": 0,
+							"startTimestamp": 1404084230
+						},
+						{
+							"endTimestamp": 1404091430,
+							"value": 0,
+							"startTimestamp": 1404087830
+						},
+						{
+							"endTimestamp": 1404095030,
+							"value": 0,
+							"startTimestamp": 1404091430
+						},
+						{
+							"endTimestamp": 1404098630,
+							"value": 0,
+							"startTimestamp": 1404095030
+						},
+						{
+							"endTimestamp": 1404102230,
+							"value": 0,
+							"startTimestamp": 1404098630
+						},
+						{
+							"endTimestamp": 1404105830,
+							"value": 0,
+							"startTimestamp": 1404102230
+						},
+						{
+							"endTimestamp": 1404109430,
+							"value": 0,
+							"startTimestamp": 1404105830
+						},
+						{
+							"endTimestamp": 1404113030,
+							"value": 0,
+							"startTimestamp": 1404109430
+						},
+						{
+							"endTimestamp": 1404116630,
+							"value": 0,
+							"startTimestamp": 1404113030
+						},
+						{
+							"endTimestamp": 1404120230,
+							"value": 0,
+							"startTimestamp": 1404116630
+						},
+						{
+							"endTimestamp": 1404123830,
+							"value": 0,
+							"startTimestamp": 1404120230
+						},
+						{
+							"endTimestamp": 1404127430,
+							"value": 0,
+							"startTimestamp": 1404123830
+						},
+						{
+							"endTimestamp": 1404131030,
+							"value": 0,
+							"startTimestamp": 1404127430
+						},
+						{
+							"endTimestamp": 1404134630,
+							"value": 0,
+							"startTimestamp": 1404131030
+						},
+						{
+							"endTimestamp": 1404138230,
+							"value": 0,
+							"startTimestamp": 1404134630
+						},
+						{
+							"endTimestamp": 1404141830,
+							"value": 0,
+							"startTimestamp": 1404138230
+						},
+						{
+							"endTimestamp": 1404145430,
+							"value": 0,
+							"startTimestamp": 1404141830
+						}
+					],
+					"name": "dishwasher",
+					"id": "dishwasher"
+				},
+				{
+					"usage": [
+						{
+							"endTimestamp": 1404062630,
+							"value": 53.74045801526717,
+							"startTimestamp": 1404059030
+						},
+						{
+							"endTimestamp": 1404066230,
+							"value": 34.91166077738516,
+							"startTimestamp": 1404062630
+						},
+						{
+							"endTimestamp": 1404069830,
+							"value": 54.16591928251121,
+							"startTimestamp": 1404066230
+						},
+						{
+							"endTimestamp": 1404073430,
+							"value": 47.86486486486486,
+							"startTimestamp": 1404069830
+						},
+						{
+							"endTimestamp": 1404077030,
+							"value": 32.445205479452056,
+							"startTimestamp": 1404073430
+						},
+						{
+							"endTimestamp": 1404080630,
+							"value": 37.15371329879102,
+							"startTimestamp": 1404077030
+						},
+						{
+							"endTimestamp": 1404084230,
+							"value": 39.86971235194586,
+							"startTimestamp": 1404080630
+						},
+						{
+							"endTimestamp": 1404087830,
+							"value": 41.487266553480474,
+							"startTimestamp": 1404084230
+						},
+						{
+							"endTimestamp": 1404091430,
+							"value": 41.65928449744463,
+							"startTimestamp": 1404087830
+						},
+						{
+							"endTimestamp": 1404095030,
+							"value": 42.2972972972973,
+							"startTimestamp": 1404091430
+						},
+						{
+							"endTimestamp": 1404098630,
+							"value": 43.57823129251701,
+							"startTimestamp": 1404095030
+						},
+						{
+							"endTimestamp": 1404102230,
+							"value": 43.41105354058722,
+							"startTimestamp": 1404098630
+						},
+						{
+							"endTimestamp": 1404105830,
+							"value": 34.08517887563884,
+							"startTimestamp": 1404102230
+						},
+						{
+							"endTimestamp": 1404109430,
+							"value": 27.116438356164384,
+							"startTimestamp": 1404105830
+						},
+						{
+							"endTimestamp": 1404113030,
+							"value": 34.05,
+							"startTimestamp": 1404109430
+						},
+						{
+							"endTimestamp": 1404116630,
+							"value": 38.87328767123287,
+							"startTimestamp": 1404113030
+						},
+						{
+							"endTimestamp": 1404120230,
+							"value": 44.08600337268128,
+							"startTimestamp": 1404116630
+						},
+						{
+							"endTimestamp": 1404123830,
+							"value": 32.11709601873536,
+							"startTimestamp": 1404120230
+						},
+						{
+							"endTimestamp": 1404127430,
+							"value": 46.758389261744966,
+							"startTimestamp": 1404123830
+						},
+						{
+							"endTimestamp": 1404131030,
+							"value": 54.02654867256637,
+							"startTimestamp": 1404127430
+						},
+						{
+							"endTimestamp": 1404134630,
+							"value": 53.63439065108514,
+							"startTimestamp": 1404131030
+						},
+						{
+							"endTimestamp": 1404138230,
+							"value": 73.60906040268456,
+							"startTimestamp": 1404134630
+						},
+						{
+							"endTimestamp": 1404141830,
+							"value": 63.30769230769231,
+							"startTimestamp": 1404138230
+						},
+						{
+							"endTimestamp": 1404145430,
+							"value": 30.823429541595925,
+							"startTimestamp": 1404141830
+						}
+					],
+					"name": "fridge_freezer",
+					"id": "fridge_freezer"
+				},
+				{
+					"usage": [
+						{
+							"endTimestamp": 1404062630,
+							"value": 115.09053497942386,
+							"startTimestamp": 1404059030
+						},
+						{
+							"endTimestamp": 1404066230,
+							"value": 114.5304347826087,
+							"startTimestamp": 1404062630
+						},
+						{
+							"endTimestamp": 1404069830,
+							"value": 113.5,
+							"startTimestamp": 1404066230
+						},
+						{
+							"endTimestamp": 1404073430,
+							"value": 115.22929936305732,
+							"startTimestamp": 1404069830
+						},
+						{
+							"endTimestamp": 1404077030,
+							"value": 113.96389891696751,
+							"startTimestamp": 1404073430
+						},
+						{
+							"endTimestamp": 1404080630,
+							"value": 155.320819112628,
+							"startTimestamp": 1404077030
+						},
+						{
+							"endTimestamp": 1404084230,
+							"value": 113.37372013651877,
+							"startTimestamp": 1404080630
+						},
+						{
+							"endTimestamp": 1404087830,
+							"value": 113.23549488054607,
+							"startTimestamp": 1404084230
+						},
+						{
+							"endTimestamp": 1404091430,
+							"value": 113.22013651877133,
+							"startTimestamp": 1404087830
+						},
+						{
+							"endTimestamp": 1404095030,
+							"value": 113.1740614334471,
+							"startTimestamp": 1404091430
+						},
+						{
+							"endTimestamp": 1404098630,
+							"value": 113.3037542662116,
+							"startTimestamp": 1404095030
+						},
+						{
+							"endTimestamp": 1404102230,
+							"value": 113.27815699658703,
+							"startTimestamp": 1404098630
+						},
+						{
+							"endTimestamp": 1404105830,
+							"value": 113.54003407155025,
+							"startTimestamp": 1404102230
+						},
+						{
+							"endTimestamp": 1404109430,
+							"value": 113.6940170940171,
+							"startTimestamp": 1404105830
+						},
+						{
+							"endTimestamp": 1404113030,
+							"value": 113.77721088435374,
+							"startTimestamp": 1404109430
+						},
+						{
+							"endTimestamp": 1404116630,
+							"value": 113.7184300341297,
+							"startTimestamp": 1404113030
+						},
+						{
+							"endTimestamp": 1404120230,
+							"value": 156.23931623931625,
+							"startTimestamp": 1404116630
+						},
+						{
+							"endTimestamp": 1404123830,
+							"value": 144.88192771084337,
+							"startTimestamp": 1404120230
+						},
+						{
+							"endTimestamp": 1404127430,
+							"value": 138.43856655290102,
+							"startTimestamp": 1404123830
+						},
+						{
+							"endTimestamp": 1404131030,
+							"value": 153.54266211604096,
+							"startTimestamp": 1404127430
+						},
+						{
+							"endTimestamp": 1404134630,
+							"value": 123.45144804088586,
+							"startTimestamp": 1404131030
+						},
+						{
+							"endTimestamp": 1404138230,
+							"value": 121.88907849829351,
+							"startTimestamp": 1404134630
+						},
+						{
+							"endTimestamp": 1404141830,
+							"value": 118.9283276450512,
+							"startTimestamp": 1404138230
+						},
+						{
+							"endTimestamp": 1404145430,
+							"value": 117.58943781942078,
+							"startTimestamp": 1404141830
+						}
+					],
+					"name": "i7_desktop",
+					"id": "i7_desktop"
+				},
+				{
+					"usage": [
+						{
+							"endTimestamp": 1404062630,
+							"value": 68.62658227848101,
+							"startTimestamp": 1404059030
+						},
+						{
+							"endTimestamp": 1404066230,
+							"value": 68.15492957746478,
+							"startTimestamp": 1404062630
+						},
+						{
+							"endTimestamp": 1404069830,
+							"value": 68.34671532846716,
+							"startTimestamp": 1404066230
+						},
+						{
+							"endTimestamp": 1404073430,
+							"value": 68.5141065830721,
+							"startTimestamp": 1404069830
+						},
+						{
+							"endTimestamp": 1404077030,
+							"value": 69.20879120879121,
+							"startTimestamp": 1404073430
+						},
+						{
+							"endTimestamp": 1404080630,
+							"value": 22.49914821124361,
+							"startTimestamp": 1404077030
+						},
+						{
+							"endTimestamp": 1404084230,
+							"value": 0.2440273037542662,
+							"startTimestamp": 1404080630
+						},
+						{
+							"endTimestamp": 1404087830,
+							"value": 0.28668941979522183,
+							"startTimestamp": 1404084230
+						},
+						{
+							"endTimestamp": 1404091430,
+							"value": 0.24573378839590443,
+							"startTimestamp": 1404087830
+						},
+						{
+							"endTimestamp": 1404095030,
+							"value": 0.2627986348122867,
+							"startTimestamp": 1404091430
+						},
+						{
+							"endTimestamp": 1404098630,
+							"value": 0.26621160409556316,
+							"startTimestamp": 1404095030
+						},
+						{
+							"endTimestamp": 1404102230,
+							"value": 0.24744027303754265,
+							"startTimestamp": 1404098630
+						},
+						{
+							"endTimestamp": 1404105830,
+							"value": 0.24573378839590443,
+							"startTimestamp": 1404102230
+						},
+						{
+							"endTimestamp": 1404109430,
+							"value": 0.23720136518771331,
+							"startTimestamp": 1404105830
+						},
+						{
+							"endTimestamp": 1404113030,
+							"value": 0.15476190476190477,
+							"startTimestamp": 1404109430
+						},
+						{
+							"endTimestamp": 1404116630,
+							"value": 0.1465076660988075,
+							"startTimestamp": 1404113030
+						},
+						{
+							"endTimestamp": 1404120230,
+							"value": 0.18088737201365188,
+							"startTimestamp": 1404116630
+						},
+						{
+							"endTimestamp": 1404123830,
+							"value": 0.18225419664268586,
+							"startTimestamp": 1404120230
+						},
+						{
+							"endTimestamp": 1404127430,
+							"value": 0.21843003412969283,
+							"startTimestamp": 1404123830
+						},
+						{
+							"endTimestamp": 1404131030,
+							"value": 0.1793570219966159,
+							"startTimestamp": 1404127430
+						},
+						{
+							"endTimestamp": 1404134630,
+							"value": 0.20442930153321975,
+							"startTimestamp": 1404131030
+						},
+						{
+							"endTimestamp": 1404138230,
+							"value": 0.22696245733788395,
+							"startTimestamp": 1404134630
+						},
+						{
+							"endTimestamp": 1404141830,
+							"value": 0.21160409556313994,
+							"startTimestamp": 1404138230
+						},
+						{
+							"endTimestamp": 1404145430,
+							"value": 0.18739352640545145,
+							"startTimestamp": 1404141830
+						}
+					],
+					"name": "primary_tv",
+					"id": "primary_tv"
+				}
+			],
+			"name": "unknown",
+			"id": "unknown"
+		}
+	]
+}
