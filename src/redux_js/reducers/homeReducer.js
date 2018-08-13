@@ -22,7 +22,7 @@ const initialState = {
     deviceColors: {},
     startDate: moment().subtract(1, 'months'),
     endDate: moment(),
-    interval: 'day'
+    interval: ''
 }
 
 export default function (state = initialState, action) {

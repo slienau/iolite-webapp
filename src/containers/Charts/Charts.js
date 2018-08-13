@@ -42,7 +42,7 @@ class Charts extends Component {
                         </div>
                     </div>
                     <div className="col-8">
-                        <DateRange/>
+                        <DateRange style='z-index: 10000 !important;'/>
                     </div>
                 </div>
 
